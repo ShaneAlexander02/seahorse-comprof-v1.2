@@ -152,7 +152,7 @@ export default function ContactPage() {
               {activeLocation === "jakarta" && (
                 <div>
                   <h4 className="text-lg font-bold text-red-800 mb-4 border-b border-gray-200 pb-2">
-                    P.T. SEA HORSE - Jakarta
+                    PT SEA HORSE - Jakarta
                   </h4>
                   <div className="space-y-4">
                     <div>
@@ -203,7 +203,7 @@ export default function ContactPage() {
               {activeLocation === "balikpapan" && (
                 <div>
                   <h4 className="text-lg font-bold text-red-800 mb-4 border-b border-gray-200 pb-2">
-                    P.T. SEA HORSE - Balikpapan
+                    PT SEA HORSE - Balikpapan
                   </h4>
                   <div className="space-y-4">
                     <div>
@@ -247,7 +247,7 @@ export default function ContactPage() {
               {activeLocation === "handil" && (
                 <div>
                   <h4 className="text-lg font-bold text-red-800 mb-4 border-b border-gray-200 pb-2">
-                    P.T. SEA HORSE - Handil Tiga
+                    PT SEA HORSE - Handil Tiga
                   </h4>
                   <div className="space-y-4">
                     <div>

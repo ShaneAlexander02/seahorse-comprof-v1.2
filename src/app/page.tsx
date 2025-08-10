@@ -5,6 +5,7 @@ import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
 import { ChevronDown, Phone, Mail, MapPin, Ship, Anchor, Users, Award, Menu, X } from 'lucide-react';
 
+
 const SeaHorseWebsite = () => {
   const router = useRouter();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -135,7 +136,7 @@ const SeaHorseWebsite = () => {
                 <span className="block text-white">Provider in Indonesia</span>
               </h1>
               <p className="text-xl mb-8 leading-relaxed text-white">
-                Established in 1972, P.T. Sea Horse is a major marine services provider for the Indonesian Oil & Gas exploration, production, mining, and transportation industries.
+                Established in 1972, PT Sea Horse is a major marine services provider for the Indonesian Oil & Gas exploration, production, mining, and transportation industries.
               </p>
               <div className="flex flex-wrap gap-4">
                 <button
@@ -175,127 +176,119 @@ const SeaHorseWebsite = () => {
         </div>
       </section>
 
-{/* Our Expertise Section */}
-<section className="pt-12 pb-18" style={{ background: 'linear-gradient(135deg, #760000 0%, #9b1c1c 100%)' }}>
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    
-    {/* Section Title */}
-    <div className="text-center mb-12">
-      <h2 className="text-4xl font-bold text-white mb-4">Our Expertise</h2>
-      <p className="text-lg text-red-100 max-w-2xl mx-auto">
-        Delivering trusted marine solutions with unmatched experience in the industry.
-      </p>
-    </div>
+{/* About Us Section */}
+<section id="about" className="py-18 bg-white">
+  <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="grid lg:grid-cols-2 gap-12 items-center">
+      {/* Left Content */}
+      <div>
+        <h2 className="text-4xl font-bold text-gray-900 mb-6">About Us</h2>
+        <p className="text-gray-700 mb-4 leading-relaxed text-justify">
+          We are a major marine services provider for the Indonesian Oil & Gas exploration and production, Mining and Transportation Industries.
+          Furthermore, we are the registered sole agents of some of the world’s largest shipowners.
+        </p>
+        <p className="text-gray-700 mb-4 leading-relaxed text-justify"> 
+          We have the ability to supply tugs and support vessels to work in deep water locations and the capacity to supply vessels in tight situations. 
+          This has enable us to work with confidence for our customer’s needs.
+        </p>
 
-    {/* Cards Container */}
-    <div className="bg-white rounded-3xl p-10 shadow-xl border border-red-100 hover:shadow-2xl transition-all duration-300">
-      <div className="grid lg:grid-cols-2 gap-10 items-center">
-        
-        {/* Left Column - Expertise */}
-        <div>
-          <ul className="space-y-6">
-            {[
-              { title: "Vessel Sales & Purchase", desc: "Expert brokerage services for vessel transactions" },
-              { title: "Vessel Chartering", desc: "Hook-up, commissioning, supply boats, and accommodation barges" },
-              { title: "Logistics & Shipping", desc: "Cargo movement, expediting, and international freight forwarding" }
-            ].map((item) => (
-              <li key={item.title} className="flex items-start space-x-4">
-                <div className="w-10 h-10 bg-red-100 text-[#760000] flex items-center justify-center rounded-full font-bold text-lg">
-                  ✓
-                </div>
-                <div>
-                  <div className="font-semibold text-gray-900 text-lg">{item.title}</div>
-                  <div className="text-gray-600">{item.desc}</div>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <ul className="mt-6 space-y-4">
+          <li className="flex items-center space-x-3">
+            <span className="w-8 h-8 flex items-center justify-center bg-red-100 rounded-full text-[#760000] font-bold">✓</span>
+            <span className="text-gray-800 font-medium">Ship Owning and Management</span>
+          </li>
+          <li className="flex items-center space-x-3">
+            <span className="w-8 h-8 flex items-center justify-center bg-red-100 rounded-full text-[#760000] font-bold">✓</span>
+            <span className="text-gray-800 font-medium">Vessel Chartering and Sale & Purchase</span>
+          </li>
+          <li className="flex items-center space-x-3">
+            <span className="w-8 h-8 flex items-center justify-center bg-red-100 rounded-full text-[#760000] font-bold">✓</span>
+            <span className="text-gray-800 font-medium">Operations for Tug Services (Harbour and Offshore)</span>
+          </li>
+          <li className="flex items-center space-x-3">
+            <span className="w-8 h-8 flex items-center justify-center bg-red-100 rounded-full text-[#760000] font-bold">✓</span>
+            <span className="text-gray-800 font-medium">Shipping Agency (Port, Vessel & Crew Clearance, etc)</span>
+          </li>
+            <li className="flex items-center space-x-3">
+            <span className="w-8 h-8 flex items-center justify-center bg-red-100 rounded-full text-[#760000] font-bold">✓</span>
+            <span className="text-gray-800 font-medium">General Agent for Coal Ship Operations and others</span>
+          </li>
+        </ul>
+      </div>
 
-        {/* Right Column - Authorized Agent */}
-        <div className="bg-gradient-to-br from-red-50 to-red-100 rounded-2xl p-8 border border-red-200">
-          <h4 className="text-xl font-semibold text-gray-900 mb-4">Authorized Agent</h4>
-          <p className="text-gray-700 mb-4 leading-relaxed">
-            We are the sole authorized service and spare parts agent for Doen Pacific Pty. Ltd. in Indonesia, providing comprehensive technical support for all Doen Waterjet models.
-          </p>
-          <a 
-            href="http://www.doen.com" 
-            target="_blank" 
-            className="inline-block px-6 py-2 mt-2 bg-[#760000] text-white rounded-lg shadow hover:bg-red-800 transition-colors"
-          >
-            Visit www.doen.com
-          </a>
-        </div>
-
+      {/* Right Image */}
+      <div className="relative flex justify-center">
+        <Image
+          src="/carousel-2.jpg"
+          alt="About PT Sea Horse"
+          width={500}
+          height={350}
+          className="rounded-lg shadow-lg object-cover"
+        />
       </div>
     </div>
   </div>
 </section>
 
-{/* About Section */}
-<section id="about" className="py-20 bg-gray-50">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div className="text-center mb-22">
-      <h2 className="text-4xl font-bold text-gray-900 mb-4">About PT Sea Horse</h2>
-      <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-        A trusted partner in Indonesia's marine industry with over five decades of excellence
-      </p>
+{/* Our Expertise Section */}
+<section className="pt-14 pb-18 bg-white">
+  <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-20">
+    {/* Section Title */}
+    <div className="text-center mb-12">
+      <h2 className="text-4xl font-bold text-gray-900 mb-4">
+        Official Authorization & Business Credentials
+      </h2>
     </div>
 
-    {/* Top 3 Services */}
-    <div className="grid gap-10 md:grid-cols-3 mb-16">
-      {[
-        {
-          icon: <Ship className="w-8 h-8 text-white" />,
-          title: "Ship Management",
-          description:
-            "Comprehensive ship owning and management services with extensive experience in vessel operations and maintenance.",
-        },
-        {
-          icon: <Anchor className="w-8 h-8 text-white" />,
-          title: "Offshore Operations",
-          description:
-            "Specialized offshore services including rig mobilization, anchor handling, and towing operations for the oil & gas industry.",
-        },
-        {
-          icon: <Users className="w-8 h-8 text-white" />,
-          title: "Agency Services",
-          description:
-            "Port and shipping agency services for major international shipowners, providing comprehensive logistics support.",
-        },
-      ].map((item) => (
-        <div key={item.title} className="text-center">
-          {/* Icon in red box */}
-          <div className="flex justify-center">
-            <div className="bg-[#760000] p-6">
-              {item.icon}
-            </div>
-          </div>
+    <div className="grid lg:grid-cols-2 gap-10 items-center justify-items-center">
+      {/* Left Column - Authorized Agent */}
+      <div className="text-center lg:text-left">
+        <Image
+          src="/Doenlogo.png"
+          alt="Doen Waterjets Logo"
+          width={180}
+          height={60}
+          className="mx-auto lg:mx-0 mb-4"
+        />
+        <p className="text-gray-700 mb-4 leading-relaxed max-w-md mx-auto lg:mx-0 text-justify">
+          We are the sole authorized service and spare parts agent for Doen Pacific Pty. Ltd. in
+          Indonesia, providing comprehensive technical support for all Doen Waterjet models.
+        </p>
+        <a
+          href="http://www.doen.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block px-6 py-2 mt-2 bg-[#760000] text-white rounded-lg shadow hover:bg-red-800 transition-colors"
+        >
+          Visit www.doen.com
+        </a>
+      </div>
 
-          {/* Title */}
-          <h3 className="mt-6 text-lg font-semibold text-gray-900">
-            {item.title}
-          </h3>
-
-          {/* Description */}
-          <p className="mt-3 text-gray-600 max-w-xs mx-auto">
-            {item.description}
-          </p>
-
-          {/* Read More Button */}
-          <div className="mt-6">
-            <button
-              className="px-6 py-2 border border-black text-black hover:bg-black hover:text-white transition-colors"
+      {/* Right Column - Licences */}
+      <div className="text-center lg:text-left">
+        <ul className="space-y-6 max-w-md mx-auto lg:mx-0">
+          {[
+            { title: 'Shipping Business License', desc: 'No: BXXXIV-422/AT.54' },
+            { title: 'Business Identification Number (NIB)', desc: 'No: 9210101202577' },
+          ].map((item) => (
+            <li
+              key={item.title}
+              className="flex items-start space-x-4 justify-center lg:justify-start"
             >
-              Read More
-            </button>
-          </div>
-        </div>
-      ))}
+              <div className="w-10 h-10 bg-red-100 text-[#760000] flex items-center justify-center rounded-full font-bold text-lg">
+                ✓
+              </div>
+              <div>
+                <div className="font-semibold text-gray-900 text-lg">{item.title}</div>
+                <div className="text-gray-600">{item.desc}</div>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   </div>
 </section>
-
 
       {/* Services Section */}
       <section id="services" className="py-20 bg-white">
@@ -363,12 +356,11 @@ const SeaHorseWebsite = () => {
 <section className="py-16" style={{ background: 'linear-gradient(135deg, #760000 0%, #9b1c1c 100%)' }}>
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div className="text-center mb-12">
-      <h2 className="text-3xl font-bold text-white mb-4">Certifications, Licences & Memberships</h2>
+      <h2 className="text-3xl font-bold text-white mb-4">Certifications and Memberships</h2>
       <p className="text-lg text-red-100">Maintaining the highest standards in quality and service</p>
     </div>
 
     {/* Certifications */}
-    <h3 className="text-xl mt-12 text-center font-semibold text-white mb-8">Certifications</h3>
     <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8 items-center">
       {/* INSA Membership */}
       <div className="bg-white rounded-lg p-6 text-center shadow-lg">
@@ -420,13 +412,6 @@ const SeaHorseWebsite = () => {
         <p className="text-xs text-gray-500 mt-1">Reg. No. 230331-030586</p>
       </div>
     </div>
-
-    {/* Licences */}
-    <div className="mt-12 text-center">
-      <h3 className="text-xl font-semibold text-white mb-4">Licences</h3>
-      <p className="text-md text-white">Shipping Business License No.: BXXXIV-422/AT.54</p>
-      <p className="text-md text-white">Business Identification Number (NIB): 9120101202577</p>
-    </div>
   </div>
 </section>
 
@@ -442,7 +427,7 @@ const SeaHorseWebsite = () => {
                   <Ship className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold">P.T. SEA HORSE</h3>
+                  <h3 className="text-xl font-bold">PT SEA HORSE</h3>
                   <p className="text-sm text-gray-400">Est. 1972</p>
                 </div>
               </div>
