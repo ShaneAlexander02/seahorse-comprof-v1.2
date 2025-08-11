@@ -334,13 +334,14 @@ const SeaHorseWebsite = () => {
       </p>
     </motion.div>
 
-    {/* DOEN Content Card */}
+    {/* DOEN Content Cards */}
     <motion.div 
-      className="max-w-4xl mx-auto"
+      className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto"
       variants={staggerContainer}
     >
+      {/* Main Authorization Card */}
       <motion.div 
-        className="bg-white rounded-lg p-8 text-center shadow-lg"
+        className="bg-white rounded-xl p-8 shadow-lg lg:col-span-1"
         variants={scaleUp}
         whileHover={{ 
           scale: 1.05, 
@@ -348,30 +349,66 @@ const SeaHorseWebsite = () => {
         }}
       >
         <div className="mb-6">
-          <p className="text-lg text-gray-700 mb-4">
-            We are the <strong>sole authorized service and spare parts agent</strong> for Doen Pacific Pty. Ltd. 
-            PT Sea Horse provides complete technical support for all Doen Waterjet models in Indonesia.
-          </p>
-          <p className="text-blue-600 font-medium">www.doen.com</p>
+          <Image src={getImagePath("/doen-logo.png")} alt="Doen Waterjets Logo" width={200} height={80} className="mb-6" />
         </div>
         
-        <div className="grid md:grid-cols-2 gap-6 mt-8">
-          <div className="text-left">
-            <div className="flex items-center mb-2">
-              <span className="text-green-500 text-xl mr-2">✓</span>
-              <strong className="text-gray-900">Shipping Business License</strong>
-            </div>
-            <p className="text-gray-600 ml-7">No: BXXXIV-422/AT.54</p>
-          </div>
+        <div className="text-left">
+          <p className="text-gray-700 mb-6 leading-relaxed">
+            We are the <span className="text-red-800 font-semibold">sole authorized service and spare parts agent</span> for 
+            Doen Pacific Pty. Ltd. PT Sea Horse provides complete technical support for all Doen Waterjet models in Indonesia.
+          </p>
           
-          <div className="text-left">
-            <div className="flex items-center mb-2">
-              <span className="text-green-500 text-xl mr-2">✓</span>
-              <strong className="text-gray-900">Business Identification Number (NIB)</strong>
-            </div>
-            <p className="text-gray-600 ml-7">No: 9210101202577</p>
+          <div className="bg-red-800 text-white px-4 py-2 rounded-lg inline-flex items-center">
+            <span className="font-medium">www.doen.com</span>
+            <span className="ml-2">→</span>
           </div>
         </div>
+      </motion.div>
+
+      {/* License Cards */}
+      <motion.div 
+        className="lg:col-span-2 space-y-6"
+        variants={staggerContainer}
+      >
+        {/* Shipping Business License */}
+        <motion.div 
+          className="bg-white rounded-xl p-6 shadow-lg"
+          variants={scaleUp}
+          whileHover={{ 
+            scale: 1.05, 
+            transition: { duration: 0.3 }
+          }}
+        >
+          <div className="flex items-center">
+            <div className="bg-red-100 rounded-full p-3 mr-4">
+              <span className="text-red-800 text-xl font-bold">✓</span>
+            </div>
+            <div>
+              <h3 className="text-xl font-semibold text-gray-900">Shipping Business License</h3>
+              <p className="text-gray-600">No: BXXXIV-422/AT.54</p>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Business Identification Number */}
+        <motion.div 
+          className="bg-white rounded-xl p-6 shadow-lg"
+          variants={scaleUp}
+          whileHover={{ 
+            scale: 1.05, 
+            transition: { duration: 0.3 }
+          }}
+        >
+          <div className="flex items-center">
+            <div className="bg-red-100 rounded-full p-3 mr-4">
+              <span className="text-red-800 text-xl font-bold">✓</span>
+            </div>
+            <div>
+              <h3 className="text-xl font-semibold text-gray-900">Business Identification Number (NIB)</h3>
+              <p className="text-gray-600">No: 9210101202577</p>
+            </div>
+          </div>
+        </motion.div>
       </motion.div>
     </motion.div>
   </div>
