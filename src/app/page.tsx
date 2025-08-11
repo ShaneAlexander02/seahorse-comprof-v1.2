@@ -417,7 +417,7 @@ const SeaHorseWebsite = () => {
     </motion.div>
 
     <motion.div 
-      className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
+      className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto"
       variants={staggerContainer}
     >
       {[
