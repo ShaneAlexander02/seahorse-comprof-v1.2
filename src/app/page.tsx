@@ -192,22 +192,6 @@ const SeaHorseWebsite = () => {
               <p className="text-xl mb-8 leading-relaxed text-white">
                 Established in 1972, PT Sea Horse is a major marine services provider for the Indonesian Oil & Gas exploration, production, mining, and transportation industries.
               </p>
-              <div className="flex flex-wrap gap-4">
-                <button
-                  onClick={() => scrollToSection('services')}
-                  style={{ backgroundColor: '#ffffff', color: '#760000' }}
-                  className="px-8 py-3 rounded-lg font-semibold hover:opacity-90 transition-colors"
-                >
-                  Our Services
-                </button>
-                <button
-                  onClick={() => window.open('https://wa.me/6281511100038', '_blank')}
-                  style={{ border: '1px solid white', color: 'white' }}
-                  className="px-8 py-3 rounded-lg font-semibold hover:bg-white/10 transition-colors"
-                >
-                  Contact Us
-                </button>
-              </div>
             </div>
             <div className="relative">
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
@@ -261,17 +245,17 @@ const SeaHorseWebsite = () => {
         { 
           title: "Offshore Services", 
           icon: Anchor,
-          text: "Rig Mobilisation / Demobilisation and moves, Anchor-handling, and Towing"
+          text: "Rig mobilisation / demobilisation and moves, anchor-handling, and towing."
         },
         { 
           title: "Vessels", 
           icon: Ship,
-          text: "AHTS, Tugs, Hook-up and Commissioning vessels, Supply boats, Accommodation and Flat-top Barges, Crew Boats and other Specialised Vessels."
+          text: "AHTS, tugs, hook-up and commissioning vessels, supply boats, accommodation and flat-top barges, crew boats and other specialised vessels."
         },
         { 
           title: "Brokerage", 
           icon: Handshake,
-          text: "PT Sea Horse is a trusted vessel broker with 35+ years of experience in Indonesia, specializing in global sales and acquisitions for all ship types. We connect buyers with top-tier offshore vessel owners and streamline transactions worldwide"
+          text: "PT Sea Horse is a trusted vessel broker for Sales & Purchase / Chartering inquiries. We can source for all types of vessels from all over the world for our clients."
         },
         { 
           title: "Shipping & Logistics", 
@@ -357,7 +341,7 @@ const SeaHorseWebsite = () => {
           />
           <p className="text-gray-850 leading-relaxed text-justify">
             We are the <span className="font-semibold text-[#760000]">sole authorized service and spare parts agent </span> 
-            for Doen Pacific Pty. Ltd. in Indonesia, providing complete technical support for all Doen Waterjet models.
+            for Doen Pacific Pty. Ltd. PT Sea Horse provides complete technical support for all Doen Waterjet models in Indonesia.
           </p>
           <a
             href="http://www.doen.com"
@@ -432,13 +416,13 @@ const SeaHorseWebsite = () => {
           variants={fadeInUp}
         >
           We are a major marine services provider for the Indonesian Oil & Gas exploration and production, Mining and Transportation Industries.
-          Furthermore, we are the registered <span className="font-semibold text-[#760000]">sole agents </span> of some of the world&apos;s largest shipowners.
+          Furthermore, we have represented some of the world&apos;s largest shipowners.
         </motion.p>
         <motion.p 
           className="text-gray-850 mb-4 leading-relaxed text-justify"
           variants={fadeInUp}
         > 
-          We have the ability to supply tugs and support vessels to work in deep water locations and the capacity to supply vessels in tight situations. 
+          Hence, We have the ability to supply tugs and support vessels to work in deep water locations and the capacity to supply vessels in tight situations. 
           This has enable us to work with confidence for our customer&apos;s needs. Some of our main activities include:
         </motion.p>
 
@@ -661,5 +645,4 @@ const SeaHorseWebsite = () => {
     </div>
   );
 };
-
 export default SeaHorseWebsite;
