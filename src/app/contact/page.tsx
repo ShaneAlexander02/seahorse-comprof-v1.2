@@ -132,13 +132,13 @@ export default function ContactPage() {
           />
         </div>
 
-        {/* Contact Info + Form */}
-        <div className="max-w-5xl mx-auto px-4 py-12 grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Contact Info Card */}
-          <div className="bg-white shadow-lg rounded-lg p-6 transform transition-all duration-700 ease-out opacity-0 animate-fadeInUp">
-            {/* Location Tabs */}
-            <div className="border-b mb-6">
-              <div className="flex flex-wrap gap-1 mb-4">
+        {/* Contact Info - Full Width */}
+        <div className="max-w-7xl mx-auto px-4 py-12">
+          {/* Location Tabs */}
+          <div className="bg-white shadow-lg rounded-lg p-8 transform transition-all duration-700 ease-out opacity-0 animate-fadeInUp">
+            <div className="border-b mb-8">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">Our Locations</h2>
+              <div className="flex flex-wrap gap-2 mb-6">
                 {[
                   { id: "jakarta", label: "JAKARTA" },
                   { id: "balikpapan", label: "BALIKPAPAN" },
@@ -148,10 +148,10 @@ export default function ContactPage() {
                   <button
                     key={location.id}
                     onClick={() => setActiveLocation(location.id)}
-                    className={`px-2 py-2 font-semibold text-sm transition-colors ${
+                    className={`px-4 py-3 font-semibold text-base transition-colors rounded-lg ${
                       activeLocation === location.id
-                        ? "border-b-2 border-red-800 text-red-800"
-                        : "text-gray-600 hover:text-red-800"
+                        ? "bg-red-800 text-white"
+                        : "bg-gray-100 text-gray-600 hover:bg-red-100 hover:text-red-800"
                     }`}
                   >
                     {location.label}
@@ -161,242 +161,264 @@ export default function ContactPage() {
             </div>
 
             {/* Contact Details */}
-            <div className="space-y-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {activeLocation === "jakarta" && (
-                <div>
-                  <h4 className="text-lg font-bold text-red-800 mb-4 border-b border-gray-200 pb-2">
-                    PT SEA HORSE - Jakarta
-                  </h4>
-                  <div className="space-y-4">
-                    <div>
-                      <div className="flex items-center gap-2 mb-2">
-                        <MapPin className="w-4 h-4 text-red-800" />
-                        <h5 className="font-semibold text-red-800">Address</h5>
-                      </div>
-                      <div className="ml-6 space-y-1 text-sm">
-                        <p>Multivision Tower 5th Floor Unit 5</p>
-                        <p>Jl. Kuningan Mulia Lot 9B</p>
-                        <p>Jakarta 12980, Indonesia</p>
-                        <p>Co. Reg No. 9120101202577</p>
+                <>
+                  <div className="space-y-6">
+                    <h3 className="text-2xl font-bold text-red-800 mb-6 border-b border-gray-200 pb-3">
+                      PT SEA HORSE - Jakarta Office
+                    </h3>
+                    
+                    <div className="bg-gray-50 p-6 rounded-lg">
+                      <div className="flex items-start gap-3 mb-4">
+                        <MapPin className="w-6 h-6 text-red-800 mt-1 flex-shrink-0" />
+                        <div>
+                          <h4 className="font-bold text-red-800 mb-3">Office Address</h4>
+                          <div className="space-y-1 text-base leading-relaxed">
+                            <p className="font-medium">Multivision Tower 5th Floor Unit 5</p>
+                            <p>Jl. Kuningan Mulia Lot 9B</p>
+                            <p>Jakarta 12980, Indonesia</p>
+                            <p className="text-sm text-gray-600 mt-2">Co. Reg No. 9120101202577</p>
+                          </div>
+                        </div>
                       </div>
                     </div>
                     
-                    <div>
-                      <div className="flex items-center gap-2 mb-2">
-                        <Phone className="w-4 h-4 text-red-800" />
-                        <span className="font-semibold text-sm">Tel: (+62) 21 2938 0018</span>
+                    <div className="bg-gray-50 p-6 rounded-lg">
+                      <div className="flex items-center gap-3 mb-3">
+                        <Phone className="w-6 h-6 text-red-800" />
+                        <h4 className="font-bold text-red-800">Phone</h4>
+                      </div>
+                      <p className="text-lg font-medium ml-9">(+62) 21 2938 0018</p>
+                    </div>
+                  </div>
+
+                  <div className="space-y-6">
+                    <div className="bg-gray-50 p-6 rounded-lg">
+                      <div className="flex items-start gap-3 mb-4">
+                        <Mail className="w-6 h-6 text-red-800 mt-1" />
+                        <div>
+                          <h4 className="font-bold text-red-800 mb-3">Email Addresses</h4>
+                          <div className="space-y-2 ml-0">
+                            <div className="bg-white p-3 rounded border-l-4 border-red-800">
+                              <p className="text-base font-medium">general@seahorse.co.id</p>
+                              <p className="text-sm text-gray-600">General Inquiries</p>
+                            </div>
+                            <div className="bg-white p-3 rounded border-l-4 border-red-800">
+                              <p className="text-base font-medium">marketing@seahorse.co.id</p>
+                              <p className="text-sm text-gray-600">Marketing & Business</p>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
 
-                    <div>
-                      <div className="flex items-center gap-2 mb-2">
-                        <Mail className="w-4 h-4 text-red-800" />
-                        <h5 className="font-semibold text-red-800">Email</h5>
-                      </div>
-                      <div className="ml-6 space-y-1 text-sm">
-                        <p>general@seahorse.co.id</p>
-                        <p>marketing@seahorse.co.id</p>
-                      </div>
-                    </div>
-
-                    <div>
-                      <div className="flex items-center gap-2 mb-2">
-                        <User className="w-4 h-4 text-red-800" />
-                        <h5 className="font-semibold text-red-800">Contact Persons</h5>
-                      </div>
-                      <div className="ml-6 space-y-1 text-sm">
-                        <p><strong>Director:</strong> Ms. Maria Dharmaputri</p>
-                        <p><strong>General Manager:</strong> Mr. Winston Foo</p>
+                    <div className="bg-gray-50 p-6 rounded-lg">
+                      <div className="flex items-start gap-3 mb-4">
+                        <User className="w-6 h-6 text-red-800 mt-1" />
+                        <div>
+                          <h4 className="font-bold text-red-800 mb-3">Key Personnel</h4>
+                          <div className="space-y-3 ml-0">
+                            <div className="bg-white p-3 rounded">
+                              <p className="font-semibold text-gray-800">Ms. Maria Dharmaputri</p>
+                              <p className="text-sm text-gray-600">Director</p>
+                            </div>
+                            <div className="bg-white p-3 rounded">
+                              <p className="font-semibold text-gray-800">Mr. Winston Foo</p>
+                              <p className="text-sm text-gray-600">General Manager</p>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                </>
               )}
 
               {activeLocation === "balikpapan" && (
-                <div>
-                  <h4 className="text-lg font-bold text-red-800 mb-4 border-b border-gray-200 pb-2">
-                    PT SEA HORSE - Balikpapan
-                  </h4>
-                  <div className="space-y-4">
-                    <div>
-                      <div className="flex items-center gap-2 mb-2">
-                        <MapPin className="w-4 h-4 text-red-800" />
-                        <h5 className="font-semibold text-red-800">Address</h5>
-                      </div>
-                      <div className="ml-6 space-y-1 text-sm">
-                        <p>Complex Balikpapan Permai Block L No. 6 Jl. Jenderal Sudirman</p>
-                        <p>Balikpapan 76114, East Kalimantan, Indonesia</p>
+                <>
+                  <div className="space-y-6">
+                    <h3 className="text-2xl font-bold text-red-800 mb-6 border-b border-gray-200 pb-3">
+                      PT SEA HORSE - Balikpapan Branch
+                    </h3>
+                    
+                    <div className="bg-gray-50 p-6 rounded-lg">
+                      <div className="flex items-start gap-3 mb-4">
+                        <MapPin className="w-6 h-6 text-red-800 mt-1 flex-shrink-0" />
+                        <div>
+                          <h4 className="font-bold text-red-800 mb-3">Branch Address</h4>
+                          <div className="space-y-1 text-base leading-relaxed">
+                            <p className="font-medium">Complex Balikpapan Permai Block L No. 6</p>
+                            <p>Jl. Jenderal Sudirman</p>
+                            <p>Balikpapan 76114, East Kalimantan</p>
+                            <p>Indonesia</p>
+                          </div>
+                        </div>
                       </div>
                     </div>
                     
-                    <div>
-                      <div className="flex items-center gap-2 mb-2">
-                        <Phone className="w-4 h-4 text-red-800" />
-                        <span className="font-semibold text-sm">Tel: (+62) 542 427 048 / 542 427 077</span>
+                    <div className="bg-gray-50 p-6 rounded-lg">
+                      <div className="flex items-center gap-3 mb-3">
+                        <Phone className="w-6 h-6 text-red-800" />
+                        <h4 className="font-bold text-red-800">Phone</h4>
                       </div>
-                    </div>
-
-                    <div>
-                      <div className="flex items-center gap-2 mb-2">
-                        <Mail className="w-4 h-4 text-red-800" />
-                        <span className="font-semibold text-sm">Email: bppn@seahorse.co.id</span>
-                      </div>
-                    </div>
-
-                    <div>
-                      <div className="flex items-center gap-2 mb-2">
-                        <User className="w-4 h-4 text-red-800" />
-                        <h5 className="font-semibold text-red-800">Contact Person</h5>
-                      </div>
-                      <div className="ml-6 text-sm">
-                        <p><strong>Branch Manager:</strong> Mr. Hasri Umar</p>
+                      <div className="ml-9 space-y-1">
+                        <p className="text-lg font-medium">(+62) 542 427 048</p>
+                        <p className="text-lg font-medium">(+62) 542 427 077</p>
                       </div>
                     </div>
                   </div>
-                </div>
+
+                  <div className="space-y-6">
+                    <div className="bg-gray-50 p-6 rounded-lg">
+                      <div className="flex items-start gap-3 mb-4">
+                        <Mail className="w-6 h-6 text-red-800 mt-1" />
+                        <div>
+                          <h4 className="font-bold text-red-800 mb-3">Email Address</h4>
+                          <div className="bg-white p-4 rounded border-l-4 border-red-800">
+                            <p className="text-lg font-medium">bppn@seahorse.co.id</p>
+                            <p className="text-sm text-gray-600">Balikpapan Operations</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="bg-gray-50 p-6 rounded-lg">
+                      <div className="flex items-start gap-3 mb-4">
+                        <User className="w-6 h-6 text-red-800 mt-1" />
+                        <div>
+                          <h4 className="font-bold text-red-800 mb-3">Branch Management</h4>
+                          <div className="bg-white p-4 rounded">
+                            <p className="font-semibold text-gray-800 text-lg">Mr. Hasri Umar</p>
+                            <p className="text-base text-gray-600">Branch Manager</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </>
               )}
 
               {activeLocation === "handil" && (
-                <div>
-                  <h4 className="text-lg font-bold text-red-800 mb-4 border-b border-gray-200 pb-2">
-                    PT SEA HORSE - Handil Tiga
-                  </h4>
-                  <div className="space-y-4">
-                    <div>
-                      <div className="flex items-center gap-2 mb-2">
-                        <MapPin className="w-4 h-4 text-red-800" />
-                        <h5 className="font-semibold text-red-800">Address</h5>
-                      </div>
-                      <div className="ml-6 space-y-1 text-sm">
-                        <p>Jl. Tahir RT.XI RW.02 NO.19</p>
-                        <p>Handil Dua - Muara Jawa 75261, East Kalimantan, Indonesia</p>
+                <>
+                  <div className="space-y-6">
+                    <h3 className="text-2xl font-bold text-red-800 mb-6 border-b border-gray-200 pb-3">
+                      PT SEA HORSE - Handil Tiga Base
+                    </h3>
+                    
+                    <div className="bg-gray-50 p-6 rounded-lg">
+                      <div className="flex items-start gap-3 mb-4">
+                        <MapPin className="w-6 h-6 text-red-800 mt-1 flex-shrink-0" />
+                        <div>
+                          <h4 className="font-bold text-red-800 mb-3">Base Address</h4>
+                          <div className="space-y-1 text-base leading-relaxed">
+                            <p className="font-medium">Jl. Tahir RT.XI RW.02 NO.19</p>
+                            <p>Handil Dua - Muara Jawa 75261</p>
+                            <p>East Kalimantan, Indonesia</p>
+                          </div>
+                        </div>
                       </div>
                     </div>
                     
-                    <div>
-                      <div className="flex items-center gap-2 mb-2">
-                        <Phone className="w-4 h-4 text-red-800" />
-                        <div className="text-sm">
-                          <p><strong>Tel:</strong> (+62) 541 691 830</p>
-                          <p><strong>Mobile:</strong> (+62) 812-5115-4480</p>
+                    <div className="bg-gray-50 p-6 rounded-lg">
+                      <div className="flex items-center gap-3 mb-3">
+                        <Phone className="w-6 h-6 text-red-800" />
+                        <h4 className="font-bold text-red-800">Phone</h4>
+                      </div>
+                      <p className="text-lg font-medium ml-9">(+62) 541 691 830</p>
+                    </div>
+                  </div>
+
+                  <div className="space-y-6">
+                    <div className="bg-gray-50 p-6 rounded-lg">
+                      <div className="flex items-start gap-3 mb-4">
+                        <Mail className="w-6 h-6 text-red-800 mt-1" />
+                        <div>
+                          <h4 className="font-bold text-red-800 mb-3">Email Address</h4>
+                          <div className="bg-white p-4 rounded border-l-4 border-red-800">
+                            <p className="text-lg font-medium">smo@seahorse.co.id</p>
+                            <p className="text-sm text-gray-600">Site Management Office</p>
+                          </div>
                         </div>
                       </div>
                     </div>
 
-                    <div>
-                      <div className="flex items-center gap-2 mb-2">
-                        <Mail className="w-4 h-4 text-red-800" />
-                        <span className="font-semibold text-sm">Email: smo@seahorse.co.id</span>
-                      </div>
-                    </div>
-
-                    <div>
-                      <div className="flex items-center gap-2 mb-2">
-                        <User className="w-4 h-4 text-red-800" />
-                        <h5 className="font-semibold text-red-800">Contact Person</h5>
-                      </div>
-                      <div className="ml-6 text-sm">
-                        <p><strong>Base Supervisor:</strong> Mr. Supandi</p>
+                    <div className="bg-gray-50 p-6 rounded-lg">
+                      <div className="flex items-start gap-3 mb-4">
+                        <User className="w-6 h-6 text-red-800 mt-1" />
+                        <div>
+                          <h4 className="font-bold text-red-800 mb-3">Base Management</h4>
+                          <div className="bg-white p-4 rounded">
+                            <p className="font-semibold text-gray-800 text-lg">Mr. Supandi</p>
+                            <p className="text-base text-gray-600">Base Supervisor</p>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                </>
               )}
 
               {activeLocation === "sangatta" && (
-                <div>
-                  <h4 className="text-lg font-bold text-red-800 mb-4 border-b border-gray-200 pb-2">
-                    PT SEA HORSE - Sangatta
-                  </h4>
-                  <div className="space-y-4">
-                    <div>
-                      <div className="flex items-center gap-2 mb-2">
-                        <MapPin className="w-4 h-4 text-red-800" />
-                        <h5 className="font-semibold text-red-800">Address</h5>
-                      </div>
-                      <div className="ml-6 space-y-1 text-sm">
-                        <p>Jln. APT Pranoto RT 09 No. 06</p>
-                        <p>Sangatta 75611, East Kalimantan, Indonesia</p>
+                <>
+                  <div className="space-y-6">
+                    <h3 className="text-2xl font-bold text-red-800 mb-6 border-b border-gray-200 pb-3">
+                      PT SEA HORSE - Sangatta Office
+                    </h3>
+                    
+                    <div className="bg-gray-50 p-6 rounded-lg">
+                      <div className="flex items-start gap-3 mb-4">
+                        <MapPin className="w-6 h-6 text-red-800 mt-1 flex-shrink-0" />
+                        <div>
+                          <h4 className="font-bold text-red-800 mb-3">Office Address</h4>
+                          <div className="space-y-1 text-base leading-relaxed">
+                            <p className="font-medium">Jln. APT Pranoto RT 09 No. 06</p>
+                            <p>Sangatta 75611</p>
+                            <p>East Kalimantan, Indonesia</p>
+                          </div>
+                        </div>
                       </div>
                     </div>
                     
-                    <div>
-                      <div className="flex items-center gap-2 mb-2">
-                        <Phone className="w-4 h-4 text-red-800" />
-                        <div className="text-sm">
-                          <p><strong>Tel:</strong> (+62) 549 24254</p>
-                          <p><strong>Mobile:</strong> (+62) 811 580 698</p>
+                    <div className="bg-gray-50 p-6 rounded-lg">
+                      <div className="flex items-center gap-3 mb-3">
+                        <Phone className="w-6 h-6 text-red-800" />
+                        <h4 className="font-bold text-red-800">Phone</h4>
+                      </div>
+                      <p className="text-lg font-medium ml-9">(+62) 549 24254</p>
+                    </div>
+                  </div>
+
+                  <div className="space-y-6">
+                    <div className="bg-gray-50 p-6 rounded-lg">
+                      <div className="flex items-start gap-3 mb-4">
+                        <Mail className="w-6 h-6 text-red-800 mt-1" />
+                        <div>
+                          <h4 className="font-bold text-red-800 mb-3">Email Address</h4>
+                          <div className="bg-white p-4 rounded border-l-4 border-red-800">
+                            <p className="text-lg font-medium">agency@seahorse.co.id</p>
+                            <p className="text-sm text-gray-600">Agency Operations</p>
+                          </div>
                         </div>
                       </div>
                     </div>
 
-                    <div>
-                      <div className="flex items-center gap-2 mb-2">
-                        <Mail className="w-4 h-4 text-red-800" />
-                        <span className="font-semibold text-sm">Email: agency@seahorse.co.id</span>
-                      </div>
-                    </div>
-
-                    <div>
-                      <div className="flex items-center gap-2 mb-2">
-                        <User className="w-4 h-4 text-red-800" />
-                        <h5 className="font-semibold text-red-800">Contact Person</h5>
-                      </div>
-                      <div className="ml-6 text-sm">
-                        <p><strong>Operations Coordinator:</strong> Mr. Syarifudin</p>
+                    <div className="bg-gray-50 p-6 rounded-lg">
+                      <div className="flex items-start gap-3 mb-4">
+                        <User className="w-6 h-6 text-red-800 mt-1" />
+                        <div>
+                          <h4 className="font-bold text-red-800 mb-3">Operations Management</h4>
+                          <div className="bg-white p-4 rounded">
+                            <p className="font-semibold text-gray-800 text-lg">Mr. Syarifudin</p>
+                            <p className="text-base text-gray-600">Operations Coordinator</p>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                </>
               )}
-          </div>
-          </div>
-
-          {/* Form Card */}
-          <div className="bg-white shadow-lg rounded-lg p-6 transform transition-all duration-700 ease-out opacity-0 animate-fadeInUp delay-200">
-            <h3 className="text-2xl font-bold mb-4">Get in Touch with Us!</h3>
-            <form
-              action="https://formspree.io/f/mgejrddd"
-              method="post"
-              className="space-y-4"
-            >
-              <input
-                type="text"
-                name="name"
-                placeholder="Enter Name/Institution"
-                required
-                className="w-full p-3 border rounded-lg"
-              />
-              <input
-                type="email"
-                name="email"
-                placeholder="Enter Email"
-                required
-                className="w-full p-3 border rounded-lg"
-              />
-              <input
-                type="tel"
-                name="phonenumber"
-                placeholder="Enter Phone Number"
-                pattern="[0-9]{7,}"
-                required
-                className="w-full p-3 border rounded-lg"
-              />
-              <textarea
-                name="message"
-                placeholder="Your Feedback or Inquiry"
-                required
-                rows={5}
-                className="w-full p-3 border rounded-lg"
-              ></textarea>
-              <button
-                type="submit"
-                className="w-full bg-[#760000] text-white py-3 rounded-lg hover:bg-red-900 transition"
-              >
-                Kirim Pesan
-              </button>
-            </form>
+            </div>
           </div>
         </div>
       </main>
