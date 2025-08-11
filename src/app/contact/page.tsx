@@ -10,6 +10,12 @@ export default function ContactPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeLocation, setActiveLocation] = useState("jakarta");
 
+  // Helper function for absolute image paths - ADDED THIS
+  const getImagePath = (imagePath: string) => {
+    const basePath = '/seahorse-comprof-v1.2'; // Your GitHub repo name
+    return `${basePath}${imagePath}`;
+  };
+
   const scrollToSection = (sectionId: string) => {
     router.push(`/#${sectionId}`);
   };
@@ -23,10 +29,10 @@ export default function ContactPage() {
       >
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-9">
           <div className="flex justify-between items-center h-16">
-            {/* Logo */}
+            {/* Logo - FIXED THE IMAGE PATH */}
             <div className="flex items-center">
               <Image
-                src="/logo.jpg"
+                src={getImagePath("/logo.jpg")}
                 alt="P.T. Sea Horse Logo"
                 width={180}
                 height={180}
