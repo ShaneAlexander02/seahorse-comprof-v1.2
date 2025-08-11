@@ -11,6 +11,12 @@ const SeaHorseWebsite = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
 
+  // Helper function for absolute image paths
+  const getImagePath = (imagePath: string) => {
+    const basePath = '/seahorse-comprof-v1.2'; // Your GitHub repo name
+    return `${basePath}${imagePath}`;
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       const sections = ['home', 'about', 'services', 'contact'];
@@ -92,7 +98,7 @@ const SeaHorseWebsite = () => {
             {/* Logo */}
             <div className="flex items-center">
               <Image
-                src="/logo.jpg"
+                src={getImagePath("/logo.jpg")}
                 alt="P.T. Sea Horse Logo"
                 width={180}
                 height={180}
@@ -168,7 +174,7 @@ const SeaHorseWebsite = () => {
         {/* Background Image */}
         <div className="absolute inset-0">
           <Image
-            src="/carousel-1.jpg"
+            src={getImagePath("/carousel-1.jpg")}
             alt="Marine Background"
             fill
             style={{ objectFit: 'cover', filter: 'brightness(60%)' }}
@@ -287,7 +293,7 @@ const SeaHorseWebsite = () => {
         variants={slideInRight}
       >
         <Image
-          src="/carousel-2.jpg"
+          src={getImagePath("/carousel-2.jpg")}
           alt="About PT Sea Horse"
           width={500}
           height={350}
@@ -328,7 +334,7 @@ const SeaHorseWebsite = () => {
       >
         <div className="flex flex-col items-center lg:items-start">
           <Image
-            src="/Doenlogo.png"
+            src={getImagePath("/Doenlogo.png")}
             alt="Doen Waterjets Logo"
             width={200}
             height={70}
@@ -417,32 +423,32 @@ const SeaHorseWebsite = () => {
       {[
         { 
           title: "Consultancy", 
-          img: "/seahorse-lobby.png", // insert here for consultancy picture
+          img: "/seahorse-lobby.png",
           text: "We utilize our in-depth knowledge of the industry and draw on a combination of more than 30 years of experience as well as current market evaluation to provide information, analysis and strategies for our customers."
         },
         { 
           title: "Ship Agency", 
-          img: "/images/ship-agency.jpg", // insert here for ship agency picture
+          img: "/images/ship-agency.jpg",
           text: "Amsbach Offshore Services Pte. Ltd. (Singapore) and PT. Sarana Niaga Antar Cargo (Indonesia) specialise in designing, constructing and operating supply bases to support oilfield exploration and production operations in remote locations."
         },
         { 
           title: "Offshore", 
-          img: "/images/offshore.jpg", // insert here for offshore picture
+          img: "/images/offshore.jpg",
           text: "The Amsbach Group and its Affiliates specialise in providing logistic solutions to the Offshore Oil & Gas Industry."
         },
         { 
           title: "Brokerage", 
-          img: "/images/brokerage.jpg", // insert here for brokerage picture
+          img: "/images/brokerage.jpg",
           text: "The Group is an active broker in the Sales & Purchase and Chartering markets for specialised vessels."
         },
         { 
           title: "Ship Management", 
-          img: "/images/ship-management.jpg", // insert here for ship management picture
+          img: "/images/ship-management.jpg",
           text: "Several companies belonging to the Amsbach Group are ISM (International Safety Management) certified."
         },
         { 
           title: "Personnel Supply & Crewing", 
-          img: "/images/personnel-supply.jpg", // insert here for personnel supply & crewing picture
+          img: "/images/personnel-supply.jpg",
           text: "We provide a range of personnel."
         }
       ].map((service) => (
@@ -452,7 +458,7 @@ const SeaHorseWebsite = () => {
           variants={scaleUp}
         >
           <Image
-            src={service.img}
+            src={getImagePath(service.img)}
             alt={service.title}
             width={400}
             height={200}
@@ -502,7 +508,7 @@ const SeaHorseWebsite = () => {
         }}
       >
         <div className="w-24 h-24 mx-auto mb-4 rounded-lg p-2">
-          <Image src="/Logoinsa.png" alt="INSA Logo" width={80} height={80} className="w-full h-full object-contain" />
+          <Image src={getImagePath("/Logoinsa.png")} alt="INSA Logo" width={80} height={80} className="w-full h-full object-contain" />
         </div>
         <h3 className="font-semibold text-gray-900 mb-2">INSA Member</h3>
         <p className="text-sm text-gray-600">Indonesian National Shipowners Association</p>
@@ -519,7 +525,7 @@ const SeaHorseWebsite = () => {
         }}
       >
         <div className="w-24 h-24 mx-auto mb-4 rounded-lg p-2">
-          <Image src="/LogoISO9001.jpg" alt="ISO 9001 Logo" width={80} height={80} className="w-full h-full object-contain" />
+          <Image src={getImagePath("/LogoISO9001.jpg")} alt="ISO 9001 Logo" width={80} height={80} className="w-full h-full object-contain" />
         </div>
         <h3 className="font-semibold text-gray-900 mb-2">ISO 9001</h3>
         <p className="text-sm text-gray-600">Quality Management System</p>
@@ -536,7 +542,7 @@ const SeaHorseWebsite = () => {
         }}
       >
         <div className="w-24 h-24 mx-auto mb-4 rounded-lg p-2">
-          <Image src="/LogoISO14001.jpg" alt="ISO 14001 Logo" width={80} height={80} className="w-full h-full object-contain" />
+          <Image src={getImagePath("/LogoISO14001.jpg")} alt="ISO 14001 Logo" width={80} height={80} className="w-full h-full object-contain" />
         </div>
         <h3 className="font-semibold text-gray-900 mb-2">ISO 14001</h3>
         <p className="text-sm text-gray-600">Environmental Management</p>
@@ -553,7 +559,7 @@ const SeaHorseWebsite = () => {
         }}
       >
         <div className="w-24 h-24 mx-auto mb-4 rounded-lg p-2">
-          <Image src="/LogoISO45001.jpg" alt="ISO 45001 Logo" width={80} height={80} className="w-full h-full object-contain" />
+          <Image src={getImagePath("/LogoISO45001.jpg")} alt="ISO 45001 Logo" width={80} height={80} className="w-full h-full object-contain" />
         </div>
         <h3 className="font-semibold text-gray-900 mb-2">ISO 45001</h3>
         <p className="text-sm text-gray-600">Occupational Health & Safety</p>
@@ -570,7 +576,7 @@ const SeaHorseWebsite = () => {
         }}
       >
         <div className="w-24 h-24 mx-auto mb-4 rounded-lg p-2">
-          <Image src="/Logokadin.png" alt="KADIN Logo" width={80} height={80} className="w-full h-full object-contain" />
+          <Image src={getImagePath("/Logokadin.png")} alt="KADIN Logo" width={80} height={80} className="w-full h-full object-contain" />
         </div>
         <h3 className="font-semibold text-gray-900 mb-2">KADIN Member</h3>
         <p className="text-sm text-gray-600">Indonesian Chamber of Commerce</p>
