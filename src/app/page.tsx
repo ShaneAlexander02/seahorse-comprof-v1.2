@@ -312,107 +312,18 @@ const SeaHorseWebsite = () => {
   variants={staggerContainer}
 >
   <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-{/* DOEN Section */}
-<motion.section 
-  className="pt-10 pb-14" 
-  style={{ background: 'linear-gradient(135deg, #760000 0%)' }}
-  initial="hidden"
-  whileInView="visible"
-  viewport={{ once: true, amount: 0.2 }}
-  variants={staggerContainer}
->
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+{/*DOEN SECTION*/}
     <motion.div 
       className="text-center mb-10"
       variants={fadeInUp}
     >
-      <h2 className="text-3xl mb-4 sm:text-3xl font-bold text-white tracking-wide">
+      <h2 className="text-3xl mb-4 sm:text-3xl font-bold text-white tracking-tight">
         Official Authorization & Business Credentials
       </h2>
       <p className="mt-3 text-gray-200 max-w-2xl mx-auto">
         Recognized and trusted in the marine industry with verified partnerships and licenses.
       </p>
     </motion.div>
-
-    {/* DOEN Content Cards */}
-    <motion.div 
-      className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto"
-      variants={staggerContainer}
-    >
-      {/* Main Authorization Card */}
-      <motion.div 
-        className="bg-white rounded-xl p-8 shadow-lg lg:col-span-1"
-        variants={scaleUp}
-        whileHover={{ 
-          scale: 1.05, 
-          transition: { duration: 0.3 }
-        }}
-      >
-        <div className="mb-6">
-          <Image src={getImagePath("/doen-logo.png")} alt="Doen Waterjets Logo" width={200} height={80} className="mb-6" />
-        </div>
-        
-        <div className="text-left">
-          <p className="text-gray-700 mb-6 leading-relaxed">
-            We are the <span className="text-red-800 font-semibold">sole authorized service and spare parts agent</span> for 
-            Doen Pacific Pty. Ltd. PT Sea Horse provides complete technical support for all Doen Waterjet models in Indonesia.
-          </p>
-          
-          <div className="bg-red-800 text-white px-4 py-2 rounded-lg inline-flex items-center">
-            <span className="font-medium">www.doen.com</span>
-            <span className="ml-2">→</span>
-          </div>
-        </div>
-      </motion.div>
-
-      {/* License Cards */}
-      <motion.div 
-        className="lg:col-span-2 space-y-6"
-        variants={staggerContainer}
-      >
-        {/* Shipping Business License */}
-        <motion.div 
-          className="bg-white rounded-xl p-6 shadow-lg"
-          variants={scaleUp}
-          whileHover={{ 
-            scale: 1.05, 
-            transition: { duration: 0.3 }
-          }}
-        >
-          <div className="flex items-center">
-            <div className="bg-red-100 rounded-full p-3 mr-4">
-              <span className="text-red-800 text-xl font-bold">✓</span>
-            </div>
-            <div>
-              <h3 className="text-xl font-semibold text-gray-900">Shipping Business License</h3>
-              <p className="text-gray-600">No: BXXXIV-422/AT.54</p>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Business Identification Number */}
-        <motion.div 
-          className="bg-white rounded-xl p-6 shadow-lg"
-          variants={scaleUp}
-          whileHover={{ 
-            scale: 1.05, 
-            transition: { duration: 0.3 }
-          }}
-        >
-          <div className="flex items-center">
-            <div className="bg-red-100 rounded-full p-3 mr-4">
-              <span className="text-red-800 text-xl font-bold">✓</span>
-            </div>
-            <div>
-              <h3 className="text-xl font-semibold text-gray-900">Business Identification Number (NIB)</h3>
-              <p className="text-gray-600">No: 9210101202577</p>
-            </div>
-          </div>
-        </motion.div>
-      </motion.div>
-    </motion.div>
-  </div>
-</motion.section>
 
     <div className="grid lg:grid-cols-2 gap-14 items-center">
       {/* Left Column - Authorized Agent */}
