@@ -37,18 +37,17 @@ export default function ContactPage() {
                   key={item}
                   onClick={() => {
                     if (item === "Home") {
-                      router.push("/"); 
+                      router.push("/");
                     } else if (item === "Contact") {
-                      router.push("/contact"); 
+                      router.push("/contact");
                     } else {
-                      router.push(`/#${item.toLowerCase()}`);                     }
+                      router.push(`/#${item.toLowerCase()}`);
+                    }
                   }}
                   style={{
                     color: "#760000",
                     borderBottom:
-                      item === "Contact" 
-                        ? "2px solid #760000"
-                        : "none",
+                      item === "Contact" ? "2px solid #760000" : "none",
                   }}
                   className="px-3 py-2 text-mb font-medium transition-colors"
                 >
@@ -63,7 +62,11 @@ export default function ContactPage() {
               className="md:hidden p-2 rounded-md"
               style={{ color: "#760000" }}
             >
-              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
             </button>
           </div>
         </div>
@@ -102,7 +105,7 @@ export default function ContactPage() {
       {/* Main Content */}
       <main className="min-h-screen bg-gray-50">
         {/* Title */}
-        <section className="pt-21 py-4 bg-red-800 text-white text-center">
+        <section className="pt-21 py-4 bg-[#760000] text-white text-center">
           <h1 className="text-3xl font-bold mb-2">Contact Us</h1>
         </section>
 
@@ -121,8 +124,8 @@ export default function ContactPage() {
 
         {/* Contact Info + Form */}
         <div className="max-w-5xl mx-auto px-4 py-12 grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Contact Info */}
-          <div className="bg-white shadow-lg rounded-lg p-6">
+          {/* Contact Info Card */}
+          <div className="bg-white shadow-lg rounded-lg p-6 transform transition-all duration-700 ease-out opacity-0 animate-fadeInUp">
             {/* Location Tabs */}
             <div className="border-b mb-6">
               <div className="flex flex-wrap gap-1 mb-4">
@@ -337,12 +340,12 @@ export default function ContactPage() {
                   </div>
                 </div>
               )}
-            </div>
+          </div>
           </div>
 
-          {/* Form */}
-          <div className="bg-white shadow-lg rounded-lg p-6">
-            <h3 className="text-2xl font-bold mb-4">Hubungi Kami</h3>
+          {/* Form Card */}
+          <div className="bg-white shadow-lg rounded-lg p-6 transform transition-all duration-700 ease-out opacity-0 animate-fadeInUp delay-200">
+            <h3 className="text-2xl font-bold mb-4">Get in Touch with Us!</h3>
             <form
               action="https://formspree.io/f/mgejrddd"
               method="post"
@@ -351,35 +354,35 @@ export default function ContactPage() {
               <input
                 type="text"
                 name="name"
-                placeholder="Nama / Asal Instansi"
+                placeholder="Enter Name/Institution"
                 required
                 className="w-full p-3 border rounded-lg"
               />
               <input
                 type="email"
                 name="email"
-                placeholder="Masukan Email"
+                placeholder="Enter Email"
                 required
                 className="w-full p-3 border rounded-lg"
               />
               <input
                 type="tel"
                 name="phonenumber"
-                placeholder="Masukan Nomor HP"
+                placeholder="Enter Phone Number"
                 pattern="[0-9]{7,}"
                 required
                 className="w-full p-3 border rounded-lg"
               />
               <textarea
                 name="message"
-                placeholder="Pesan untuk kami"
+                placeholder="Your Feedback or Inquiry"
                 required
                 rows={5}
                 className="w-full p-3 border rounded-lg"
               ></textarea>
               <button
                 type="submit"
-                className="w-full bg-red-800 text-white py-3 rounded-lg hover:bg-red-900 transition"
+                className="w-full bg-[#760000] text-white py-3 rounded-lg hover:bg-red-900 transition"
               >
                 Kirim Pesan
               </button>
@@ -387,6 +390,26 @@ export default function ContactPage() {
           </div>
         </div>
       </main>
+
+      {/* Custom animation */}
+      <style jsx>{`
+        @keyframes fadeInUp {
+          0% {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        .animate-fadeInUp {
+          animation: fadeInUp 0.8s forwards;
+        }
+        .delay-200 {
+          animation-delay: 0.2s;
+        }
+      `}</style>
     </>
   );
 }

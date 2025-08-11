@@ -4,7 +4,8 @@ import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
 import { ChevronDown, Phone, Mail, MapPin, Ship, Anchor, Users, Award, Menu, X } from 'lucide-react';
-
+import { motion, useAnimation, Variants } from 'framer-motion';
+import { useInView } from 'framer-motion';
 
 const SeaHorseWebsite = () => {
   const router = useRouter();
@@ -34,8 +35,56 @@ const SeaHorseWebsite = () => {
     setIsMenuOpen(false);
   };
 
+  // Animation variants - Fixed TypeScript errors
+  const fadeInUp: Variants = {
+    hidden: { opacity: 0, y: 60 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.6, ease: [0.4, 0, 0.2, 1] }
+    }
+  };
+
+  const staggerContainer: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.1
+      }
+    }
+  };
+
+  const slideInLeft: Variants = {
+    hidden: { opacity: 0, x: -60 },
+    visible: { 
+      opacity: 1, 
+      x: 0,
+      transition: { duration: 0.7, ease: [0.4, 0, 0.2, 1] }
+    }
+  };
+
+  const slideInRight: Variants = {
+    hidden: { opacity: 0, x: 60 },
+    visible: { 
+      opacity: 1, 
+      x: 0,
+      transition: { duration: 0.7, ease: [0.4, 0, 0.2, 1] }
+    }
+  };
+
+  const scaleUp: Variants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: { 
+      opacity: 1, 
+      scale: 1,
+      transition: { duration: 0.6, ease: [0.4, 0, 0.2, 1] }
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white" style={{ overflow: 'hidden auto' }}>
       {/* Navigation */}
       <nav style={{ backgroundColor: '#ffffff' }} className="fixed top-0 w-full bg-white/95 backdrop-blur-md shadow-sm z-50 border-b">
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-9">
@@ -177,47 +226,67 @@ const SeaHorseWebsite = () => {
       </section>
 
 {/* About Us Section */}
-<section id="about" className="py-18 bg-white">
+<motion.section 
+  id="about" 
+  className="py-16 bg-white"
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true, amount: 0.3 }}
+  variants={staggerContainer}
+>
   <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
     <div className="grid lg:grid-cols-2 gap-12 items-center">
       {/* Left Content */}
-      <div>
-        <h2 className="text-4xl font-bold text-gray-900 mb-6">About Us</h2>
-        <p className="text-gray-700 mb-4 leading-relaxed text-justify">
+      <motion.div variants={slideInLeft}>
+        <motion.h2 
+          className="text-3xl mb-4 sm:text-4xl font-bold text-[#760000] tracking-tight"
+          variants={fadeInUp}
+        >
+          About Us
+        </motion.h2>
+        <motion.p 
+          className="text-gray-850 mb-4 leading-relaxed text-justify"
+          variants={fadeInUp}
+        >
           We are a major marine services provider for the Indonesian Oil & Gas exploration and production, Mining and Transportation Industries.
-          Furthermore, we are the registered sole agents of some of the world’s largest shipowners.
-        </p>
-        <p className="text-gray-700 mb-4 leading-relaxed text-justify"> 
+          Furthermore, we are the registered <span className="font-semibold text-[#760000]">sole agents </span> of some of the world's largest shipowners.
+        </motion.p>
+        <motion.p 
+          className="text-gray-850 mb-4 leading-relaxed text-justify"
+          variants={fadeInUp}
+        > 
           We have the ability to supply tugs and support vessels to work in deep water locations and the capacity to supply vessels in tight situations. 
-          This has enable us to work with confidence for our customer’s needs.
-        </p>
+          This has enable us to work with confidence for our customer's needs. Some of our main activities include:
+        </motion.p>
 
-        <ul className="mt-6 space-y-4">
-          <li className="flex items-center space-x-3">
-            <span className="w-8 h-8 flex items-center justify-center bg-red-100 rounded-full text-[#760000] font-bold">✓</span>
-            <span className="text-gray-800 font-medium">Ship Owning and Management</span>
-          </li>
-          <li className="flex items-center space-x-3">
-            <span className="w-8 h-8 flex items-center justify-center bg-red-100 rounded-full text-[#760000] font-bold">✓</span>
-            <span className="text-gray-800 font-medium">Vessel Chartering and Sale & Purchase</span>
-          </li>
-          <li className="flex items-center space-x-3">
-            <span className="w-8 h-8 flex items-center justify-center bg-red-100 rounded-full text-[#760000] font-bold">✓</span>
-            <span className="text-gray-800 font-medium">Operations for Tug Services (Harbour and Offshore)</span>
-          </li>
-          <li className="flex items-center space-x-3">
-            <span className="w-8 h-8 flex items-center justify-center bg-red-100 rounded-full text-[#760000] font-bold">✓</span>
-            <span className="text-gray-800 font-medium">Shipping Agency (Port, Vessel & Crew Clearance, etc)</span>
-          </li>
-            <li className="flex items-center space-x-3">
-            <span className="w-8 h-8 flex items-center justify-center bg-red-100 rounded-full text-[#760000] font-bold">✓</span>
-            <span className="text-gray-800 font-medium">General Agent for Coal Ship Operations and others</span>
-          </li>
-        </ul>
-      </div>
+        <motion.ul 
+          className="mt-6 space-y-4"
+          variants={staggerContainer}
+        >
+          {[
+            "Ship Owning and Management",
+            "Vessel Chartering and Sale & Purchase",
+            "Operations for Tug Services (Harbour and Offshore)",
+            "Shipping Agency (Port, Vessel & Crew Clearance, etc)",
+            "General Agent for Coal Ship Operations and others"
+          ].map((item, index) => (
+            <motion.li 
+              key={index}
+              className="flex items-center space-x-3"
+              variants={fadeInUp}
+            >
+              <span className="w-8 h-8 flex items-center justify-center bg-red-100 rounded-full text-[#760000] font-bold">✓</span>
+              <span className="text-gray-800 font-medium">{item}</span>
+            </motion.li>
+          ))}
+        </motion.ul>
+      </motion.div>
 
       {/* Right Image */}
-      <div className="relative flex justify-center">
+      <motion.div 
+        className="relative flex justify-center pt-6"
+        variants={slideInRight}
+      >
         <Image
           src="/carousel-2.jpg"
           alt="About PT Sea Horse"
@@ -225,263 +294,358 @@ const SeaHorseWebsite = () => {
           height={350}
           className="rounded-lg shadow-lg object-cover"
         />
-      </div>
+      </motion.div>
     </div>
   </div>
-</section>
+</motion.section>
 
 {/* Our Expertise Section */}
-<section className="pt-14 pb-18 bg-white">
-  <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-20">
+<motion.section 
+  className="pt-18 pb-24 bg-[#760000]"
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true, amount: 0.3 }}
+  variants={staggerContainer}
+>
+  <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
     {/* Section Title */}
-    <div className="text-center mb-12">
-      <h2 className="text-4xl font-bold text-gray-900 mb-4">
+    <motion.div 
+      className="text-center mb-10"
+      variants={fadeInUp}
+    >
+      <h2 className="text-3xl mb-4 sm:text-4xl font-bold text-white tracking-tight">
         Official Authorization & Business Credentials
       </h2>
-    </div>
+      <p className="mt-3 text-gray-200 max-w-2xl mx-auto">
+        Recognized and trusted in the marine industry with verified partnerships and licenses.
+      </p>
+    </motion.div>
 
-    <div className="grid lg:grid-cols-2 gap-10 items-center justify-items-center">
+    <div className="grid lg:grid-cols-2 gap-14 items-center">
       {/* Left Column - Authorized Agent */}
-      <div className="text-center lg:text-left">
-        <Image
-          src="/Doenlogo.png"
-          alt="Doen Waterjets Logo"
-          width={180}
-          height={60}
-          className="mx-auto lg:mx-0 mb-4"
-        />
-        <p className="text-gray-700 mb-4 leading-relaxed max-w-md mx-auto lg:mx-0 text-justify">
-          We are the sole authorized service and spare parts agent for Doen Pacific Pty. Ltd. in
-          Indonesia, providing comprehensive technical support for all Doen Waterjet models.
-        </p>
-        <a
-          href="http://www.doen.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-block px-6 py-2 mt-2 bg-[#760000] text-white rounded-lg shadow hover:bg-red-800 transition-colors"
-        >
-          Visit www.doen.com
-        </a>
-      </div>
+      <motion.div 
+        className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow"
+        variants={slideInLeft}
+      >
+        <div className="flex flex-col items-center lg:items-start">
+          <Image
+            src="/Doenlogo.png"
+            alt="Doen Waterjets Logo"
+            width={200}
+            height={70}
+            className="mb-6"
+          />
+          <p className="text-gray-850 leading-relaxed text-justify">
+            We are the <span className="font-semibold text-[#760000]">sole authorized service and spare parts agent </span> 
+            for Doen Pacific Pty. Ltd. in Indonesia, providing complete technical support for all Doen Waterjet models.
+          </p>
+          <a
+            href="http://www.doen.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-6 inline-flex items-center px-5 py-2.5 bg-[#760000] text-white rounded-md shadow hover:bg-red-800 transition-colors"
+          >
+            www.doen.com
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={2}
+              stroke="currentColor"
+              className="w-5 h-5 ml-2"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 6.75L21 10.5m0 0l-3.75 3.75M21 10.5H3" />
+            </svg>
+          </a>
+        </div>
+      </motion.div>
 
       {/* Right Column - Licences */}
-      <div className="text-center lg:text-left">
-        <ul className="space-y-6 max-w-md mx-auto lg:mx-0">
-          {[
-            { title: 'Shipping Business License', desc: 'No: BXXXIV-422/AT.54' },
-            { title: 'Business Identification Number (NIB)', desc: 'No: 9210101202577' },
-          ].map((item) => (
-            <li
-              key={item.title}
-              className="flex items-start space-x-4 justify-center lg:justify-start"
-            >
-              <div className="w-10 h-10 bg-red-100 text-[#760000] flex items-center justify-center rounded-full font-bold text-lg">
-                ✓
-              </div>
-              <div>
-                <div className="font-semibold text-gray-900 text-lg">{item.title}</div>
-                <div className="text-gray-600">{item.desc}</div>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <motion.div 
+        className="space-y-8"
+        variants={staggerContainer}
+      >
+        {[
+          { title: 'Shipping Business License', desc: 'No: BXXXIV-422/AT.54' },
+          { title: 'Business Identification Number (NIB)', desc: 'No: 9210101202577' },
+        ].map((item, index) => (
+          <motion.div
+            key={item.title}
+            className="bg-white rounded-xl shadow-lg p-6 flex items-center hover:shadow-xl transition-shadow"
+            variants={slideInRight}
+          >
+            <div className="flex-shrink-0 w-12 h-12 bg-[#760000]/10 text-[#760000] flex items-center justify-center rounded-full font-bold text-lg">
+              ✓
+            </div>
+            <div className="ml-4">
+              <div className="font-semibold text-gray-900 text-lg">{item.title}</div>
+              <div className="text-gray-600">{item.desc}</div>
+            </div>
+          </motion.div>
+        ))}
+      </motion.div>
     </div>
   </div>
-</section>
+</motion.section>
 
-      {/* Services Section */}
-      <section id="services" className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Services</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Comprehensive marine services tailored to meet your specific operational needs
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="group bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-6 hover:shadow-lg transition-all duration-300">
-              <div className="bg-blue-600 w-12 h-12 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <Ship className="w-6 h-6 text-white" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">Offshore Services</h3>
-              <p className="text-gray-700">Rig mobilization/demobilization, anchor-handling, and towing operations for offshore projects.</p>
-            </div>
-
-            <div className="group bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-6 hover:shadow-lg transition-all duration-300">
-              <div className="bg-green-600 w-12 h-12 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <Anchor className="w-6 h-6 text-white" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">Vessels Charter</h3>
-              <p className="text-gray-700">AHTS, tugs, hook-up vessels, supply boats, accommodation barges, and specialized vessels.</p>
-            </div>
-
-            <div className="group bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-6 hover:shadow-lg transition-all duration-300">
-              <div className="bg-purple-600 w-12 h-12 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <Users className="w-6 h-6 text-white" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">Brokerage</h3>
-              <p className="text-gray-700">Active vessel sales and purchasing brokerage services sourced globally for our clients.</p>
-            </div>
-
-            <div className="group bg-gradient-to-br from-orange-50 to-orange-100 rounded-xl p-6 hover:shadow-lg transition-all duration-300">
-              <div className="bg-orange-600 w-12 h-12 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <MapPin className="w-6 h-6 text-white" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">Chartering</h3>
-              <p className="text-gray-700">35+ years experience offering vessels from major shipowners of specialized offshore vessels.</p>
-            </div>
-
-            <div className="group bg-gradient-to-br from-red-50 to-red-100 rounded-xl p-6 hover:shadow-lg transition-all duration-300">
-              <div className="bg-red-600 w-12 h-12 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <Award className="w-6 h-6 text-white" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">Shipping & Logistics</h3>
-              <p className="text-gray-700">Cargo movement, expediting, international freight forwarding, and comprehensive logistics support.</p>
-            </div>
-
-            <div className="group bg-gradient-to-br from-teal-50 to-teal-100 rounded-xl p-6 hover:shadow-lg transition-all duration-300">
-              <div className="bg-teal-600 w-12 h-12 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <Phone className="w-6 h-6 text-white" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">Agency Work</h3>
-              <p className="text-gray-700">General/port shipping agents for major shipowners providing agency services at various Indonesian ports.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-  {/* Certifications Section */}
-<section className="py-16" style={{ background: 'linear-gradient(135deg, #760000 0%, #9b1c1c 100%)' }}>
+{/* Services Section */}
+<motion.section 
+  id="services" 
+  className="pt-18 pb-22 bg-white"
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true, amount: 0.2 }}
+  variants={staggerContainer}
+>
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div className="text-center mb-12">
+    <motion.div 
+      className="text-center mb-12"
+      variants={fadeInUp}
+    >
+      <h2 className="text-3xl mb-4 sm:text-4xl font-bold text-[#760000] tracking-tight">
+        Our Services
+      </h2>
+      <div className="w-24 h-0.5 bg-[#760000] mx-auto"></div>
+      <p className="text-l text-gray-800 mt-8 max-w-3xl mx-auto">
+        Comprehensive marine services tailored to meet your specific operational needs
+      </p>
+    </motion.div>
+
+    <motion.div 
+      className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+      variants={staggerContainer}
+    >
+      {[
+        { 
+          title: "Consultancy", 
+          img: "/seahorse-lobby.png", // insert here for consultancy picture
+          text: "We utilize our in-depth knowledge of the industry and draw on a combination of more than 30 years of experience as well as current market evaluation to provide information, analysis and strategies for our customers."
+        },
+        { 
+          title: "Ship Agency", 
+          img: "/images/ship-agency.jpg", // insert here for ship agency picture
+          text: "Amsbach Offshore Services Pte. Ltd. (Singapore) and PT. Sarana Niaga Antar Cargo (Indonesia) specialise in designing, constructing and operating supply bases to support oilfield exploration and production operations in remote locations."
+        },
+        { 
+          title: "Offshore", 
+          img: "/images/offshore.jpg", // insert here for offshore picture
+          text: "The Amsbach Group and its Affiliates specialise in providing logistic solutions to the Offshore Oil & Gas Industry."
+        },
+        { 
+          title: "Brokerage", 
+          img: "/images/brokerage.jpg", // insert here for brokerage picture
+          text: "The Group is an active broker in the Sales & Purchase and Chartering markets for specialised vessels."
+        },
+        { 
+          title: "Ship Management", 
+          img: "/images/ship-management.jpg", // insert here for ship management picture
+          text: "Several companies belonging to the Amsbach Group are ISM (International Safety Management) certified."
+        },
+        { 
+          title: "Personnel Supply & Crewing", 
+          img: "/images/personnel-supply.jpg", // insert here for personnel supply & crewing picture
+          text: "We provide a range of personnel."
+        }
+      ].map((service, idx) => (
+        <motion.div 
+          key={idx} 
+          className="border border-[#760000] flex flex-col shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-shadow"
+          variants={scaleUp}
+        >
+          <img
+            src={service.img}
+            alt={service.title}
+            className="w-full h-48 object-cover"
+          />
+          <div className="p-4 bg-white text-gray-800 flex flex-col flex-1">
+            <h3 className="font-bold text-lg mb-2 text-[#760000]">{service.title}</h3>
+            <p className="text-sm text-justify">{service.text}</p>
+          </div>
+        </motion.div>
+      ))}
+    </motion.div>
+  </div>
+</motion.section>
+
+
+{/* Certifications Section */}
+<motion.section 
+  className="pt-10 pb-14" 
+  style={{ background: 'linear-gradient(135deg, #760000 0%)' }}
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true, amount: 0.2 }}
+  variants={staggerContainer}
+>
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <motion.div 
+      className="text-center mb-12"
+      variants={fadeInUp}
+    >
       <h2 className="text-3xl font-bold text-white mb-4">Certifications and Memberships</h2>
-      <p className="text-lg text-red-100">Maintaining the highest standards in quality and service</p>
-    </div>
+      <p className="text-md text-white">Maintaining the highest standards in quality and service</p>
+    </motion.div>
 
     {/* Certifications */}
-    <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8 items-center">
+    <motion.div 
+      className="grid md:grid-cols-2 lg:grid-cols-5 gap-8 items-center"
+      variants={staggerContainer}
+    >
       {/* INSA Membership */}
-      <div className="bg-white rounded-lg p-6 text-center shadow-lg">
+      <motion.div 
+        className="bg-white rounded-lg p-6 text-center shadow-lg"
+        variants={scaleUp}
+        whileHover={{ 
+          scale: 1.05, 
+          transition: { duration: 0.3 }
+        }}
+      >
         <div className="w-24 h-24 mx-auto mb-4 rounded-lg p-2">
           <Image src="/Logoinsa.png" alt="INSA Logo" width={80} height={80} className="w-full h-full object-contain" />
         </div>
         <h3 className="font-semibold text-gray-900 mb-2">INSA Member</h3>
         <p className="text-sm text-gray-600">Indonesian National Shipowners Association</p>
         <p className="text-xs text-gray-500 mt-1">Reg. No. 343/INSA/VIII/1998</p>
-      </div>
+      </motion.div>
 
       {/* ISO 9001 */}
-      <div className="bg-white rounded-lg p-6 text-center shadow-lg">
+      <motion.div 
+        className="bg-white rounded-lg p-6 text-center shadow-lg"
+        variants={scaleUp}
+        whileHover={{ 
+          scale: 1.05, 
+          transition: { duration: 0.3 }
+        }}
+      >
         <div className="w-24 h-24 mx-auto mb-4 rounded-lg p-2">
           <Image src="/LogoISO9001.jpg" alt="ISO 9001 Logo" width={80} height={80} className="w-full h-full object-contain" />
         </div>
         <h3 className="font-semibold text-gray-900 mb-2">ISO 9001</h3>
         <p className="text-sm text-gray-600">Quality Management System</p>
         <p className="text-xs text-gray-500 mt-1">Cert. No. 55Q13036</p>
-      </div>
+      </motion.div>
 
       {/* ISO 14001 */}
-      <div className="bg-white rounded-lg p-6 text-center shadow-lg">
+      <motion.div 
+        className="bg-white rounded-lg p-6 text-center shadow-lg"
+        variants={scaleUp}
+        whileHover={{ 
+          scale: 1.05, 
+          transition: { duration: 0.3 }
+        }}
+      >
         <div className="w-24 h-24 mx-auto mb-4 rounded-lg p-2">
           <Image src="/LogoISO14001.jpg" alt="ISO 14001 Logo" width={80} height={80} className="w-full h-full object-contain" />
         </div>
         <h3 className="font-semibold text-gray-900 mb-2">ISO 14001</h3>
         <p className="text-sm text-gray-600">Environmental Management</p>
         <p className="text-xs text-gray-500 mt-1">Cert. No. 32E13036</p>
-      </div>
+      </motion.div>
 
       {/* ISO 45001 */}
-      <div className="bg-white rounded-lg p-6 text-center shadow-lg">
+      <motion.div 
+        className="bg-white rounded-lg p-6 text-center shadow-lg"
+        variants={scaleUp}
+        whileHover={{ 
+          scale: 1.05, 
+          transition: { duration: 0.3 }
+        }}
+      >
         <div className="w-24 h-24 mx-auto mb-4 rounded-lg p-2">
           <Image src="/LogoISO45001.jpg" alt="ISO 45001 Logo" width={80} height={80} className="w-full h-full object-contain" />
         </div>
         <h3 className="font-semibold text-gray-900 mb-2">ISO 45001</h3>
         <p className="text-sm text-gray-600">Occupational Health & Safety</p>
         <p className="text-xs text-gray-500 mt-1">Cert. No. 20O13036</p>
-      </div>
+      </motion.div>
 
       {/* KADIN */}
-      <div className="bg-white rounded-lg p-6 text-center shadow-lg">
+      <motion.div 
+        className="bg-white rounded-lg p-6 text-center shadow-lg"
+        variants={scaleUp}
+        whileHover={{ 
+          scale: 1.05, 
+          transition: { duration: 0.3 }
+        }}
+      >
         <div className="w-24 h-24 mx-auto mb-4 rounded-lg p-2">
           <Image src="/Logokadin.png" alt="KADIN Logo" width={80} height={80} className="w-full h-full object-contain" />
         </div>
         <h3 className="font-semibold text-gray-900 mb-2">KADIN Member</h3>
         <p className="text-sm text-gray-600">Indonesian Chamber of Commerce</p>
         <p className="text-xs text-gray-500 mt-1">Reg. No. 230331-030586</p>
+      </motion.div>
+    </motion.div>
+  </div>
+</motion.section>
+
+{/* Footer */}
+<footer className="bg-white text-gray-900 py-8">
+  <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+      
+      {/* Contact */}
+      <div className="pl-0 md:pl-8">
+        <h4 className="text-md font-semibold mb-3">Contact</h4>
+        <div className="space-y-1 text-sm text-gray-600">
+          <p className="flex items-center space-x-2">
+            <MapPin className="w-4 h-4" />
+            <span>Jl. Veteran No. 34-36, Jakarta 10110</span>
+          </p>
+          <p className="flex items-center space-x-2">
+            <Phone className="w-4 h-4" />
+            <span>+62 21 3441308</span>
+          </p>
+          <p className="flex items-center space-x-2">
+            <Mail className="w-4 h-4" />
+            <span>info@seahorse.co.id</span>
+          </p>
+        </div>
       </div>
+
+      {/* Quick Links */}
+      <div className="text-justify md:text-left pl-0 md:pl-15">
+        <h4 className="text-md font-semibold mb-3">Quick Links</h4>
+        <div className="space-y-1 flex flex-col items-justify md:items-start">
+          {['Home', 'About', 'Services', 'Contact'].map((item) => (
+            <div key={item}>
+              <button
+                onClick={() => {
+                  if (item === 'Contact') {
+                    router.push('/contact');
+                  } else {
+                    scrollToSection(item.toLowerCase());
+                  }
+                }}
+                className="text-sm text-gray-600 hover:text-[#760000] transition-colors cursor-pointer"
+              >
+                {item}
+              </button>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Legal Information */}
+      <div className="pl-0 md:pl-8">
+        <h4 className="text-md font-semibold mb-3">Legal Information</h4>
+        <div className="space-y-1 text-sm text-gray-600">
+          <p>Business License: BXXXIV-422/AT.54</p>
+          <p>NIB: 9120101202577</p>
+          <p>INSA Member: 343/INSA/VIII/1998</p>
+          <p>KADIN Certificate: 230331-030586</p>
+        </div>
+      </div>
+
     </div>
   </div>
-</section>
-
-
-
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div>
-              <div className="flex items-center space-x-3 mb-4">
-                <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
-                  <Ship className="w-6 h-6 text-white" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold">PT SEA HORSE</h3>
-                  <p className="text-sm text-gray-400">Est. 1972</p>
-                </div>
-              </div>
-              <p className="text-gray-400 text-sm leading-relaxed">
-                Leading marine services provider for Indonesian Oil & Gas exploration, production, mining, and transportation industries.
-              </p>
-            </div>
-
-            <div>
-              <h4 className="text-lg font-semibold mb-4">Services</h4>
-              <ul className="space-y-2 text-sm text-gray-400">
-                <li>Ship Owning & Management</li>
-                <li>Offshore Services</li>
-                <li>Vessel Brokerage</li>
-                <li>Shipping & Logistics</li>
-                <li>Agency Work</li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="text-lg font-semibold mb-4">Contact</h4>
-              <div className="space-y-2 text-sm text-gray-400">
-                <p className="flex items-center space-x-2">
-                  <MapPin className="w-4 h-4" />
-                  <span>Jl. Veteran No. 34-36, Jakarta 10110</span>
-                </p>
-                <p className="flex items-center space-x-2">
-                  <Phone className="w-4 h-4" />
-                  <span>+62 21 3441308</span>
-                </p>
-                <p className="flex items-center space-x-2">
-                  <Mail className="w-4 h-4" />
-                  <span>info@seahorse.co.id</span>
-                </p>
-              </div>
-            </div>
-
-            <div>
-              <h4 className="text-lg font-semibold mb-4">Legal Information</h4>
-              <div className="space-y-2 text-sm text-gray-400">
-                <p>Business License: BXXXIV-422/AT.54</p>
-                <p>NIB: 9120101202577</p>
-                <p>INSA Member: 343/INSA/VIII/1998</p>
-                <p>KADIN Certificate: 230331-030586</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
-            <p>&copy; 2024 P.T. SEA HORSE. All rights reserved. | ISO 9001, ISO 14001, ISO 45001 Certified</p>
-          </div>
+</footer>
+              {/* Full-width red copyright section */}
+        <div className="w-full text-center text-sm" style={{ backgroundColor: '#760000' }}>
+          <p className="text-white py-3">&copy; 2025 P.T. SEA HORSE. All rights reserved. | ISO 9001, ISO 14001, ISO 45001 Certified</p>
         </div>
-      </footer>
     </div>
   );
 };
+
 export default SeaHorseWebsite;
