@@ -42,7 +42,7 @@ export default function ContactPage() {
 
             {/* Desktop Menu */}
             <div className="hidden md:flex space-x-8">
-              {["Home", "About", "Services", "Contact"].map((item) => (
+              {["Home", "Services", "About", "Contact"].map((item) => (
                 <button
                   key={item}
                   onClick={() => {
@@ -85,7 +85,7 @@ export default function ContactPage() {
         {isMenuOpen && (
           <div className="md:hidden bg-white border-t">
             <div className="px-4 py-2 space-y-1">
-              {["Home", "About", "Services", "Contact"].map((item) => (
+              {["Home", "Services", "About", "Contact"].map((item) => (
                 <button
                   key={item}
                   onClick={() => {
@@ -451,7 +451,7 @@ export default function ContactPage() {
             <div className="text-justify md:text-left pl-0 md:pl-15">
               <h4 className="text-md font-semibold mb-3">Quick Links</h4>
               <div className="space-y-1 flex flex-col items-justify md:items-start">
-                {['Home', 'About', 'Services', 'Contact'].map((item) => (
+                {['Home', 'Services', 'About', 'Contact'].map((item) => (
                   <div key={item}>
                     <button
                       onClick={() => {

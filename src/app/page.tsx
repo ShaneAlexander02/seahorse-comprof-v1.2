@@ -19,7 +19,7 @@ const SeaHorseWebsite = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'about', 'services', 'contact'];
+      const sections = ['home', 'services', 'about', 'contact'];
       const currentSection = sections.find(section => {
         const element = document.getElementById(section);
         if (element) {
@@ -108,7 +108,7 @@ const SeaHorseWebsite = () => {
 
             {/* Desktop Menu */}
             <div className="hidden md:flex space-x-8">
-              {['Home', 'About', 'Services', 'Contact'].map((item) => (
+              {['Home', 'Services', 'About', 'Contact'].map((item) => (
                 <button
                   key={item}
                   onClick={() => {
@@ -144,7 +144,7 @@ const SeaHorseWebsite = () => {
         {isMenuOpen && (
           <div className="md:hidden bg-white border-t">
             <div className="px-4 py-2 space-y-1">
-              {['Home', 'About', 'Services', 'Contact'].map((item) => (
+              {['Home', 'Services', 'About', 'Contact'].map((item) => (
                 <button
                   key={item}
                   onClick={() => {
@@ -605,7 +605,7 @@ const SeaHorseWebsite = () => {
       <div className="text-justify md:text-left pl-0 md:pl-15">
         <h4 className="text-md font-semibold mb-3">Quick Links</h4>
         <div className="space-y-1 flex flex-col items-justify md:items-start">
-          {['Home', 'About', 'Services', 'Contact'].map((item) => (
+          {['Home', 'Services', 'About', 'Contact'].map((item) => (
             <div key={item}>
               <button
                 onClick={() => {
