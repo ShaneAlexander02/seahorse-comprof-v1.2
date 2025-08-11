@@ -278,17 +278,41 @@ const SeaHorseWebsite = () => {
           icon: Package,
           text: "PT Sea Horse specializes in cargo movement, expediting, and international freight forwarding. We handle coal, drilling pipes, containers, and general cargo. As shipping agents for major global shipowners, we serve ports across Indonesia."
         }
-      ].map((service) => (
+      ].map((service, index) => (
         <motion.div 
           key={service.title} 
-          className="bg-gray-50 p-8 rounded-xl text-center hover:bg-white hover:shadow-xl transition-all duration-300 border border-[#760000]"
+          className="bg-white p-8 rounded-xl text-center hover:shadow-2xl transition-all duration-300 border-2 border-[#760000] group relative overflow-hidden"
           variants={scaleUp}
         >
+          {/* Decorative corner accent */}
+          <div className="absolute top-0 right-0 w-16 h-16 bg-[#760000] opacity-5 rounded-bl-full transform group-hover:scale-125 transition-transform duration-300"></div>
+          
+          {/* Icon with background circle */}
           <div className="mb-6 flex justify-center">
-            <service.icon size={64} className="text-[#760000]" />
+            <div className="relative">
+              <div className="absolute inset-0 bg-[#760000] opacity-10 rounded-full transform group-hover:scale-110 transition-transform duration-300"></div>
+              <service.icon size={64} className="text-[#760000] relative z-10 p-2" />
+            </div>
           </div>
-          <h3 className="font-bold text-xl mb-6 text-[#760000]">{service.title}</h3>
-          <p className="text-gray-700 text-base leading-relaxed">{service.text}</p>
+          
+          {/* Service number badge */}
+          <div className="absolute top-4 left-4 w-8 h-8 bg-[#760000] text-white rounded-full flex items-center justify-center text-sm font-bold">
+            {String(index + 1).padStart(2, '0')}
+          </div>
+          
+          <h3 className="font-bold text-xl mb-6 text-[#760000] group-hover:text-[#5a0000] transition-colors duration-300">
+            {service.title}
+          </h3>
+          
+          {/* Decorative line under title */}
+          <div className="w-12 h-0.5 bg-[#760000] mx-auto mb-6 group-hover:w-16 transition-all duration-300"></div>
+          
+          <p className="text-gray-800 text-base leading-relaxed tracking-wide">
+            {service.text}
+          </p>
+          
+          {/* Bottom accent line */}
+          <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#760000] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         </motion.div>
       ))}
     </motion.div>
@@ -457,6 +481,7 @@ const SeaHorseWebsite = () => {
     </div>
   </div>
 </motion.section>
+
 {/* Certifications Section */}
 <motion.section 
   className="pt-10 pb-14" 
