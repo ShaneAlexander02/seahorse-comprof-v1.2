@@ -228,7 +228,7 @@ const SeaHorseWebsite = () => {
       className="text-center mb-12"
       variants={fadeInUp}
     >
-      <h2 className="text-3xl mb-4 font-bold text-[#760000] tracking-wide">
+      <h2 className="text-3xl mb-4 sm:text-4xl font-bold text-[#760000]">
         Our Services
       </h2>
       <div className="w-24 h-0.5 bg-[#760000] mx-auto"></div>
@@ -291,7 +291,7 @@ const SeaHorseWebsite = () => {
           {/* Decorative line under title */}
           <div className="w-12 h-0.5 bg-[#760000] mx-auto mb-6 group-hover:w-16 transition-all duration-300"></div>
           
-          <p className="text-gray-800 text-base leading-relaxed tracking-wide">
+          <p className="text-gray-800 text-base leading-relaxed">
             {service.text}
           </p>
           
@@ -312,12 +312,12 @@ const SeaHorseWebsite = () => {
   variants={staggerContainer}
 >
   <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-{/*DOEN SECTION*/}
+    {/* Section Title */}
     <motion.div 
       className="text-center mb-10"
       variants={fadeInUp}
     >
-      <h2 className="text-3xl mb-4 sm:text-3xl font-bold text-white tracking-tight">
+      <h2 className="text-3xl mb-4 sm:text-4xl font-bold text-white">
         Official Authorization & Business Credentials
       </h2>
       <p className="mt-3 text-gray-200 max-w-2xl mx-auto">
@@ -406,7 +406,7 @@ const SeaHorseWebsite = () => {
       {/* Left Content */}
       <motion.div variants={slideInLeft}>
         <motion.h2 
-          className="text-3xl mb-4 sm:text-4xl font-bold text-[#760000] tracking-wide"
+          className="text-3xl mb-4 sm:text-4xl font-bold text-[#760000]"
           variants={fadeInUp}
         >
           About Us
@@ -480,7 +480,7 @@ const SeaHorseWebsite = () => {
       className="text-center mb-12"
       variants={fadeInUp}
     >
-      <h2 className="text-3xl font-bold text-white mb-4 tracking-wide">Certifications and Memberships</h2>
+      <h2 className="text-3xl font-bold text-white mb-4">Certifications and Memberships</h2>
       <p className="text-md text-white">Maintaining the highest standards in quality and service</p>
     </motion.div>
 
