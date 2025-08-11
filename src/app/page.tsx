@@ -3,9 +3,8 @@
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
-import { ChevronDown, Phone, Mail, MapPin, Ship, Anchor, Users, Award, Menu, X } from 'lucide-react';
-import { motion, useAnimation, Variants } from 'framer-motion';
-import { useInView } from 'framer-motion';
+import { Phone, Mail, MapPin, Menu, X } from 'lucide-react';
+import { motion, Variants } from 'framer-motion';
 
 const SeaHorseWebsite = () => {
   const router = useRouter();
@@ -249,14 +248,14 @@ const SeaHorseWebsite = () => {
           variants={fadeInUp}
         >
           We are a major marine services provider for the Indonesian Oil & Gas exploration and production, Mining and Transportation Industries.
-          Furthermore, we are the registered <span className="font-semibold text-[#760000]">sole agents </span> of some of the world's largest shipowners.
+          Furthermore, we are the registered <span className="font-semibold text-[#760000]">sole agents </span> of some of the world&apos;s largest shipowners.
         </motion.p>
         <motion.p 
           className="text-gray-850 mb-4 leading-relaxed text-justify"
           variants={fadeInUp}
         > 
           We have the ability to supply tugs and support vessels to work in deep water locations and the capacity to supply vessels in tight situations. 
-          This has enable us to work with confidence for our customer's needs. Some of our main activities include:
+          This has enable us to work with confidence for our customer&apos;s needs. Some of our main activities include:
         </motion.p>
 
         <motion.ul 
@@ -269,9 +268,9 @@ const SeaHorseWebsite = () => {
             "Operations for Tug Services (Harbour and Offshore)",
             "Shipping Agency (Port, Vessel & Crew Clearance, etc)",
             "General Agent for Coal Ship Operations and others"
-          ].map((item, index) => (
+          ].map((item) => (
             <motion.li 
-              key={index}
+              key={item}
               className="flex items-center space-x-3"
               variants={fadeInUp}
             >
@@ -368,7 +367,7 @@ const SeaHorseWebsite = () => {
         {[
           { title: 'Shipping Business License', desc: 'No: BXXXIV-422/AT.54' },
           { title: 'Business Identification Number (NIB)', desc: 'No: 9210101202577' },
-        ].map((item, index) => (
+        ].map((item) => (
           <motion.div
             key={item.title}
             className="bg-white rounded-xl shadow-lg p-6 flex items-center hover:shadow-xl transition-shadow"
@@ -446,15 +445,17 @@ const SeaHorseWebsite = () => {
           img: "/images/personnel-supply.jpg", // insert here for personnel supply & crewing picture
           text: "We provide a range of personnel."
         }
-      ].map((service, idx) => (
+      ].map((service) => (
         <motion.div 
-          key={idx} 
+          key={service.title} 
           className="border border-[#760000] flex flex-col shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-shadow"
           variants={scaleUp}
         >
-          <img
+          <Image
             src={service.img}
             alt={service.title}
+            width={400}
+            height={200}
             className="w-full h-48 object-cover"
           />
           <div className="p-4 bg-white text-gray-800 flex flex-col flex-1">
