@@ -228,7 +228,7 @@ const SeaHorseWebsite = () => {
       className="text-center mb-12"
       variants={fadeInUp}
     >
-      <h2 className="text-3xl mb-4 sm:text-4xl font-bold text-[#760000] tracking-tight">
+      <h2 className="text-3xl mb-4 font-bold text-[#760000] tracking-tight">
         Our Services
       </h2>
       <div className="w-24 h-0.5 bg-[#760000] mx-auto"></div>
@@ -312,18 +312,103 @@ const SeaHorseWebsite = () => {
   variants={staggerContainer}
 >
   <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-    {/* Section Title */}
+{/* DOEN Section */}
+<motion.section 
+  className="pt-10 pb-14" 
+  style={{ background: 'linear-gradient(135deg, #760000 0%)' }}
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true, amount: 0.2 }}
+  variants={staggerContainer}
+>
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <motion.div 
       className="text-center mb-10"
       variants={fadeInUp}
     >
-      <h2 className="text-3xl mb-4 sm:text-4xl font-bold text-white tracking-tight">
+      <h2 className="text-3xl mb-4 sm:text-3xl font-bold text-white tracking-tight">
         Official Authorization & Business Credentials
       </h2>
       <p className="mt-3 text-gray-200 max-w-2xl mx-auto">
         Recognized and trusted in the marine industry with verified partnerships and licenses.
       </p>
     </motion.div>
+
+    {/* DOEN Cards Grid */}
+    <motion.div 
+      className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 items-center"
+      variants={staggerContainer}
+    >
+      {/* Card 1 - Replace with your actual content */}
+      <motion.div 
+        className="bg-white rounded-lg p-6 text-center shadow-lg"
+        variants={scaleUp}
+        whileHover={{ 
+          scale: 1.05, 
+          transition: { duration: 0.3 }
+        }}
+      >
+        <div className="w-24 h-24 mx-auto mb-4 rounded-lg p-2">
+          <Image src={getImagePath("/your-logo1.png")} alt="Authorization 1" width={80} height={80} className="w-full h-full object-contain" />
+        </div>
+        <h3 className="font-semibold text-gray-900 mb-2">Authorization Title 1</h3>
+        <p className="text-sm text-gray-600">Authorization Description</p>
+        <p className="text-xs text-gray-500 mt-1">License No. XXXXX</p>
+      </motion.div>
+
+      {/* Card 2 - Replace with your actual content */}
+      <motion.div 
+        className="bg-white rounded-lg p-6 text-center shadow-lg"
+        variants={scaleUp}
+        whileHover={{ 
+          scale: 1.05, 
+          transition: { duration: 0.3 }
+        }}
+      >
+        <div className="w-24 h-24 mx-auto mb-4 rounded-lg p-2">
+          <Image src={getImagePath("/your-logo2.png")} alt="Authorization 2" width={80} height={80} className="w-full h-full object-contain" />
+        </div>
+        <h3 className="font-semibold text-gray-900 mb-2">Authorization Title 2</h3>
+        <p className="text-sm text-gray-600">Authorization Description</p>
+        <p className="text-xs text-gray-500 mt-1">License No. XXXXX</p>
+      </motion.div>
+
+      {/* Card 3 - Replace with your actual content */}
+      <motion.div 
+        className="bg-white rounded-lg p-6 text-center shadow-lg"
+        variants={scaleUp}
+        whileHover={{ 
+          scale: 1.05, 
+          transition: { duration: 0.3 }
+        }}
+      >
+        <div className="w-24 h-24 mx-auto mb-4 rounded-lg p-2">
+          <Image src={getImagePath("/your-logo3.png")} alt="Authorization 3" width={80} height={80} className="w-full h-full object-contain" />
+        </div>
+        <h3 className="font-semibold text-gray-900 mb-2">Authorization Title 3</h3>
+        <p className="text-sm text-gray-600">Authorization Description</p>
+        <p className="text-xs text-gray-500 mt-1">License No. XXXXX</p>
+      </motion.div>
+
+      {/* Card 4 - Replace with your actual content */}
+      <motion.div 
+        className="bg-white rounded-lg p-6 text-center shadow-lg"
+        variants={scaleUp}
+        whileHover={{ 
+          scale: 1.05, 
+          transition: { duration: 0.3 }
+        }}
+      >
+        <div className="w-24 h-24 mx-auto mb-4 rounded-lg p-2">
+          <Image src={getImagePath("/your-logo4.png")} alt="Authorization 4" width={80} height={80} className="w-full h-full object-contain" />
+        </div>
+        <h3 className="font-semibold text-gray-900 mb-2">Authorization Title 4</h3>
+        <p className="text-sm text-gray-600">Authorization Description</p>
+        <p className="text-xs text-gray-500 mt-1">License No. XXXXX</p>
+      </motion.div>
+    </motion.div>
+  </div>
+</motion.section>
 
     <div className="grid lg:grid-cols-2 gap-14 items-center">
       {/* Left Column - Authorized Agent */}
@@ -480,7 +565,7 @@ const SeaHorseWebsite = () => {
       className="text-center mb-12"
       variants={fadeInUp}
     >
-      <h2 className="text-3xl font-bold text-white mb-4">Certifications and Memberships</h2>
+      <h2 className="text-3xl font-bold text-white mb-4 tracking-tight">Certifications and Memberships</h2>
       <p className="text-md text-white">Maintaining the highest standards in quality and service</p>
     </motion.div>
 
