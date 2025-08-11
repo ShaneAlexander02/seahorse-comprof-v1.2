@@ -228,7 +228,7 @@ const SeaHorseWebsite = () => {
       className="text-center mb-12"
       variants={fadeInUp}
     >
-      <h2 className="text-3xl mb-4 font-bold text-[#760000] tracking-tight">
+      <h2 className="text-3xl mb-4 font-bold text-[#760000] tracking-wide">
         Our Services
       </h2>
       <div className="w-24 h-0.5 bg-[#760000] mx-auto"></div>
@@ -326,7 +326,7 @@ const SeaHorseWebsite = () => {
       className="text-center mb-10"
       variants={fadeInUp}
     >
-      <h2 className="text-3xl mb-4 sm:text-3xl font-bold text-white tracking-tight">
+      <h2 className="text-3xl mb-4 sm:text-3xl font-bold text-white tracking-wide">
         Official Authorization & Business Credentials
       </h2>
       <p className="mt-3 text-gray-200 max-w-2xl mx-auto">
@@ -334,77 +334,44 @@ const SeaHorseWebsite = () => {
       </p>
     </motion.div>
 
-    {/* DOEN Cards Grid */}
+    {/* DOEN Content Card */}
     <motion.div 
-      className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 items-center"
+      className="max-w-4xl mx-auto"
       variants={staggerContainer}
     >
-      {/* Card 1 - Replace with your actual content */}
       <motion.div 
-        className="bg-white rounded-lg p-6 text-center shadow-lg"
+        className="bg-white rounded-lg p-8 text-center shadow-lg"
         variants={scaleUp}
         whileHover={{ 
           scale: 1.05, 
           transition: { duration: 0.3 }
         }}
       >
-        <div className="w-24 h-24 mx-auto mb-4 rounded-lg p-2">
-          <Image src={getImagePath("/your-logo1.png")} alt="Authorization 1" width={80} height={80} className="w-full h-full object-contain" />
+        <div className="mb-6">
+          <p className="text-lg text-gray-700 mb-4">
+            We are the <strong>sole authorized service and spare parts agent</strong> for Doen Pacific Pty. Ltd. 
+            PT Sea Horse provides complete technical support for all Doen Waterjet models in Indonesia.
+          </p>
+          <p className="text-blue-600 font-medium">www.doen.com</p>
         </div>
-        <h3 className="font-semibold text-gray-900 mb-2">Authorization Title 1</h3>
-        <p className="text-sm text-gray-600">Authorization Description</p>
-        <p className="text-xs text-gray-500 mt-1">License No. XXXXX</p>
-      </motion.div>
-
-      {/* Card 2 - Replace with your actual content */}
-      <motion.div 
-        className="bg-white rounded-lg p-6 text-center shadow-lg"
-        variants={scaleUp}
-        whileHover={{ 
-          scale: 1.05, 
-          transition: { duration: 0.3 }
-        }}
-      >
-        <div className="w-24 h-24 mx-auto mb-4 rounded-lg p-2">
-          <Image src={getImagePath("/your-logo2.png")} alt="Authorization 2" width={80} height={80} className="w-full h-full object-contain" />
+        
+        <div className="grid md:grid-cols-2 gap-6 mt-8">
+          <div className="text-left">
+            <div className="flex items-center mb-2">
+              <span className="text-green-500 text-xl mr-2">✓</span>
+              <strong className="text-gray-900">Shipping Business License</strong>
+            </div>
+            <p className="text-gray-600 ml-7">No: BXXXIV-422/AT.54</p>
+          </div>
+          
+          <div className="text-left">
+            <div className="flex items-center mb-2">
+              <span className="text-green-500 text-xl mr-2">✓</span>
+              <strong className="text-gray-900">Business Identification Number (NIB)</strong>
+            </div>
+            <p className="text-gray-600 ml-7">No: 9210101202577</p>
+          </div>
         </div>
-        <h3 className="font-semibold text-gray-900 mb-2">Authorization Title 2</h3>
-        <p className="text-sm text-gray-600">Authorization Description</p>
-        <p className="text-xs text-gray-500 mt-1">License No. XXXXX</p>
-      </motion.div>
-
-      {/* Card 3 - Replace with your actual content */}
-      <motion.div 
-        className="bg-white rounded-lg p-6 text-center shadow-lg"
-        variants={scaleUp}
-        whileHover={{ 
-          scale: 1.05, 
-          transition: { duration: 0.3 }
-        }}
-      >
-        <div className="w-24 h-24 mx-auto mb-4 rounded-lg p-2">
-          <Image src={getImagePath("/your-logo3.png")} alt="Authorization 3" width={80} height={80} className="w-full h-full object-contain" />
-        </div>
-        <h3 className="font-semibold text-gray-900 mb-2">Authorization Title 3</h3>
-        <p className="text-sm text-gray-600">Authorization Description</p>
-        <p className="text-xs text-gray-500 mt-1">License No. XXXXX</p>
-      </motion.div>
-
-      {/* Card 4 - Replace with your actual content */}
-      <motion.div 
-        className="bg-white rounded-lg p-6 text-center shadow-lg"
-        variants={scaleUp}
-        whileHover={{ 
-          scale: 1.05, 
-          transition: { duration: 0.3 }
-        }}
-      >
-        <div className="w-24 h-24 mx-auto mb-4 rounded-lg p-2">
-          <Image src={getImagePath("/your-logo4.png")} alt="Authorization 4" width={80} height={80} className="w-full h-full object-contain" />
-        </div>
-        <h3 className="font-semibold text-gray-900 mb-2">Authorization Title 4</h3>
-        <p className="text-sm text-gray-600">Authorization Description</p>
-        <p className="text-xs text-gray-500 mt-1">License No. XXXXX</p>
       </motion.div>
     </motion.div>
   </div>
@@ -491,7 +458,7 @@ const SeaHorseWebsite = () => {
       {/* Left Content */}
       <motion.div variants={slideInLeft}>
         <motion.h2 
-          className="text-3xl mb-4 sm:text-4xl font-bold text-[#760000] tracking-tight"
+          className="text-3xl mb-4 sm:text-4xl font-bold text-[#760000] tracking-wide"
           variants={fadeInUp}
         >
           About Us
@@ -565,7 +532,7 @@ const SeaHorseWebsite = () => {
       className="text-center mb-12"
       variants={fadeInUp}
     >
-      <h2 className="text-3xl font-bold text-white mb-4 tracking-tight">Certifications and Memberships</h2>
+      <h2 className="text-3xl font-bold text-white mb-4 tracking-wide">Certifications and Memberships</h2>
       <p className="text-md text-white">Maintaining the highest standards in quality and service</p>
     </motion.div>
 
