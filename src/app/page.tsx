@@ -417,39 +417,29 @@ const SeaHorseWebsite = () => {
     </motion.div>
 
     <motion.div 
-      className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+      className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
       variants={staggerContainer}
     >
       {[
         { 
-          title: "Consultancy", 
-          img: "/seahorse-lobby.png",
-          text: "We utilize our in-depth knowledge of the industry and draw on a combination of more than 30 years of experience as well as current market evaluation to provide information, analysis and strategies for our customers."
+          title: "Offshore Services", 
+          img: "/images/offshore-services.jpg",
+          text: "Rig Mobilisation / Demobilisation and moves, Anchor-handling, and Towing"
         },
         { 
-          title: "Ship Agency", 
-          img: "/images/ship-agency.jpg",
-          text: "Amsbach Offshore Services Pte. Ltd. (Singapore) and PT. Sarana Niaga Antar Cargo (Indonesia) specialise in designing, constructing and operating supply bases to support oilfield exploration and production operations in remote locations."
-        },
-        { 
-          title: "Offshore", 
-          img: "/images/offshore.jpg",
-          text: "The Amsbach Group and its Affiliates specialise in providing logistic solutions to the Offshore Oil & Gas Industry."
+          title: "Vessels", 
+          img: "/images/vessels.jpg",
+          text: "AHTS, Tugs, Hook-up and Commissioning vessels, Supply boats, Accommodation and Flat-top Barges, Crew Boats and other Specialised Vessels."
         },
         { 
           title: "Brokerage", 
           img: "/images/brokerage.jpg",
-          text: "The Group is an active broker in the Sales & Purchase and Chartering markets for specialised vessels."
+          text: "PT Sea Horse is a trusted vessel broker with 35+ years of experience in Indonesia, specializing in global sales and acquisitions for all ship types. We connect buyers with top-tier offshore vessel owners and streamline transactions worldwide"
         },
         { 
-          title: "Ship Management", 
-          img: "/images/ship-management.jpg",
-          text: "Several companies belonging to the Amsbach Group are ISM (International Safety Management) certified."
-        },
-        { 
-          title: "Personnel Supply & Crewing", 
-          img: "/images/personnel-supply.jpg",
-          text: "We provide a range of personnel."
+          title: "Shipping & Logistics", 
+          img: "/images/shipping-logistics.jpg",
+          text: "PT Sea Horse specializes in cargo movement, expediting, and international freight forwarding. We handle coal, drilling pipes, containers, and general cargo. As shipping agents for major global shipowners, we serve ports across Indonesia."
         }
       ].map((service) => (
         <motion.div 
@@ -473,7 +463,6 @@ const SeaHorseWebsite = () => {
     </motion.div>
   </div>
 </motion.section>
-
 
 {/* Certifications Section */}
 <motion.section 
