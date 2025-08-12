@@ -108,7 +108,7 @@ const SeaHorseWebsite = () => {
 
             {/* Desktop Menu */}
             <div className="hidden md:flex space-x-8">
-              {['Home', 'Services', 'About', 'Contact'].map((item) => (
+              {['Home', 'About', 'Services', 'Contact'].map((item) => (
                 <button
                   key={item}
                   onClick={() => {
