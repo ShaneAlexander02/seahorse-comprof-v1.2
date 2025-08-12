@@ -214,98 +214,83 @@ const SeaHorseWebsite = () => {
         </div>
       </section>
 
-{/* Services Section */}
+{/* About Us Section */}
 <motion.section 
-  id="services" 
-  className="pt-18 pb-22 bg-white"
+  id="about" 
+  className="pt-14 pb-18 bg-white"
   initial="hidden"
   whileInView="visible"
-  viewport={{ once: true, amount: 0.2 }}
+  viewport={{ once: true, amount: 0.3 }}
   variants={staggerContainer}
 >
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <motion.div 
-      className="text-center mb-12"
-      variants={fadeInUp}
-    >
-      <h2 className="text-3xl mb-4 sm:text-4xl font-bold text-[#760000]">
-        Our Services
-      </h2>
-      <div className="w-24 h-0.5 bg-[#760000] mx-auto"></div>
-      <p className="text-l text-gray-800 mt-8 max-w-3xl mx-auto">
-        Comprehensive marine services tailored to meet your specific operational needs
-      </p>
-    </motion.div>
-
-    <motion.div 
-      className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto"
-      variants={staggerContainer}
-    >
-      {[
-        { 
-          title: "Offshore Services", 
-          icon: Anchor,
-          text: "Rig mobilisation / demobilisation and moves, anchor-handling, and towing."
-        },
-        { 
-          title: "Vessels", 
-          icon: Ship,
-          text: "AHTS, tugs, hook-up and commissioning vessels, supply boats, accommodation and flat-top barges, crew boats and other specialised vessels."
-        },
-        { 
-          title: "Brokerage", 
-          icon: Handshake,
-          text: "PT Sea Horse is a trusted vessel broker for Sales & Purchase / Chartering inquiries. We can source for all types of vessels from all over the world for our clients."
-        },
-        { 
-          title: "Shipping & Logistics", 
-          icon: Package,
-          text: "PT Sea Horse specializes in cargo movement, expediting, and international freight forwarding. We handle coal, drilling pipes, containers, and general cargo. As shipping agents for major global shipowners, we serve ports across Indonesia."
-        }
-      ].map((service, index) => (
-        <motion.div 
-          key={service.title} 
-          className="bg-white p-8 rounded-xl text-center hover:shadow-2xl transition-all duration-300 border-2 border-[#760000] group relative overflow-hidden"
-          variants={scaleUp}
+  <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="grid lg:grid-cols-2 gap-12 items-center">
+      {/* Left Content */}
+      <motion.div variants={slideInLeft}>
+        <motion.h2 
+          className="text-3xl mb-4 sm:text-4xl font-bold text-[#760000]"
+          variants={fadeInUp}
         >
-          {/* Decorative corner accent */}
-          <div className="absolute top-0 right-0 w-16 h-16 bg-[#760000] opacity-5 rounded-bl-full transform group-hover:scale-125 transition-transform duration-300"></div>
-          
-          {/* Icon with background circle */}
-          <div className="mb-6 flex justify-center">
-            <div className="relative">
-              <div className="absolute inset-0 bg-[#760000] opacity-10 rounded-full transform group-hover:scale-110 transition-transform duration-300"></div>
-              <service.icon size={64} className="text-[#760000] relative z-10 p-2" />
-            </div>
-          </div>
-          
-          {/* Service number badge */}
-          <div className="absolute top-4 left-4 w-8 h-8 bg-[#760000] text-white rounded-full flex items-center justify-center text-sm font-bold">
-            {String(index + 1).padStart(2, '0')}
-          </div>
-          
-          <h3 className="font-bold text-xl mb-6 text-[#760000] group-hover:text-[#5a0000] transition-colors duration-300">
-            {service.title}
-          </h3>
-          
-          {/* Decorative line under title */}
-          <div className="w-12 h-0.5 bg-[#760000] mx-auto mb-6 group-hover:w-16 transition-all duration-300"></div>
-          
-          <p className="text-gray-800 text-base leading-relaxed">
-            {service.text}
-          </p>
-          
-          {/* Bottom accent line */}
-          <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#760000] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-        </motion.div>
-      ))}
-    </motion.div>
+          About Us
+        </motion.h2>
+        <motion.p 
+          className="text-gray-850 mb-4 leading-relaxed text-justify"
+          variants={fadeInUp}
+        >
+          We are a major marine services provider for the Indonesian Oil & Gas exploration and production, Mining and Transportation Industries.
+          Furthermore, we have represented some of the world&apos;s largest shipowners.
+        </motion.p>
+        <motion.p 
+          className="text-gray-850 mb-4 leading-relaxed text-justify"
+          variants={fadeInUp}
+        > 
+          Hence, We have the ability to supply tugs and support vessels to work in deep water locations and the capacity to supply vessels in tight situations. 
+          This has enable us to work with confidence for our customer&apos;s needs. Some of our main activities include:
+        </motion.p>
+
+        <motion.ul 
+          className="mt-6 space-y-4"
+          variants={staggerContainer}
+        >
+          {[
+            "Ship Owning and Management",
+            "Vessel Chartering and Sale & Purchase",
+            "Operations for Tug Services (Harbour and Offshore)",
+            "Shipping Agency (Port, Vessel & Crew Clearance, etc)",
+            "General Agent for Coal Ship Operations and others"
+          ].map((item) => (
+            <motion.li 
+              key={item}
+              className="flex items-center space-x-3"
+              variants={fadeInUp}
+            >
+              <span className="w-8 h-8 flex items-center justify-center bg-red-100 rounded-full text-[#760000] font-bold">✓</span>
+              <span className="text-gray-800 font-medium">{item}</span>
+            </motion.li>
+          ))}
+        </motion.ul>
+      </motion.div>
+
+      {/* Right Image */}
+      <motion.div 
+        className="relative flex justify-center pt-6"
+        variants={slideInRight}
+      >
+        <Image
+          src={getImagePath("/carousel-2.jpg")}
+          alt="About PT Sea Horse"
+          width={500}
+          height={350}
+          className="rounded-lg shadow-lg object-cover"
+        />
+      </motion.div>
+    </div>
   </div>
 </motion.section>
 
 {/* Our Expertise Section */}
 <motion.section 
-  className="pt-18 pb-24 bg-[#760000]"
+  className="pt-14 pb-18 bg-[#760000]"
   initial="hidden"
   whileInView="visible"
   viewport={{ once: true, amount: 0.3 }}
@@ -392,83 +377,98 @@ const SeaHorseWebsite = () => {
   </div>
 </motion.section>
 
-{/* About Us Section */}
+{/* Services Section */}
 <motion.section 
-  id="about" 
-  className="py-16 bg-white"
+  id="services" 
+  className="pt-14 pb-18 bg-white"
   initial="hidden"
   whileInView="visible"
-  viewport={{ once: true, amount: 0.3 }}
+  viewport={{ once: true, amount: 0.2 }}
   variants={staggerContainer}
 >
-  <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div className="grid lg:grid-cols-2 gap-12 items-center">
-      {/* Left Content */}
-      <motion.div variants={slideInLeft}>
-        <motion.h2 
-          className="text-3xl mb-4 sm:text-4xl font-bold text-[#760000]"
-          variants={fadeInUp}
-        >
-          About Us
-        </motion.h2>
-        <motion.p 
-          className="text-gray-850 mb-4 leading-relaxed text-justify"
-          variants={fadeInUp}
-        >
-          We are a major marine services provider for the Indonesian Oil & Gas exploration and production, Mining and Transportation Industries.
-          Furthermore, we have represented some of the world&apos;s largest shipowners.
-        </motion.p>
-        <motion.p 
-          className="text-gray-850 mb-4 leading-relaxed text-justify"
-          variants={fadeInUp}
-        > 
-          Hence, We have the ability to supply tugs and support vessels to work in deep water locations and the capacity to supply vessels in tight situations. 
-          This has enable us to work with confidence for our customer&apos;s needs. Some of our main activities include:
-        </motion.p>
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <motion.div 
+      className="text-center mb-12"
+      variants={fadeInUp}
+    >
+      <h2 className="text-3xl mb-4 sm:text-4xl font-bold text-[#760000]">
+        Our Services
+      </h2>
+      <div className="w-24 h-0.5 bg-[#760000] mx-auto"></div>
+      <p className="text-l text-gray-800 mt-8 max-w-3xl mx-auto">
+        Comprehensive marine services tailored to meet your specific operational needs
+      </p>
+    </motion.div>
 
-        <motion.ul 
-          className="mt-6 space-y-4"
-          variants={staggerContainer}
+    <motion.div 
+      className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto"
+      variants={staggerContainer}
+    >
+      {[
+        { 
+          title: "Offshore Services", 
+          icon: Anchor,
+          text: "Rig mobilisation / demobilisation and moves, anchor-handling, and towing."
+        },
+        { 
+          title: "Vessels", 
+          icon: Ship,
+          text: "AHTS, tugs, hook-up and commissioning vessels, supply boats, accommodation and flat-top barges, crew boats and other specialised vessels."
+        },
+        { 
+          title: "Brokerage", 
+          icon: Handshake,
+          text: "PT Sea Horse is a trusted vessel broker for Sales & Purchase / Chartering inquiries. We can source for all types of vessels from all over the world for our clients."
+        },
+        { 
+          title: "Shipping & Logistics", 
+          icon: Package,
+          text: "PT Sea Horse specializes in cargo movement, expediting, and international freight forwarding. We handle coal, drilling pipes, containers, and general cargo. As shipping agents for major global shipowners, we serve ports across Indonesia."
+        }
+      ].map((service, index) => (
+        <motion.div 
+          key={service.title} 
+          className="bg-white p-8 rounded-xl text-center hover:shadow-2xl transition-all duration-300 border-2 border-[#760000] group relative overflow-hidden"
+          variants={scaleUp}
         >
-          {[
-            "Ship Owning and Management",
-            "Vessel Chartering and Sale & Purchase",
-            "Operations for Tug Services (Harbour and Offshore)",
-            "Shipping Agency (Port, Vessel & Crew Clearance, etc)",
-            "General Agent for Coal Ship Operations and others"
-          ].map((item) => (
-            <motion.li 
-              key={item}
-              className="flex items-center space-x-3"
-              variants={fadeInUp}
-            >
-              <span className="w-8 h-8 flex items-center justify-center bg-red-100 rounded-full text-[#760000] font-bold">✓</span>
-              <span className="text-gray-800 font-medium">{item}</span>
-            </motion.li>
-          ))}
-        </motion.ul>
-      </motion.div>
-
-      {/* Right Image */}
-      <motion.div 
-        className="relative flex justify-center pt-6"
-        variants={slideInRight}
-      >
-        <Image
-          src={getImagePath("/carousel-2.jpg")}
-          alt="About PT Sea Horse"
-          width={500}
-          height={350}
-          className="rounded-lg shadow-lg object-cover"
-        />
-      </motion.div>
-    </div>
+          {/* Decorative corner accent */}
+          <div className="absolute top-0 right-0 w-16 h-16 bg-[#760000] opacity-5 rounded-bl-full transform group-hover:scale-125 transition-transform duration-300"></div>
+          
+          {/* Icon with background circle */}
+          <div className="mb-6 flex justify-center">
+            <div className="relative">
+              <div className="absolute inset-0 bg-[#760000] opacity-10 rounded-full transform group-hover:scale-110 transition-transform duration-300"></div>
+              <service.icon size={64} className="text-[#760000] relative z-10 p-2" />
+            </div>
+          </div>
+          
+          {/* Service number badge */}
+          <div className="absolute top-4 left-4 w-8 h-8 bg-[#760000] text-white rounded-full flex items-center justify-center text-sm font-bold">
+            {String(index + 1).padStart(2, '0')}
+          </div>
+          
+          <h3 className="font-bold text-xl mb-6 text-[#760000] group-hover:text-[#5a0000] transition-colors duration-300">
+            {service.title}
+          </h3>
+          
+          {/* Decorative line under title */}
+          <div className="w-12 h-0.5 bg-[#760000] mx-auto mb-6 group-hover:w-16 transition-all duration-300"></div>
+          
+          <p className="text-gray-800 text-base leading-relaxed">
+            {service.text}
+          </p>
+          
+          {/* Bottom accent line */}
+          <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#760000] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        </motion.div>
+      ))}
+    </motion.div>
   </div>
 </motion.section>
 
 {/* Certifications Section */}
 <motion.section 
-  className="pt-10 pb-14" 
+  className="pt-14 pb-18" 
   style={{ background: 'linear-gradient(135deg, #760000 0%)' }}
   initial="hidden"
   whileInView="visible"
