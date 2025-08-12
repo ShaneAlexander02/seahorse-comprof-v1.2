@@ -550,7 +550,7 @@ const SeaHorseWebsite = () => {
         }}
       >
         <div className="w-24 h-24 mx-auto mb-4 rounded-lg p-2">
-          <Image src={getImagePath("/LogoISO45001.jpg")} alt="ISO 45001 Logo" width={40} height={40} className="w-full h-full object-contain" />
+          <Image src={getImagePath("/LogoISO45001.jpg")} alt="ISO 45001 Logo" width={30} height={30} className="w-full h-full object-contain" />
         </div>
         <h3 className="font-semibold text-gray-900 mb-2">ISO 45001</h3>
         <p className="text-sm text-gray-600">Occupational Health & Safety</p>
