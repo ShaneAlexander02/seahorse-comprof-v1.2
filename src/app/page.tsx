@@ -100,8 +100,8 @@ const SeaHorseWebsite = () => {
               <Image
                 src={getImagePath("/logo.jpg")}
                 alt="P.T. Sea Horse Logo"
-                width={180}
-                height={180}
+                width={150}
+                height={150}
                 className="rounded-lg mb-2"
               />
             </div>
@@ -171,8 +171,8 @@ const SeaHorseWebsite = () => {
         id="home"
         className="pt-16 text-white relative"
       >
-        {/* Background Image */}
-        <div className="absolute inset-0">
+        {/* Background Image - Moved down slightly */}
+        <div className="absolute top-8 left-0 right-0 bottom-0">
           <Image
             src={getImagePath("/carousel-1.jpg")}
             alt="Marine Background"
@@ -550,7 +550,7 @@ const SeaHorseWebsite = () => {
         }}
       >
         <div className="w-24 h-24 mx-auto mb-4 rounded-lg p-2">
-          <Image src={getImagePath("/LogoISO45001.jpg")} alt="ISO 45001 Logo" width={80} height={80} className="w-full h-full object-contain" />
+          <Image src={getImagePath("/LogoISO45001.jpg")} alt="ISO 45001 Logo" width={70} height={70} className="w-full h-full object-contain" />
         </div>
         <h3 className="font-semibold text-gray-900 mb-2">ISO 45001</h3>
         <p className="text-sm text-gray-600">Occupational Health & Safety</p>
