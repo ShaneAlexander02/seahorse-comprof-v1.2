@@ -423,67 +423,67 @@ export default function ContactPage() {
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="bg-white text-gray-900 py-8">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
-            
-            {/* Contact */}
-            <div className="pl-0 md:pl-8">
-              <h4 className="text-md font-semibold mb-3">Contact</h4>
-              <div className="space-y-1 text-sm text-gray-600">
-                <p className="flex items-center space-x-2">
-                  <MapPin className="w-4 h-4" />
-                  <span>Multivision Tower 5th Floor Unit 5.</span>
-                </p>
-                <p className="flex items-center space-x-2">
-                  <Phone className="w-4 h-4" />
-                  <span>+62 21 2938 0018</span>
-                </p>
-                <p className="flex items-center space-x-2">
-                  <Mail className="w-4 h-4" />
-                  <span>general@seahorse.co.id</span>
-                </p>
-              </div>
+    {/* Footer */}
+    <footer className="bg-white text-gray-900 py-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+          
+          {/* Contact */}
+          <div className="pl-0 md:pl-8">
+            <h4 className="text-md font-semibold mb-3">Contact</h4>
+            <div className="space-y-1 text-sm text-gray-600">
+              <p className="flex items-center space-x-2">
+                <MapPin className="w-4 h-4" />
+                <span>Multivision Tower 5th Floor Unit 5.</span>
+              </p>
+              <p className="flex items-center space-x-2">
+                <Phone className="w-4 h-4" />
+                <span>+62 21 2938 0018</span>
+              </p>
+              <p className="flex items-center space-x-2">
+                <Mail className="w-4 h-4" />
+                <span>general@seahorse.co.id</span>
+              </p>
             </div>
-
-            {/* Quick Links */}
-            <div className="text-justify md:text-left pl-0 md:pl-15">
-              <h4 className="text-md font-semibold mb-3">Quick Links</h4>
-              <div className="space-y-1 flex flex-col items-justify md:items-start">
-                {['Home', 'Services', 'About', 'Contact'].map((item) => (
-                  <div key={item}>
-                    <button
-                      onClick={() => {
-                        if (item === 'Contact') {
-                          router.push('/contact');
-                        } else {
-                          scrollToSection(item.toLowerCase());
-                        }
-                      }}
-                      className="text-sm text-gray-600 hover:text-[#760000] transition-colors cursor-pointer"
-                    >
-                      {item}
-                    </button>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Legal Information */}
-            <div className="pl-0 md:pl-8">
-              <h4 className="text-md font-semibold mb-3">Legal Information</h4>
-              <div className="space-y-1 text-sm text-gray-600">
-                <p>Business License: BXXXIV-422/AT.54</p>
-                <p>NIB: 9120101202577</p>
-                <p>INSA Member: 343/INSA/VIII/1998</p>
-                <p>KADIN Certificate: 230331-030586</p>
-              </div>
-            </div>
-
           </div>
+
+          {/* Quick Links */}
+          <div className="text-justify md:text-left pl-0 md:pl-15">
+            <h4 className="text-md font-semibold mb-3">Quick Links</h4>
+            <div className="space-y-1 flex flex-col items-justify md:items-start">
+              {['Home', 'About', 'Services', 'Contact'].map((item) => (
+                <div key={item}>
+                  <button
+                    onClick={() => {
+                      if (item === 'Contact') {
+                        router.push('/contact');
+                      } else {
+                        scrollToSection(item.toLowerCase());
+                      }
+                    }}
+                    className="text-sm text-gray-600 hover:text-[#760000] transition-colors cursor-pointer"
+                  >
+                    {item}
+                  </button>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Legal Information */}
+          <div className="pl-0 md:pl-8">
+            <h4 className="text-md font-semibold mb-3">Legal Information</h4>
+            <div className="space-y-1 text-sm text-gray-600">
+              <p>Business License: BXXXIV-422/AT.54</p>
+              <p>NIB: 9120101202577</p>
+              <p>INSA Member: 343/INSA/VIII/1998</p>
+              <p>KADIN Certificate: 230331-030586</p>
+            </div>
+          </div>
+
         </div>
-      </footer>
+      </div>
+    </footer>
 
       {/* Full-width red copyright section */}
       <div className="w-full text-center text-sm" style={{ backgroundColor: '#760000' }}>
