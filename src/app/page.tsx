@@ -171,8 +171,8 @@ const SeaHorseWebsite = () => {
         id="home"
         className="pt-16 text-white relative"
       >
-        {/* Background Image - Moved down slightly */}
-        <div className="absolute top-8 left-0 right-0 bottom-0">
+        {/* Background Image */}
+        <div className="absolute top-12 left-0 right-0 bottom-0">
           <Image
             src={getImagePath("/carousel-1.jpg")}
             alt="Marine Background"
