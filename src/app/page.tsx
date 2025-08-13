@@ -393,7 +393,7 @@ const SeaHorseWebsite = () => {
 >
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <motion.div 
-      className="text-center mb-16"
+      className="text-center mb-12"
       variants={fadeInUp}
     >
       <h2 className="text-3xl mb-4 sm:text-4xl font-bold text-[#760000]">
@@ -405,7 +405,7 @@ const SeaHorseWebsite = () => {
     </motion.div>
 
     {/* Services Grid - Alternating Layout */}
-    <div className="space-y-14">
+    <div className="space-y-16">
       {[
         { 
           title: "Offshore Services", 
@@ -485,7 +485,7 @@ const SeaHorseWebsite = () => {
                 <div className="hidden lg:block w-12 h-0.5 bg-[#760000]" />
               )}
               
-              <h3 className="font-bold text-xl lg:text-xl text-[#760000]">
+              <h3 className="font-bold text-2xl lg:text-2xl text-[#760000]">
                 {service.title}
               </h3>
               
