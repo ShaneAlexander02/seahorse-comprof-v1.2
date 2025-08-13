@@ -488,7 +488,7 @@ const SeaHorseWebsite = () => {
             </div>
 
             {/* Service description */}
-            <p className="text-gray-700 text-base lg:text-lg leading-relaxed max-w-xl mx-auto lg:mx-0">
+            <p className={`text-gray-700 text-base lg:text-lg leading-relaxed ${index % 2 === 1 ? 'max-w-xl' : 'max-w-xl mx-auto lg:mx-0'}`}>
               {service.text}
             </p>
           </motion.div>
