@@ -267,7 +267,7 @@ const SeaHorseWebsite = () => {
             >
               <span className="w-8 h-8 flex items-center justify-center bg-red-100 rounded-full text-[
 #760000] font-bold">✓</span>
-              <span className="text-gray-800 font-medium">{item}</span>
+              <span className="text-gray-850 font-medium">{item}</span>
             </motion.li>
           ))}
         </motion.ul>
@@ -418,7 +418,7 @@ const SeaHorseWebsite = () => {
         { 
           title: "Vessels", 
           icon: Ship,
-          text: "AHTS, tugs, hook-up and commissioning vessels, supply boats, accommodation and flat-top barges, crew boats and other specialised vessels.",
+          text: "Anchor handling tugs supply (AHTS), tugs, hook-up and commissioning vessels, supply boats, accommodation and flat-top barges, crew boats and other specialised vessels.",
           number: "02"
         },
         { 
@@ -478,7 +478,7 @@ const SeaHorseWebsite = () => {
                 <div className="hidden lg:block w-12 h-0.5 bg-[#760000]" />
               )}
               
-              <h3 className="font-bold text-2xl lg:text-3xl text-[#760000]">
+              <h3 className="font-bold text-2xl lg:text-2xl text-[#760000]">
                 {service.title}
               </h3>
               
@@ -488,7 +488,7 @@ const SeaHorseWebsite = () => {
             </div>
 
             {/* Service description */}
-            <p className={`text-gray-700 text-base lg:text-lg leading-relaxed max-w-xl ${index % 2 === 1 ? 'lg:ml-auto' : 'mx-auto lg:mx-0'}`}>
+            <p className={`text-gray-850 text-base lg:text-lg leading-relaxed max-w-xl ${index % 2 === 1 ? 'lg:ml-auto' : 'mx-auto lg:mx-0'}`}>
               {service.text}
             </p>
           </motion.div>
