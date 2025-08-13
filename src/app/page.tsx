@@ -217,73 +217,158 @@ const SeaHorseWebsite = () => {
 {/* About Us Section */}
 <motion.section 
   id="about" 
-  className="pt-14 pb-18 bg-white"
+  className="pt-14 pb-18 bg-gray-50"
   initial="hidden"
   whileInView="visible"
   viewport={{ once: true, amount: 0.3 }}
   variants={staggerContainer}
 >
-  <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div className="grid lg:grid-cols-2 gap-12 items-center">
-      {/* Left Content */}
-      <motion.div variants={slideInLeft}>
-        <motion.h2 
-          className="text-3xl mb-4 sm:text-4xl font-bold text-[#760000]"
-          variants={fadeInUp}
-        >
-          About Us
-        </motion.h2>
-        <motion.p 
-          className="text-gray-850 mb-4 leading-relaxed text-justify"
-          variants={fadeInUp}
-        >
-          We are a major marine services provider for the Indonesian Oil & Gas exploration and production, Mining and Transportation Industries.
-          Furthermore, we have represented some of the world&apos;s largest shipowners.
-        </motion.p>
-        <motion.p 
-          className="text-gray-850 mb-4 leading-relaxed text-justify"
-          variants={fadeInUp}
-        > 
-          Hence, We have the ability to supply tugs and support vessels to work in deep water locations and the capacity to supply vessels in tight situations. 
-          This has enable us to work with confidence for our customer&apos;s needs. Some of our main activities include:
-        </motion.p>
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    {/* Section Header */}
+    <motion.div 
+      className="text-center mb-16"
+      variants={fadeInUp}
+    >
+      <h2 className="text-3xl mb-4 sm:text-4xl font-bold text-[#760000]">
+        About Us
+      </h2>
+      <div className="w-24 h-0.5 bg-[#760000] mx-auto"></div>
+      <p className="text-l text-gray-800 mt-8 max-w-3xl mx-auto">
+        Leading marine services provider for Indonesian Oil & Gas, Mining and Transportation Industries
+      </p>
+    </motion.div>
 
-        <motion.ul 
-          className="mt-6 space-y-4"
-          variants={staggerContainer}
-        >
-          {[
-            "Ship Owning and Management",
-            "Vessel Chartering and Sale & Purchase",
-            "Operations for Tug Services (Harbour and Offshore)",
-            "Shipping Agency (Port, Vessel & Crew Clearance, etc)",
-            "General Agent for Coal Ship Operations and others"
-          ].map((item) => (
-            <motion.li 
-              key={item}
-              className="flex items-center space-x-3"
-              variants={fadeInUp}
-            >
-              <span className="w-8 h-8 flex items-center justify-center bg-red-100 rounded-full text-[#760000] font-bold">✓</span>
-              <span className="text-gray-800 font-medium">{item}</span>
-            </motion.li>
-          ))}
-        </motion.ul>
-      </motion.div>
-
-      {/* Right Image */}
+    {/* Main Content - Image and Text Side by Side */}
+    <div className="flex flex-col lg:flex-row items-center gap-16 mb-20">
+      
+      {/* Left Side - Image */}
       <motion.div 
-        className="relative flex justify-center pt-6"
-        variants={slideInRight}
+        className="lg:w-1/2 flex justify-center"
+        variants={fadeInUp}
+        whileHover={{ scale: 1.02 }}
+        transition={{ type: "spring", stiffness: 300 }}
       >
-        <Image
-          src={getImagePath("/carousel-2.jpg")}
-          alt="About PT Sea Horse"
-          width={500}
-          height={350}
-          className="rounded-lg shadow-lg object-cover"
-        />
+        <div className="relative">
+          <div className="absolute inset-0 bg-[#760000]/10 rounded-2xl transform rotate-3"></div>
+          <Image
+            src={getImagePath("/carousel-2.jpg")}
+            alt="About PT Sea Horse"
+            width={500}
+            height={350}
+            className="relative rounded-2xl shadow-lg object-cover"
+          />
+          {/* Small decorative element */}
+          <div className="absolute -bottom-4 -right-4 w-16 h-16 bg-[#760000] rounded-full flex items-center justify-center text-white font-bold text-lg">
+            25+
+          </div>
+        </div>
       </motion.div>
+
+      {/* Right Side - Content */}
+      <motion.div 
+        className="lg:w-1/2"
+        variants={fadeInUp}
+      >
+        <div className="flex items-center gap-4 mb-6">
+          <div className="w-12 h-0.5 bg-[#760000]"></div>
+          <span className="text-[#760000] font-semibold text-sm uppercase tracking-wider">Our Story</span>
+        </div>
+        
+        <p className="text-gray-700 text-lg leading-relaxed mb-6">
+          We are a major marine services provider for the Indonesian Oil & Gas exploration and production, 
+          Mining and Transportation Industries. Furthermore, we have represented some of the world's largest shipowners.
+        </p>
+        
+        <p className="text-gray-700 text-lg leading-relaxed mb-8">
+          We have the ability to supply tugs and support vessels to work in deep water locations and the capacity 
+          to supply vessels in tight situations. This enables us to work with confidence for our customer's needs.
+        </p>
+
+        {/* Key Stat */}
+        <div className="bg-white rounded-xl p-6 shadow-sm border-l-4 border-[#760000]">
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 bg-[#760000]/10 rounded-full flex items-center justify-center">
+              <span className="text-[#760000] font-bold text-xl">★</span>
+            </div>
+            <div>
+              <p className="text-[#760000] font-bold text-lg">Trusted Partner</p>
+              <p className="text-gray-600">Representing world's largest shipowners</p>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+    </div>
+
+    {/* Services List - Horizontal Layout */}
+    <motion.div variants={fadeInUp}>
+      <div className="text-center mb-12">
+        <h3 className="text-2xl font-bold text-[#760000] mb-4">Our Main Activities</h3>
+        <div className="w-16 h-0.5 bg-[#760000] mx-auto"></div>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        {[
+          {
+            title: "Ship Owning & Management",
+            icon: "⚓",
+            desc: "Complete vessel ownership and management services"
+          },
+          {
+            title: "Vessel Chartering & S&P",
+            icon: "🚢",
+            desc: "Chartering and Sale & Purchase operations"
+          },
+          {
+            title: "Tug Services",
+            icon: "🔗",
+            desc: "Harbor and offshore tug operations"
+          },
+          {
+            title: "Shipping Agency",
+            icon: "📋",
+            desc: "Port, vessel & crew clearance services"
+          },
+          {
+            title: "Coal Ship Operations",
+            icon: "⚡",
+            desc: "General agent for coal transportation"
+          },
+          {
+            title: "Specialized Vessels",
+            icon: "🏗️",
+            desc: "Supply boats, barges, and crew boats"
+          }
+        ].map((service, index) => (
+          <motion.div
+            key={service.title}
+            className="group"
+            variants={fadeInUp}
+            whileHover={{ y: -4 }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
+            <div className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300 h-full">
+              {/* Icon */}
+              <div className="w-14 h-14 bg-[#760000]/10 rounded-full flex items-center justify-center mb-4 mx-auto group-hover:bg-[#760000]/15 transition-colors">
+                <span className="text-2xl">{service.icon}</span>
+              </div>
+              
+              {/* Content */}
+              <h4 className="font-semibold text-[#760000] text-center mb-2 text-lg">
+                {service.title}
+              </h4>
+              <p className="text-gray-600 text-center text-sm leading-relaxed">
+                {service.desc}
+              </p>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+    </motion.div>
+
+    {/* Bottom decorative element */}
+    <div className="mt-16 flex justify-center">
+      <div className="w-16 h-0.5 bg-[#760000]"></div>
     </div>
   </div>
 </motion.section>
@@ -474,7 +559,7 @@ const SeaHorseWebsite = () => {
     </motion.div>
 
     {/* Services Grid - Alternating Layout */}
-    <div className="space-y-24">
+    <div className="space-y-16">
       {[
         { 
           title: "Offshore Services", 
@@ -503,7 +588,7 @@ const SeaHorseWebsite = () => {
       ].map((service, index) => (
         <motion.div
           key={service.title}
-          className={`flex flex-col lg:flex-row items-center gap-12 ${
+          className={`flex flex-col lg:flex-row items-center gap-8 lg:gap-12 ${
             index % 2 === 1 ? 'lg:flex-row-reverse' : ''
           }`}
           variants={fadeInUp}
@@ -513,40 +598,24 @@ const SeaHorseWebsite = () => {
           {/* Icon Side */}
           <motion.div 
             className="flex-shrink-0 lg:w-1/3 flex justify-center"
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ scale: 1.02 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
-            <div className="relative group">
-              {/* Large decorative circle */}
-              <motion.div 
-                className="absolute inset-0 w-48 h-48 bg-gradient-to-br from-[#760000]/10 to-[#760000]/5 rounded-full blur-xl"
-                whileHover={{ scale: 1.2, rotate: 45 }}
-                transition={{ duration: 0.6 }}
-              />
-              
+            <div className="relative">
               {/* Main circle container */}
               <motion.div 
-                className="relative w-40 h-40 bg-gradient-to-br from-[#760000]/15 to-[#760000]/8 rounded-full flex items-center justify-center group-hover:shadow-2xl transition-shadow duration-500"
-                whileHover={{ rotate: 10 }}
+                className="relative w-32 h-32 bg-[#760000]/10 rounded-full flex items-center justify-center hover:bg-[#760000]/15 transition-all duration-300"
+                whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
                 {/* Service number */}
-                <div className="absolute -top-4 -right-4 w-12 h-12 bg-[#760000] text-white rounded-full flex items-center justify-center font-bold text-lg shadow-lg">
+                <div className="absolute -top-3 -right-3 w-10 h-10 bg-[#760000] text-white rounded-full flex items-center justify-center font-bold text-sm">
                   {service.number}
                 </div>
                 
                 {/* Icon */}
-                <motion.div
-                  whileHover={{ scale: 1.1, rotate: -10 }}
-                  transition={{ type: "spring", stiffness: 400 }}
-                >
-                  <service.icon size={80} className="text-[#760000]" />
-                </motion.div>
+                <service.icon size={60} className="text-[#760000]" />
               </motion.div>
-              
-              {/* Floating accent dots */}
-              <div className="absolute -top-2 -left-2 w-4 h-4 bg-[#760000]/20 rounded-full group-hover:animate-bounce"></div>
-              <div className="absolute -bottom-3 -right-1 w-3 h-3 bg-[#760000]/15 rounded-full group-hover:animate-pulse"></div>
             </div>
           </motion.div>
 
@@ -558,68 +627,31 @@ const SeaHorseWebsite = () => {
             {/* Service title with decorative line */}
             <div className={`flex items-center gap-4 justify-center ${index % 2 === 1 ? 'lg:justify-end' : 'lg:justify-start'} mb-6`}>
               {index % 2 === 0 && (
-                <motion.div 
-                  className="hidden lg:block w-16 h-0.5 bg-gradient-to-r from-[#760000] to-transparent"
-                  whileInView={{ width: 80 }}
-                  transition={{ duration: 0.8 }}
-                />
+                <div className="hidden lg:block w-12 h-0.5 bg-[#760000]" />
               )}
               
-              <motion.h3 
-                className="font-bold text-3xl text-[#760000]"
-                whileHover={{ scale: 1.02 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
+              <h3 className="font-bold text-2xl lg:text-3xl text-[#760000]">
                 {service.title}
-              </motion.h3>
+              </h3>
               
               {index % 2 === 1 && (
-                <motion.div 
-                  className="hidden lg:block w-16 h-0.5 bg-gradient-to-l from-[#760000] to-transparent"
-                  whileInView={{ width: 80 }}
-                  transition={{ duration: 0.8 }}
-                />
+                <div className="hidden lg:block w-12 h-0.5 bg-[#760000]" />
               )}
             </div>
 
             {/* Service description */}
-            <motion.p 
-              className="text-gray-700 text-lg leading-relaxed max-w-2xl mx-auto lg:mx-0"
-              whileHover={{ y: -2 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
+            <p className="text-gray-700 text-base lg:text-lg leading-relaxed max-w-xl mx-auto lg:mx-0">
               {service.text}
-            </motion.p>
-
-            {/* Bottom accent line */}
-            <motion.div 
-              className={`mt-6 h-1 bg-gradient-to-r ${
-                index % 2 === 0 
-                  ? 'from-[#760000] via-[#760000]/50 to-transparent lg:mr-auto' 
-                  : 'from-transparent via-[#760000]/50 to-[#760000] lg:ml-auto'
-              } w-32 mx-auto lg:mx-0`}
-              whileInView={{ scaleX: 1 }}
-              initial={{ scaleX: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-            />
+            </p>
           </motion.div>
         </motion.div>
       ))}
     </div>
 
     {/* Bottom decorative element */}
-    <motion.div 
-      className="mt-20 flex justify-center"
-      variants={fadeInUp}
-    >
-      <div className="flex items-center gap-2">
-        <div className="w-2 h-2 bg-[#760000] rounded-full animate-pulse"></div>
-        <div className="w-16 h-0.5 bg-gradient-to-r from-[#760000] to-transparent"></div>
-        <div className="w-1 h-1 bg-[#760000]/50 rounded-full"></div>
-        <div className="w-16 h-0.5 bg-gradient-to-l from-[#760000] to-transparent"></div>
-        <div className="w-2 h-2 bg-[#760000] rounded-full animate-pulse"></div>
-      </div>
-    </motion.div>
+    <div className="mt-16 flex justify-center">
+      <div className="w-16 h-0.5 bg-[#760000]"></div>
+    </div>
   </div>
 </motion.section>
 
