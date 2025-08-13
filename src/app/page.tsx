@@ -277,12 +277,12 @@ const SeaHorseWebsite = () => {
         
         <p className="text-gray-700 text-lg leading-relaxed mb-6">
           We are a major marine services provider for the Indonesian Oil & Gas exploration and production, 
-          Mining and Transportation Industries. Furthermore, we have represented some of the world's largest shipowners.
+          Mining and Transportation Industries. Furthermore, we have represented some of the worlds largest shipowners.
         </p>
         
         <p className="text-gray-700 text-lg leading-relaxed mb-8">
           We have the ability to supply tugs and support vessels to work in deep water locations and the capacity 
-          to supply vessels in tight situations. This enables us to work with confidence for our customer's needs.
+          to supply vessels in tight situations. This enables us to work with confidence for our customers needs.
         </p>
 
         {/* Key Stat */}
@@ -293,7 +293,7 @@ const SeaHorseWebsite = () => {
             </div>
             <div>
               <p className="text-[#760000] font-bold text-lg">Trusted Partner</p>
-              <p className="text-gray-600">Representing world's largest shipowners</p>
+              <p className="text-gray-600">Representing worlds largest shipowners</p>
             </div>
           </div>
         </div>
