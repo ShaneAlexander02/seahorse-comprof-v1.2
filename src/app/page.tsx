@@ -315,7 +315,7 @@ const SeaHorseWebsite = () => {
     <div className="grid lg:grid-cols-2 gap-14 items-center">
       {/* Left Column - Authorized Agent */}
       <motion.div 
-        className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 group"
+        className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all duration-100 transform hover:-translate-y-1 group"
         variants={slideInLeft}
       >
         <div className="flex flex-col items-center lg:items-start">
@@ -326,14 +326,14 @@ const SeaHorseWebsite = () => {
             height={70}
             className="mb-6"
           />
-          <p className="text-gray-850 leading-relaxed text-justify transition-colors duration-300">
+          <p className="text-gray-850 leading-relaxed text-justify transition-colors duration-100">
             We are the sole authorized service and spare parts agent for Doen Pacific Pty. Ltd. PT Sea Horse provides complete technical support for all Doen Waterjet models in Indonesia.
           </p>
           <a
             href="http://www.doen.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-6 inline-flex items-center px-5 py-2.5 bg-[#760000] text-white rounded-md shadow hover:bg-red-800 transition-colors duration-300"
+            className="mt-6 inline-flex items-center px-5 py-2.5 bg-[#760000] text-white rounded-md shadow hover:bg-red-800 transition-colors duration-100"
           >
             <span>www.doen.com</span>
             <svg
@@ -406,7 +406,7 @@ const SeaHorseWebsite = () => {
       </p>
     </motion.div>
 
-    {/* Services Grid - All Left Aligned */}
+    {/* Services Grid - Alternating Layout */}
     <div className="space-y-16">
       {[
         { 
@@ -436,14 +436,16 @@ const SeaHorseWebsite = () => {
       ].map((service, index) => (
         <motion.div
           key={service.title}
-          className="flex flex-col lg:flex-row items-center lg:items-start gap-8 lg:gap-12"
+          className={`flex flex-col lg:flex-row items-center gap-8 lg:gap-12 ${
+            index % 2 === 1 ? 'lg:flex-row-reverse' : ''
+          }`}
           variants={fadeInUp}
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
         >
-          {/* Icon Side - Always on the left */}
+          {/* Icon Side */}
           <motion.div 
-            className="flex-shrink-0 lg:w-1/3 flex justify-center lg:justify-start"
+            className="flex-shrink-0 lg:w-1/3 flex justify-center"
             whileHover={{ scale: 1.02 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
@@ -465,22 +467,28 @@ const SeaHorseWebsite = () => {
             </div>
           </motion.div>
 
-          {/* Content Side - Always on the right with left alignment and justified text */}
+          {/* Content Side */}
           <motion.div 
-            className="flex-1 lg:w-2/3 text-center lg:text-left"
+            className={`flex-1 lg:w-2/3 ${index % 2 === 1 ? 'lg:text-right' : 'lg:text-left'} text-center`}
             variants={fadeInUp}
           >
             {/* Service title with decorative line */}
-            <div className="flex items-center gap-4 justify-center lg:justify-start mb-6">
-              <div className="hidden lg:block w-12 h-0.5 bg-[#760000]" />
+            <div className={`flex items-center gap-4 justify-center ${index % 2 === 1 ? 'lg:justify-end' : 'lg:justify-start'} mb-6`}>
+              {index % 2 === 0 && (
+                <div className="hidden lg:block w-12 h-0.5 bg-[#760000]" />
+              )}
               
               <h3 className="font-bold text-2xl lg:text-3xl text-[#760000]">
                 {service.title}
               </h3>
+              
+              {index % 2 === 1 && (
+                <div className="hidden lg:block w-12 h-0.5 bg-[#760000]" />
+              )}
             </div>
 
-            {/* Service description with justified text */}
-            <p className="text-gray-700 text-base lg:text-lg leading-relaxed text-justify">
+            {/* Service description */}
+            <p className="text-gray-700 text-base lg:text-lg leading-relaxed max-w-xl mx-auto lg:mx-0">
               {service.text}
             </p>
           </motion.div>
