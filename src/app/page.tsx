@@ -472,7 +472,7 @@ const SeaHorseWebsite = () => {
           >
             {/* Service title with decorative line */}
             <motion.div 
-              className={`flex items-center gap-4 justify-center ${index % 2 === 1 ? 'lg:justify-end' : 'lg:justify-start'} mb-6`}
+              className={`flex items-center gap-4 justify-center ${index % 2 === 1 ? 'lg:justify-end' : 'lg:justify-start'} mb-4`}
               initial={{ opacity: 0, x: index % 2 === 1 ? 30 : -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.3 }}
@@ -485,7 +485,7 @@ const SeaHorseWebsite = () => {
                 <div className="hidden lg:block w-12 h-0.5 bg-[#760000]" />
               )}
               
-              <h3 className="font-bold text-2xl lg:text-2xl text-[#760000]">
+              <h3 className="font-bold text-xl lg:text-xl text-[#760000]">
                 {service.title}
               </h3>
               
