@@ -228,8 +228,7 @@ const SeaHorseWebsite = () => {
       {/*Left Content */}
       <motion.div variants={slideInLeft}>
         <motion.h2 
-          className="text-3xl mb-4 sm:text-4xl font-bold text-[
-#760000]"
+          className="text-3xl mb-4 sm:text-4xl font-bold text-[#760000]"
           variants={fadeInUp}
         >
           About Us
@@ -400,8 +399,7 @@ const SeaHorseWebsite = () => {
       <h2 className="text-3xl mb-4 sm:text-4xl font-bold text-[#760000]">
         Our Services
       </h2>
-      <div className="w-24 h-0.5 bg-[#760000] mx-auto"></div>
-      <p className="text-l text-gray-800 mt-8 max-w-3xl mx-auto">
+      <p className="text-l text-gray-850 mt-4 max-w-3xl mx-auto">
         Comprehensive marine services tailored to meet your specific operational needs
       </p>
     </motion.div>
@@ -412,25 +410,25 @@ const SeaHorseWebsite = () => {
         { 
           title: "Offshore Services", 
           icon: Anchor,
-          text: "Rig mobilisation / demobilisation and moves, anchor-handling, and towing.",
+          text: "Rig mobilisation / demobilisation and moves, anchor-handling, and towing",
           number: "01"
         },
         { 
           title: "Vessels", 
           icon: Ship,
-          text: "Anchor handling tugs supply (AHTS), tugs, hook-up and commissioning vessels, supply boats, accommodation and flat-top barges, crew boats and other specialised vessels.",
+          text: "Anchor handling tugs supply (AHTS), tugs, hook-up and commissioning vessels, supply boats, accommodation and flat-top barges, crew boats and other specialised vessels",
           number: "02"
         },
         { 
           title: "Brokerage", 
           icon: Handshake,
-          text: "PT Sea Horse is a trusted vessel broker for Sales & Purchase / Chartering inquiries. We can source for all types of vessels from all over the world for our clients.",
+          text: "PT Sea Horse is a trusted vessel broker for Sales & Purchase / Chartering inquiries. We can source for all types of vessels from all over the world for our clients",
           number: "03"
         },
         { 
           title: "Shipping & Logistics", 
           icon: Package,
-          text: "PT Sea Horse specializes in cargo movement, expediting, and international freight forwarding. We handle coal, drilling pipes, containers, and general cargo. As shipping agents for major global shipowners, we serve ports across Indonesia.",
+          text: "PT Sea Horse specializes in cargo movement, expediting, and international freight forwarding. We handle coal, drilling pipes, containers, and general cargo. As shipping agents for major global shipowners, we serve ports across Indonesia",
           number: "04"
         }
       ].map((service, index) => (
@@ -478,13 +476,9 @@ const SeaHorseWebsite = () => {
                 <div className="hidden lg:block w-12 h-0.5 bg-[#760000]" />
               )}
               
-              <h3 className="font-bold text-2xl lg:text-2xl text-[#760000]">
+              <h3 className="font-bold text-2xl lg:text-2xl">
                 {service.title}
               </h3>
-              
-              {index % 2 === 1 && (
-                <div className="hidden lg:block w-12 h-0.5 bg-[#760000]" />
-              )}
             </div>
 
             {/* Service description */}
