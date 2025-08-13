@@ -476,12 +476,12 @@ const SeaHorseWebsite = () => {
                 <div className="hidden lg:block w-12 h-0.5 bg-[#760000]" />
               )}
               
-              <h3 className="font-bold text-2xl lg:text-2xl">
+              <h3 className="font-bold text-2xl lg:text-2xl text-[#760000]">
                 {service.title}
               </h3>
               
               {index % 2 === 1 && (
-                <div className="hidden lg:block w-12 h-0.5" />
+                <div className="hidden lg:block w-12 h-0.5 bg-[#760000]" />
               )}
             </div>
 
@@ -492,6 +492,11 @@ const SeaHorseWebsite = () => {
           </motion.div>
         </motion.div>
       ))}
+    </div>
+
+    {/* Bottom decorative element */}
+    <div className="mt-16 flex justify-center">
+      <div className="w-16 h-0.5 bg-[#760000]"></div>
     </div>
   </div>
 </motion.section>
