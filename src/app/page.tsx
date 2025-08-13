@@ -471,7 +471,16 @@ const SeaHorseWebsite = () => {
             variants={fadeInUp}
           >
             {/* Service title with decorative line */}
-            <div className={`flex items-center gap-4 justify-center ${index % 2 === 1 ? 'lg:justify-end' : 'lg:justify-start'} mb-6`}>
+            <motion.div 
+              className={`flex items-center gap-4 justify-center ${index % 2 === 1 ? 'lg:justify-end' : 'lg:justify-start'} mb-6`}
+              initial={{ opacity: 0, x: index % 2 === 1 ? 30 : -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ 
+                duration: 0.5, 
+                ease: "easeOut"
+              }}
+            >
               {index % 2 === 0 && (
                 <div className="hidden lg:block w-12 h-0.5 bg-[#760000]" />
               )}
@@ -483,12 +492,22 @@ const SeaHorseWebsite = () => {
               {index % 2 === 1 && (
                 <div className="hidden lg:block w-12 h-0.5 bg-[#760000]" />
               )}
-            </div>
+            </motion.div>
 
             {/* Service description */}
-            <p className={`text-gray-850 text-base lg:text-lg leading-relaxed max-w-xl ${index % 2 === 1 ? 'lg:ml-auto' : 'mx-auto lg:mx-0'}`}>
+            <motion.p 
+              className={`text-gray-850 text-base lg:text-lg leading-relaxed max-w-xl ${index % 2 === 1 ? 'lg:ml-auto' : 'mx-auto lg:mx-0'}`}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ 
+                duration: 0.6, 
+                delay: 0.2,
+                ease: "easeOut"
+              }}
+            >
               {service.text}
-            </p>
+            </motion.p>
           </motion.div>
         </motion.div>
       ))}
