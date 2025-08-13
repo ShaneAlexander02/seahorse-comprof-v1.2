@@ -405,7 +405,7 @@ const SeaHorseWebsite = () => {
     </motion.div>
 
     {/* Services Grid - Alternating Layout */}
-    <div className="space-y-16">
+    <div className="space-y-14">
       {[
         { 
           title: "Offshore Services", 
