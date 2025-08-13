@@ -434,7 +434,7 @@ const SeaHorseWebsite = () => {
       ].map((service, index) => (
         <motion.div
           key={service.title}
-          className={`flex flex-col lg:flex-row items-center gap-8 lg:gap-12 ${
+          className={`flex flex-col lg:flex-row items-center gap-6 lg:gap-8 ${
             index % 2 === 1 ? 'lg:flex-row-reverse' : ''
           }`}
           variants={fadeInUp}
@@ -443,7 +443,7 @@ const SeaHorseWebsite = () => {
         >
           {/* Icon Side */}
           <motion.div 
-            className="flex-shrink-0 lg:w-1/3 flex justify-center"
+            className="flex-shrink-0 lg:w-1/4 flex justify-center"
             whileHover={{ scale: 1.02 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
@@ -467,7 +467,7 @@ const SeaHorseWebsite = () => {
 
           {/* Content Side */}
           <motion.div 
-            className={`flex-1 lg:w-2/3 ${index % 2 === 1 ? 'lg:text-right' : 'lg:text-left'} text-center`}
+            className={`flex-1 lg:w-3/4 ${index % 2 === 1 ? 'lg:text-right' : 'lg:text-left'} text-center`}
             variants={fadeInUp}
           >
             {/* Service title with decorative line */}
@@ -492,11 +492,6 @@ const SeaHorseWebsite = () => {
           </motion.div>
         </motion.div>
       ))}
-    </div>
-
-    {/* Bottom decorative element */}
-    <div className="mt-16 flex justify-center">
-      <div className="w-16 h-0.5 bg-[#760000]"></div>
     </div>
   </div>
 </motion.section>
