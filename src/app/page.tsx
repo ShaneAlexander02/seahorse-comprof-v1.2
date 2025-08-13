@@ -325,8 +325,7 @@ const SeaHorseWebsite = () => {
             className="mb-6"
           />
           <p className="text-gray-850 leading-relaxed text-justify">
-            We are the <span className="font-semibold text-[#760000]">sole authorized service and spare parts agent </span> 
-            for Doen Pacific Pty. Ltd. PT Sea Horse provides complete technical support for all Doen Waterjet models in Indonesia.
+            We are the sole authorized service and spare parts agent for Doen Pacific Pty. Ltd. PT Sea Horse provides complete technical support for all Doen Waterjet models in Indonesia.
           </p>
           <a
             href="http://www.doen.com"
