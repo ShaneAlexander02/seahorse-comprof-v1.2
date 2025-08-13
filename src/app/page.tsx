@@ -313,38 +313,65 @@ const SeaHorseWebsite = () => {
     <div className="grid lg:grid-cols-2 gap-14 items-center">
       {/* Left Column - Authorized Agent */}
       <motion.div 
-        className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow"
+        className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 group"
         variants={slideInLeft}
+        whileHover={{ 
+          boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
+          y: -8,
+          scale: 1.02
+        }}
+        transition={{ type: "spring", stiffness: 300, damping: 20 }}
       >
         <div className="flex flex-col items-center lg:items-start">
-          <Image
-            src={getImagePath("/Doenlogo.png")}
-            alt="Doen Waterjets Logo"
-            width={200}
-            height={70}
-            className="mb-6"
-          />
-          <p className="text-gray-850 leading-relaxed text-justify">
+          <motion.div
+            whileHover={{ scale: 1.1, rotate: 2 }}
+            transition={{ type: "spring", stiffness: 400, damping: 10 }}
+          >
+            <Image
+              src={getImagePath("/Doenlogo.png")}
+              alt="Doen Waterjets Logo"
+              width={200}
+              height={70}
+              className="mb-6 transition-transform duration-300"
+            />
+          </motion.div>
+          <motion.p 
+            className="text-gray-850 leading-relaxed text-justify group-hover:text-gray-900 transition-colors duration-300"
+            whileHover={{ scale: 1.02 }}
+            transition={{ duration: 0.2 }}
+          >
             We are the sole authorized service and spare parts agent for Doen Pacific Pty. Ltd. PT Sea Horse provides complete technical support for all Doen Waterjet models in Indonesia.
-          </p>
-          <a
+          </motion.p>
+          <motion.a
             href="http://www.doen.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-6 inline-flex items-center px-5 py-2.5 bg-[#760000] text-white rounded-md shadow hover:bg-red-800 transition-colors"
+            className="mt-6 inline-flex items-center px-5 py-2.5 bg-[#760000] text-white rounded-md shadow hover:bg-red-800 transition-all duration-300 overflow-hidden relative"
+            whileHover={{ 
+              scale: 1.05,
+              boxShadow: "0 10px 25px rgba(118, 0, 0, 0.3)"
+            }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 400, damping: 20 }}
           >
-            www.doen.com
-            <svg
+            <motion.span
+              className="absolute inset-0 bg-gradient-to-r from-red-700 to-red-900 opacity-0 transition-opacity duration-300"
+              whileHover={{ opacity: 1 }}
+            />
+            <span className="relative z-10">www.doen.com</span>
+            <motion.svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               strokeWidth={2}
               stroke="currentColor"
-              className="w-5 h-5 ml-2"
+              className="w-5 h-5 ml-2 relative z-10"
+              whileHover={{ x: 3 }}
+              transition={{ type: "spring", stiffness: 400 }}
             >
               <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 6.75L21 10.5m0 0l-3.75 3.75M21 10.5H3" />
-            </svg>
-          </a>
+            </motion.svg>
+          </motion.a>
         </div>
       </motion.div>
 
@@ -356,19 +383,66 @@ const SeaHorseWebsite = () => {
         {[
           { title: 'Shipping Business License', desc: 'No: BXXXIV-422/AT.54' },
           { title: 'Business Identification Number (NIB)', desc: 'No: 9210101202577' },
-        ].map((item) => (
+        ].map((item, index) => (
           <motion.div
             key={item.title}
-            className="bg-white rounded-xl shadow-lg p-6 flex items-center hover:shadow-xl transition-shadow"
+            className="bg-white rounded-xl shadow-lg p-6 flex items-center hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-1 group cursor-pointer overflow-hidden relative"
             variants={slideInRight}
+            whileHover={{ 
+              scale: 1.03,
+              boxShadow: "0 20px 40px -12px rgba(0, 0, 0, 0.2)",
+              y: -4
+            }}
+            transition={{ type: "spring", stiffness: 300, damping: 20 }}
           >
-            <div className="flex-shrink-0 w-12 h-12 bg-[#760000]/10 text-[#760000] flex items-center justify-center rounded-full font-bold text-lg">
-              ✓
-            </div>
-            <div className="ml-4">
-              <div className="font-semibold text-gray-900 text-lg">{item.title}</div>
-              <div className="text-gray-600">{item.desc}</div>
-            </div>
+            {/* Subtle background animation on hover */}
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-r from-[#760000]/5 to-red-50 opacity-0 transition-opacity duration-500"
+              whileHover={{ opacity: 1 }}
+            />
+            
+            <motion.div 
+              className="flex-shrink-0 w-12 h-12 bg-[#760000]/10 text-[#760000] flex items-center justify-center rounded-full font-bold text-lg group-hover:bg-[#760000]/20 transition-all duration-300 relative z-10"
+              whileHover={{ 
+                scale: 1.2,
+                rotate: 360,
+                backgroundColor: "rgba(118, 0, 0, 0.15)"
+              }}
+              transition={{ type: "spring", stiffness: 400, damping: 15 }}
+            >
+              <motion.span
+                whileHover={{ scale: 1.2 }}
+                transition={{ duration: 0.2 }}
+              >
+                ✓
+              </motion.span>
+            </motion.div>
+            
+            <motion.div 
+              className="ml-4 relative z-10"
+              whileHover={{ x: 4 }}
+              transition={{ type: "spring", stiffness: 400, damping: 20 }}
+            >
+              <motion.div 
+                className="font-semibold text-gray-900 text-lg group-hover:text-[#760000] transition-colors duration-300"
+                whileHover={{ scale: 1.02 }}
+              >
+                {item.title}
+              </motion.div>
+              <motion.div 
+                className="text-gray-600 group-hover:text-gray-700 transition-colors duration-300"
+                whileHover={{ scale: 1.01 }}
+              >
+                {item.desc}
+              </motion.div>
+            </motion.div>
+
+            {/* Animated border on hover */}
+            <motion.div
+              className="absolute inset-0 border-2 border-[#760000] rounded-xl opacity-0"
+              whileHover={{ opacity: 0.3 }}
+              transition={{ duration: 0.3 }}
+            />
           </motion.div>
         ))}
       </motion.div>
@@ -387,7 +461,7 @@ const SeaHorseWebsite = () => {
 >
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <motion.div 
-      className="text-center mb-12"
+      className="text-center mb-16"
       variants={fadeInUp}
     >
       <h2 className="text-3xl mb-4 sm:text-4xl font-bold text-[#760000]">
@@ -399,68 +473,152 @@ const SeaHorseWebsite = () => {
       </p>
     </motion.div>
 
-    <motion.div 
-      className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto"
-      variants={staggerContainer}
-    >
+    {/* Services Grid - Alternating Layout */}
+    <div className="space-y-24">
       {[
         { 
           title: "Offshore Services", 
           icon: Anchor,
-          text: "Rig mobilisation / demobilisation and moves, anchor-handling, and towing."
+          text: "Rig mobilisation / demobilisation and moves, anchor-handling, and towing.",
+          number: "01"
         },
         { 
           title: "Vessels", 
           icon: Ship,
-          text: "AHTS, tugs, hook-up and commissioning vessels, supply boats, accommodation and flat-top barges, crew boats and other specialised vessels."
+          text: "AHTS, tugs, hook-up and commissioning vessels, supply boats, accommodation and flat-top barges, crew boats and other specialised vessels.",
+          number: "02"
         },
         { 
           title: "Brokerage", 
           icon: Handshake,
-          text: "PT Sea Horse is a trusted vessel broker for Sales & Purchase / Chartering inquiries. We can source for all types of vessels from all over the world for our clients."
+          text: "PT Sea Horse is a trusted vessel broker for Sales & Purchase / Chartering inquiries. We can source for all types of vessels from all over the world for our clients.",
+          number: "03"
         },
         { 
           title: "Shipping & Logistics", 
           icon: Package,
-          text: "PT Sea Horse specializes in cargo movement, expediting, and international freight forwarding. We handle coal, drilling pipes, containers, and general cargo. As shipping agents for major global shipowners, we serve ports across Indonesia."
+          text: "PT Sea Horse specializes in cargo movement, expediting, and international freight forwarding. We handle coal, drilling pipes, containers, and general cargo. As shipping agents for major global shipowners, we serve ports across Indonesia.",
+          number: "04"
         }
       ].map((service, index) => (
-        <motion.div 
-          key={service.title} 
-          className="bg-white p-8 rounded-xl text-center hover:shadow-2xl transition-all duration-300 border-2 border-[#760000] group relative overflow-hidden"
-          variants={scaleUp}
+        <motion.div
+          key={service.title}
+          className={`flex flex-col lg:flex-row items-center gap-12 ${
+            index % 2 === 1 ? 'lg:flex-row-reverse' : ''
+          }`}
+          variants={fadeInUp}
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
         >
-          {/* Decorative corner accent */}
-          <div className="absolute top-0 right-0 w-16 h-16 bg-[#760000] opacity-5 rounded-bl-full transform group-hover:scale-125 transition-transform duration-300"></div>
-          
-          {/* Icon with background circle */}
-          <div className="mb-6 flex justify-center">
-            <div className="relative">
-              <div className="absolute inset-0 bg-[#760000] opacity-10 rounded-full transform group-hover:scale-110 transition-transform duration-300"></div>
-              <service.icon size={64} className="text-[#760000] relative z-10 p-2" />
+          {/* Icon Side */}
+          <motion.div 
+            className="flex-shrink-0 lg:w-1/3 flex justify-center"
+            whileHover={{ scale: 1.05 }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
+            <div className="relative group">
+              {/* Large decorative circle */}
+              <motion.div 
+                className="absolute inset-0 w-48 h-48 bg-gradient-to-br from-[#760000]/10 to-[#760000]/5 rounded-full blur-xl"
+                whileHover={{ scale: 1.2, rotate: 45 }}
+                transition={{ duration: 0.6 }}
+              />
+              
+              {/* Main circle container */}
+              <motion.div 
+                className="relative w-40 h-40 bg-gradient-to-br from-[#760000]/15 to-[#760000]/8 rounded-full flex items-center justify-center group-hover:shadow-2xl transition-shadow duration-500"
+                whileHover={{ rotate: 10 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                {/* Service number */}
+                <div className="absolute -top-4 -right-4 w-12 h-12 bg-[#760000] text-white rounded-full flex items-center justify-center font-bold text-lg shadow-lg">
+                  {service.number}
+                </div>
+                
+                {/* Icon */}
+                <motion.div
+                  whileHover={{ scale: 1.1, rotate: -10 }}
+                  transition={{ type: "spring", stiffness: 400 }}
+                >
+                  <service.icon size={80} className="text-[#760000]" />
+                </motion.div>
+              </motion.div>
+              
+              {/* Floating accent dots */}
+              <div className="absolute -top-2 -left-2 w-4 h-4 bg-[#760000]/20 rounded-full group-hover:animate-bounce"></div>
+              <div className="absolute -bottom-3 -right-1 w-3 h-3 bg-[#760000]/15 rounded-full group-hover:animate-pulse"></div>
             </div>
-          </div>
-          
-          {/* Service number badge */}
-          <div className="absolute top-4 left-4 w-8 h-8 bg-[#760000] text-white rounded-full flex items-center justify-center text-sm font-bold">
-            {String(index + 1).padStart(2, '0')}
-          </div>
-          
-          <h3 className="font-bold text-xl mb-6 text-[#760000] group-hover:text-[#5a0000] transition-colors duration-300">
-            {service.title}
-          </h3>
-          
-          {/* Decorative line under title */}
-          <div className="w-12 h-0.5 bg-[#760000] mx-auto mb-6 group-hover:w-16 transition-all duration-300"></div>
-          
-          <p className="text-gray-800 text-base leading-relaxed">
-            {service.text}
-          </p>
-          
-          {/* Bottom accent line */}
-          <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#760000] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          </motion.div>
+
+          {/* Content Side */}
+          <motion.div 
+            className={`flex-1 lg:w-2/3 ${index % 2 === 1 ? 'lg:text-right' : 'lg:text-left'} text-center`}
+            variants={fadeInUp}
+          >
+            {/* Service title with decorative line */}
+            <div className={`flex items-center gap-4 justify-center ${index % 2 === 1 ? 'lg:justify-end' : 'lg:justify-start'} mb-6`}>
+              {index % 2 === 0 && (
+                <motion.div 
+                  className="hidden lg:block w-16 h-0.5 bg-gradient-to-r from-[#760000] to-transparent"
+                  whileInView={{ width: 80 }}
+                  transition={{ duration: 0.8 }}
+                />
+              )}
+              
+              <motion.h3 
+                className="font-bold text-3xl text-[#760000]"
+                whileHover={{ scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                {service.title}
+              </motion.h3>
+              
+              {index % 2 === 1 && (
+                <motion.div 
+                  className="hidden lg:block w-16 h-0.5 bg-gradient-to-l from-[#760000] to-transparent"
+                  whileInView={{ width: 80 }}
+                  transition={{ duration: 0.8 }}
+                />
+              )}
+            </div>
+
+            {/* Service description */}
+            <motion.p 
+              className="text-gray-700 text-lg leading-relaxed max-w-2xl mx-auto lg:mx-0"
+              whileHover={{ y: -2 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              {service.text}
+            </motion.p>
+
+            {/* Bottom accent line */}
+            <motion.div 
+              className={`mt-6 h-1 bg-gradient-to-r ${
+                index % 2 === 0 
+                  ? 'from-[#760000] via-[#760000]/50 to-transparent lg:mr-auto' 
+                  : 'from-transparent via-[#760000]/50 to-[#760000] lg:ml-auto'
+              } w-32 mx-auto lg:mx-0`}
+              whileInView={{ scaleX: 1 }}
+              initial={{ scaleX: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+            />
+          </motion.div>
         </motion.div>
       ))}
+    </div>
+
+    {/* Bottom decorative element */}
+    <motion.div 
+      className="mt-20 flex justify-center"
+      variants={fadeInUp}
+    >
+      <div className="flex items-center gap-2">
+        <div className="w-2 h-2 bg-[#760000] rounded-full animate-pulse"></div>
+        <div className="w-16 h-0.5 bg-gradient-to-r from-[#760000] to-transparent"></div>
+        <div className="w-1 h-1 bg-[#760000]/50 rounded-full"></div>
+        <div className="w-16 h-0.5 bg-gradient-to-l from-[#760000] to-transparent"></div>
+        <div className="w-2 h-2 bg-[#760000] rounded-full animate-pulse"></div>
+      </div>
     </motion.div>
   </div>
 </motion.section>
