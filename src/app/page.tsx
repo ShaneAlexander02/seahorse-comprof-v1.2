@@ -234,14 +234,14 @@ const SeaHorseWebsite = () => {
           About Us
         </motion.h2>
         <motion.p 
-          className="text-gray-850 mb-4 leading-relaxed text-justify"
+          className="text-gray-900 mb-4 leading-relaxed text-justify"
           variants={fadeInUp}
         >
           We are a major marine services provider for the Indonesian Oil & Gas exploration and production, Mining and Transportation Industries.
           Furthermore, we have represented some of the world&apos;s largest shipowners.
         </motion.p>
         <motion.p 
-          className="text-gray-850 mb-4 leading-relaxed text-justify"
+          className="text-gray-900 mb-4 leading-relaxed text-justify"
           variants={fadeInUp}
         > 
           Hence, We have the ability to supply tugs and support vessels to work in deep water locations and the capacity to supply vessels in tight situations. 
@@ -266,7 +266,7 @@ const SeaHorseWebsite = () => {
             >
               <span className="w-8 h-8 flex items-center justify-center bg-red-100 rounded-full text-[
 #760000] font-bold">✓</span>
-              <span className="text-gray-850 font-medium">{item}</span>
+              <span className="text-gray-900 font-medium">{item}</span>
             </motion.li>
           ))}
         </motion.ul>
@@ -325,7 +325,7 @@ const SeaHorseWebsite = () => {
             height={70}
             className="mb-6"
           />
-          <p className="text-gray-850 leading-relaxed text-justify transition-colors duration-100">
+          <p className="text-gray-900 leading-relaxed text-justify transition-colors duration-100">
             We are the sole authorized service and spare parts agent for Doen Pacific Pty. Ltd. PT Sea Horse provides complete technical support for all Doen Waterjet models in Indonesia.
           </p>
           <a
@@ -399,7 +399,7 @@ const SeaHorseWebsite = () => {
       <h2 className="text-3xl mb-4 sm:text-4xl font-bold text-[#760000]">
         Our Services
       </h2>
-      <p className="text-l text-gray-850 mt-4 max-w-3xl mx-auto">
+      <p className="text-l text-gray-900 mt-4 max-w-3xl mx-auto">
         Comprehensive marine services tailored to meet your specific operational needs
       </p>
     </motion.div>
@@ -496,7 +496,7 @@ const SeaHorseWebsite = () => {
 
             {/* Service description */}
             <motion.p 
-              className={`text-gray-850 text-base lg:text-lg leading-relaxed max-w-xl ${index % 2 === 1 ? 'lg:ml-auto' : 'mx-auto lg:mx-0'}`}
+              className={`text-gray-900 text-base lg:text-lg leading-relaxed max-w-xl ${index % 2 === 1 ? 'lg:ml-auto' : 'mx-auto lg:mx-0'}`}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
