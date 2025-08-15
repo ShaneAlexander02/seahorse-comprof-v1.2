@@ -189,7 +189,7 @@ export default function ContactPage() {
                         <Phone className="w-6 h-6 text-red-800" />
                         <h4 className="font-bold text-red-800">Phone</h4>
                       </div>
-                      <p className="text-lg font-medium ml-9">(+62) 21 2938 0018</p>
+                      <p className="text-lg text-gray-800 font-medium ml-9">(+62) 21 2938 0018</p>
                     </div>
                   </div>
 
@@ -201,11 +201,11 @@ export default function ContactPage() {
                           <h4 className="font-bold text-red-800 mb-3">Email Addresses</h4>
                           <div className="space-y-2 ml-0">
                             <div className="bg-white p-3 rounded border-l-4 border-red-800">
-                              <p className="text-base font-medium">general@seahorse.co.id</p>
+                              <p className="text-base text-gray-800 font-medium">general@seahorse.co.id</p>
                               <p className="text-sm text-gray-600">General Inquiries</p>
                             </div>
                             <div className="bg-white p-3 rounded border-l-4 border-red-800">
-                              <p className="text-base font-medium">marketing@seahorse.co.id</p>
+                              <p className="text-base text-gray-800 font-medium">marketing@seahorse.co.id</p>
                               <p className="text-sm text-gray-600">Marketing & Business</p>
                             </div>
                           </div>
@@ -248,7 +248,7 @@ export default function ContactPage() {
                         <div>
                           <h4 className="font-bold text-red-800 mb-3">Branch Address</h4>
                           <div className="space-y-1 text-base leading-relaxed">
-                            <p className="font-medium">Complex Balikpapan Permai Block L No. 6</p>
+                            <p className="font-medium text-gray-800">Complex Balikpapan Permai Block L No. 6</p>
                             <p>Jl. Jenderal Sudirman</p>
                             <p>Balikpapan 76114, East Kalimantan</p>
                             <p>Indonesia</p>
@@ -263,8 +263,8 @@ export default function ContactPage() {
                         <h4 className="font-bold text-red-800">Phone</h4>
                       </div>
                       <div className="ml-9 space-y-1">
-                        <p className="text-lg font-medium">(+62) 542 427 048</p>
-                        <p className="text-lg font-medium">(+62) 542 427 077</p>
+                        <p className="text-lg text-gray-800 font-medium">(+62) 542 427 048</p>
+                        <p className="text-lg text-gray-800 font-medium">(+62) 542 427 077</p>
                       </div>
                     </div>
                   </div>
@@ -276,7 +276,7 @@ export default function ContactPage() {
                         <div>
                           <h4 className="font-bold text-red-800 mb-3">Email Address</h4>
                           <div className="bg-white p-4 rounded border-l-4 border-red-800">
-                            <p className="text-lg font-medium">bppn@seahorse.co.id</p>
+                            <p className="text-lg text-gray-800 font-medium">bppn@seahorse.co.id</p>
                             <p className="text-sm text-gray-600">Balikpapan Operations</p>
                           </div>
                         </div>
@@ -312,7 +312,7 @@ export default function ContactPage() {
                         <div>
                           <h4 className="font-bold text-red-800 mb-3">Base Address</h4>
                           <div className="space-y-1 text-base leading-relaxed">
-                            <p className="font-medium">Jl. Tahir RT.XI RW.02 NO.19</p>
+                            <p className="font-medium text-gray-800">Jl. Tahir RT.XI RW.02 NO.19</p>
                             <p>Handil Dua - Muara Jawa 75261</p>
                             <p>East Kalimantan, Indonesia</p>
                           </div>
@@ -325,7 +325,7 @@ export default function ContactPage() {
                         <Phone className="w-6 h-6 text-red-800" />
                         <h4 className="font-bold text-red-800">Phone</h4>
                       </div>
-                      <p className="text-lg font-medium ml-9">(+62) 541 691 830</p>
+                      <p className="text-lg text-gray-800 font-medium ml-9">(+62) 541 691 830</p>
                     </div>
                   </div>
 
@@ -336,7 +336,7 @@ export default function ContactPage() {
                         <div>
                           <h4 className="font-bold text-red-800 mb-3">Email Address</h4>
                           <div className="bg-white p-4 rounded border-l-4 border-red-800">
-                            <p className="text-lg font-medium">smo@seahorse.co.id</p>
+                            <p className="text-lg text-gray-800 font-medium">smo@seahorse.co.id</p>
                             <p className="text-sm text-gray-600">Site Management Office</p>
                           </div>
                         </div>
@@ -372,7 +372,7 @@ export default function ContactPage() {
                         <div>
                           <h4 className="font-bold text-red-800 mb-3">Office Address</h4>
                           <div className="space-y-1 text-base leading-relaxed">
-                            <p className="font-medium">Jln. APT Pranoto RT 09 No. 06</p>
+                            <p className="font-medium text-gray-800">Jln. APT Pranoto RT 09 No. 06</p>
                             <p>Sangatta 75611</p>
                             <p>East Kalimantan, Indonesia</p>
                           </div>
@@ -385,7 +385,7 @@ export default function ContactPage() {
                         <Phone className="w-6 h-6 text-red-800" />
                         <h4 className="font-bold text-red-800">Phone</h4>
                       </div>
-                      <p className="text-lg font-medium ml-9">(+62) 549 24254</p>
+                      <p className="text-lg font-medium text-gray-800 ml-9">(+62) 549 24254</p>
                     </div>
                   </div>
 
@@ -396,7 +396,7 @@ export default function ContactPage() {
                         <div>
                           <h4 className="font-bold text-red-800 mb-3">Email Address</h4>
                           <div className="bg-white p-4 rounded border-l-4 border-red-800">
-                            <p className="text-lg font-medium">agency@seahorse.co.id</p>
+                            <p className="text-lg text-gray-800 font-medium">agency@seahorse.co.id</p>
                             <p className="text-sm text-gray-600">Agency Operations</p>
                           </div>
                         </div>
