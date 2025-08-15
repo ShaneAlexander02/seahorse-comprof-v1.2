@@ -174,7 +174,7 @@ export default function ContactPage() {
                         <MapPin className="w-6 h-6 text-red-800 mt-1 flex-shrink-0" />
                         <div>
                           <h4 className="font-bold text-red-800 mb-3">Office Address</h4>
-                          <div className="space-y-1 text-base leading-relaxed">
+                          <div className="space-y-1 text-base text-gray-800 leading-relaxed">
                             <p className="font-medium">Multivision Tower 5th Floor Unit 5</p>
                             <p>Jl. Kuningan Mulia Lot 9B</p>
                             <p>Jakarta 12980, Indonesia</p>

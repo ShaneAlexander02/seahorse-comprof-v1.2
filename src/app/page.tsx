@@ -264,9 +264,8 @@ const SeaHorseWebsite = () => {
               className="flex items-center space-x-3"
               variants={fadeInUp}
             >
-              <span className="w-8 h-8 flex items-center justify-center bg-red-100 rounded-full text-[
-#760000] font-bold">✓</span>
-              <span className="text-gray-900 font-medium">{item}</span>
+              <span className="w-8 h-8 flex items-center justify-center bg-[#760000]/10 rounded-full font-bold">✓</span>
+              <span className="text-[#760000] font-medium">{item}</span>
             </motion.li>
           ))}
         </motion.ul>
