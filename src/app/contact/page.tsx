@@ -358,66 +358,65 @@ export default function ContactPage() {
                   </div>
                 </>
               )}
-
-              {activeLocation === "sangatta" && (
-                <>
-                  <div className="space-y-6">
-                    <h3 className="text-2xl font-bold text-red-800 mb-6 border-b border-gray-200 pb-3">
-                      PT SEA HORSE - Sangatta Office
-                    </h3>
-                    
-                    <div className="bg-gray-50 p-6 rounded-lg">
-                      <div className="flex items-start gap-3 mb-4">
-                        <MapPin className="w-6 h-6 text-red-800 mt-1 flex-shrink-0" />
-                        <div>
-                          <h4 className="font-bold text-red-800 mb-3">Office Address</h4>
-                          <div className="space-y-1 text-base leading-relaxed">
-                            <p className="font-medium text-gray-800">Jln. APT Pranoto RT 09 No. 06</p>
-                            <p className="font-medium text-gray-800">Sangatta 75611</p>
-                            <p className="font-medium text-gray-800">East Kalimantan, Indonesia</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div className="bg-gray-50 p-6 rounded-lg">
-                      <div className="flex items-center gap-3 mb-3">
-                        <Phone className="w-6 h-6 text-red-800" />
-                        <h4 className="font-bold text-red-800">Phone</h4>
-                      </div>
-                      <p className="text-lg font-medium text-gray-800 ml-9">(+62) 549 24254</p>
-                    </div>
-                  </div>
-
-                  <div className="space-y-6">
-                    <div className="bg-gray-50 p-6 rounded-lg">
-                      <div className="flex items-start gap-3 mb-4">
-                        <Mail className="w-6 h-6 text-red-800 mt-1"/>
-                        <div>
-                          <h4 className="font-bold text-red-800 mb-3">Email Address</h4>
-                          <div className="bg-white p-4 rounded border-l-4 border-red-800">
-                            <p className="text-lg text-gray-800 font-medium">agency@seahorse.co.id</p>
-                            <p className="text-sm text-gray-600">Agency Operations</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="bg-gray-50 p-6 rounded-lg">
-                      <div className="flex items-start gap-3 mb-4">
-                        <User className="w-6 h-6 text-red-800 mt-1" />
-                        <div>
-                          <h4 className="font-bold text-red-800 mb-3">Operations Management</h4>
-                          <div className="bg-white p-4 rounded">
-                            <p className="font-semibold text-gray-800 text-lg">Mr. Syarifudin</p>
-                            <p className="text-base text-gray-600">Operations Coordinator</p>
-                          </div>
+            {activeLocation === "sangatta" && (
+              <>
+                <div className="space-y-6">
+                  <h3 className="text-2xl font-bold text-red-800 mb-6 border-b border-gray-200 pb-3">
+                    PT SEA HORSE - Sangatta Office
+                  </h3>
+                  
+                  <div className="bg-gray-50 p-6 rounded-lg">
+                    <div className="flex items-start gap-3 mb-4">
+                      <MapPin className="w-6 h-6 text-red-800 mt-1 flex-shrink-0" />
+                      <div>
+                        <h4 className="font-bold text-red-800 mb-3">Office Address</h4>
+                        <div className="space-y-1 text-base leading-relaxed">
+                          <p className="font-medium text-gray-800">Jln. APT Pranoto RT 09 No. 06</p>
+                          <p className="font-medium text-gray-800">Sangatta 75611</p>
+                          <p className="font-medium text-gray-800">East Kalimantan, Indonesia</p>
                         </div>
                       </div>
                     </div>
                   </div>
-                </>
-              )}
+                  
+                  <div className="bg-gray-50 p-6 rounded-lg">
+                    <div className="flex items-center gap-3 mb-3">
+                      <Phone className="w-6 h-6 text-red-800 flex-shrink-0" />
+                      <h4 className="font-bold text-red-800">Phone</h4>
+                    </div>
+                    <p className="text-lg font-medium text-gray-800 ml-9">(+62) 549 24254</p>
+                  </div>
+                </div>
+
+                <div className="space-y-6">
+                  <div className="bg-gray-50 p-6 rounded-lg">
+                    <div className="flex items-start gap-3 mb-4">
+                      <Mail className="w-6 h-6 text-red-800 mt-1 flex-shrink-0" />
+                      <div className="w-full">
+                        <h4 className="font-bold text-red-800 mb-3">Email Address</h4>
+                        <div className="bg-white p-4 rounded border-l-4 border-red-800">
+                          <p className="text-lg text-gray-800 font-medium">agency@seahorse.co.id</p>
+                          <p className="text-sm text-gray-600">Agency Operations</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="bg-gray-50 p-6 rounded-lg">
+                    <div className="flex items-start gap-3 mb-4">
+                      <User className="w-6 h-6 text-red-800 mt-1 flex-shrink-0" />
+                      <div className="w-full">
+                        <h4 className="font-bold text-red-800 mb-3">Operations Management</h4>
+                        <div className="bg-white p-4 rounded">
+                          <p className="font-semibold text-gray-800 text-lg">Mr. Syarifudin</p>
+                          <p className="text-base text-gray-600">Operations Coordinator</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </>
+            )}
             </div>
           </div>
         </div>
