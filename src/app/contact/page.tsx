@@ -249,9 +249,9 @@ export default function ContactPage() {
                           <h4 className="font-bold text-red-800 mb-3">Branch Address</h4>
                           <div className="space-y-1 text-base leading-relaxed">
                             <p className="font-medium text-gray-800">Complex Balikpapan Permai Block L No. 6</p>
-                            <p>Jl. Jenderal Sudirman</p>
-                            <p>Balikpapan 76114, East Kalimantan</p>
-                            <p>Indonesia</p>
+                            <p className="font-medium text-gray-800">Jl. Jenderal Sudirman</p>
+                            <p className="font-medium text-gray-800">Balikpapan 76114, East Kalimantan</p>
+                            <p className="font-medium text-gray-800">Indonesia</p>
                           </div>
                         </div>
                       </div>
@@ -313,8 +313,8 @@ export default function ContactPage() {
                           <h4 className="font-bold text-red-800 mb-3">Base Address</h4>
                           <div className="space-y-1 text-base leading-relaxed">
                             <p className="font-medium text-gray-800">Jl. Tahir RT.XI RW.02 NO.19</p>
-                            <p>Handil Dua - Muara Jawa 75261</p>
-                            <p>East Kalimantan, Indonesia</p>
+                            <p className="font-medium text-gray-800">Handil Dua - Muara Jawa 75261</p>
+                            <p className="font-medium text-gray-800">East Kalimantan, Indonesia</p>
                           </div>
                         </div>
                       </div>
@@ -373,8 +373,8 @@ export default function ContactPage() {
                           <h4 className="font-bold text-red-800 mb-3">Office Address</h4>
                           <div className="space-y-1 text-base leading-relaxed">
                             <p className="font-medium text-gray-800">Jln. APT Pranoto RT 09 No. 06</p>
-                            <p>Sangatta 75611</p>
-                            <p>East Kalimantan, Indonesia</p>
+                            <p className="font-medium text-gray-800">Sangatta 75611</p>
+                            <p className="font-medium text-gray-800">East Kalimantan, Indonesia</p>
                           </div>
                         </div>
                       </div>
@@ -392,7 +392,7 @@ export default function ContactPage() {
                   <div className="space-y-6">
                     <div className="bg-gray-50 p-6 rounded-lg">
                       <div className="flex items-start gap-3 mb-4">
-                        <Mail className="w-6 h-6 text-red-800 mt-1" />
+                        <Mail className="w-6 h-6 text-red-800 mt-1"/>
                         <div>
                           <h4 className="font-bold text-red-800 mb-3">Email Address</h4>
                           <div className="bg-white p-4 rounded border-l-4 border-red-800">
