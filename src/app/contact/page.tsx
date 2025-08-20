@@ -12,7 +12,7 @@ export default function ContactPage() {
 
   // Helper function for absolute image paths - ADDED THIS
   const getImagePath = (imagePath: string) => {
-    const basePath = '/seahorse-comprof-v1.2'; // Your GitHub repo name
+    const basePath = "/seahorse-comprof-v1.2"; // Your GitHub repo name
     return `${basePath}${imagePath}`;
   };
 
@@ -137,13 +137,15 @@ export default function ContactPage() {
           {/* Location Tabs */}
           <div className="bg-white shadow-lg rounded-lg p-8 transform transition-all duration-700 ease-out opacity-0 animate-fadeInUp">
             <div className="border-b mb-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">Our Locations</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">
+                Our Locations
+              </h2>
               <div className="flex flex-wrap gap-2 mb-6">
                 {[
                   { id: "jakarta", label: "JAKARTA" },
                   { id: "balikpapan", label: "BALIKPAPAN" },
                   { id: "handil", label: "HANDIL TIGA" },
-                  { id: "sangatta", label: "SANGATTA" }
+                  { id: "sangatta", label: "SANGATTA" },
                 ].map((location) => (
                   <button
                     key={location.id}
@@ -168,28 +170,36 @@ export default function ContactPage() {
                     <h3 className="text-2xl font-bold text-red-800 mb-6 border-b border-gray-200 pb-3">
                       PT SEA HORSE - Jakarta Office
                     </h3>
-                    
+
                     <div className="bg-gray-50 p-6 rounded-lg">
                       <div className="flex items-start gap-3 mb-4">
                         <MapPin className="w-6 h-6 text-red-800 mt-1 flex-shrink-0" />
                         <div>
-                          <h4 className="font-bold text-red-800 mb-3">Office Address</h4>
+                          <h4 className="font-bold text-red-800 mb-3">
+                            Office Address
+                          </h4>
                           <div className="space-y-1 text-base text-gray-800 leading-relaxed">
-                            <p className="font-medium">Multivision Tower 5th Floor Unit 5</p>
+                            <p className="font-medium">
+                              Multivision Tower 5th Floor Unit 5
+                            </p>
                             <p>Jl. Kuningan Mulia Lot 9B</p>
                             <p>Jakarta 12980, Indonesia</p>
-                            <p className="text-sm text-gray-600 mt-2">Co. Reg No. 9120101202577</p>
+                            <p className="text-sm text-gray-600 mt-2">
+                              Co. Reg No. 9120101202577
+                            </p>
                           </div>
                         </div>
                       </div>
                     </div>
-                    
+
                     <div className="bg-gray-50 p-6 rounded-lg">
                       <div className="flex items-center gap-3 mb-3">
                         <Phone className="w-6 h-6 text-red-800" />
                         <h4 className="font-bold text-red-800">Phone</h4>
                       </div>
-                      <p className="text-lg text-gray-800 font-medium ml-9">(+62) 21 2938 0018</p>
+                      <p className="text-lg text-gray-800 font-medium ml-9">
+                        (+62) 21 2938 0018
+                      </p>
                     </div>
                   </div>
 
@@ -198,15 +208,25 @@ export default function ContactPage() {
                       <div className="flex items-start gap-3 mb-4">
                         <Mail className="w-6 h-6 text-red-800 mt-1" />
                         <div>
-                          <h4 className="font-bold text-red-800 mb-3">Email Addresses</h4>
+                          <h4 className="font-bold text-red-800 mb-3">
+                            Email Addresses
+                          </h4>
                           <div className="space-y-2 ml-0">
                             <div className="bg-white p-3 rounded border-l-4 border-red-800">
-                              <p className="text-base text-gray-800 font-medium">general@seahorse.co.id</p>
-                              <p className="text-sm text-gray-600">General Inquiries</p>
+                              <p className="text-base text-gray-800 font-medium">
+                                general@seahorse.co.id
+                              </p>
+                              <p className="text-sm text-gray-600">
+                                General Inquiries
+                              </p>
                             </div>
                             <div className="bg-white p-3 rounded border-l-4 border-red-800">
-                              <p className="text-base text-gray-800 font-medium">marketing@seahorse.co.id</p>
-                              <p className="text-sm text-gray-600">Marketing & Business</p>
+                              <p className="text-base text-gray-800 font-medium">
+                                marketing@seahorse.co.id
+                              </p>
+                              <p className="text-sm text-gray-600">
+                                Marketing & Business
+                              </p>
                             </div>
                           </div>
                         </div>
@@ -217,15 +237,23 @@ export default function ContactPage() {
                       <div className="flex items-start gap-3 mb-4">
                         <User className="w-6 h-6 text-red-800 mt-1" />
                         <div>
-                          <h4 className="font-bold text-red-800 mb-3">Key Personnel</h4>
+                          <h4 className="font-bold text-red-800 mb-3">
+                            Key Personnel
+                          </h4>
                           <div className="space-y-3 ml-0">
                             <div className="bg-white p-3 rounded">
-                              <p className="font-semibold text-gray-800">Ms. Maria Dharmaputri</p>
+                              <p className="font-semibold text-gray-800">
+                                Ms. Maria Dharmaputri
+                              </p>
                               <p className="text-sm text-gray-600">Director</p>
                             </div>
                             <div className="bg-white p-3 rounded">
-                              <p className="font-semibold text-gray-800">Mr. Winston Foo</p>
-                              <p className="text-sm text-gray-600">General Manager</p>
+                              <p className="font-semibold text-gray-800">
+                                Mr. Winston Foo
+                              </p>
+                              <p className="text-sm text-gray-600">
+                                General Manager
+                              </p>
                             </div>
                           </div>
                         </div>
@@ -241,30 +269,44 @@ export default function ContactPage() {
                     <h3 className="text-2xl font-bold text-red-800 mb-6 border-b border-gray-200 pb-3">
                       PT SEA HORSE - Balikpapan Branch
                     </h3>
-                    
+
                     <div className="bg-gray-50 p-6 rounded-lg">
                       <div className="flex items-start gap-3 mb-4">
                         <MapPin className="w-6 h-6 text-red-800 mt-1 flex-shrink-0" />
                         <div>
-                          <h4 className="font-bold text-red-800 mb-3">Branch Address</h4>
+                          <h4 className="font-bold text-red-800 mb-3">
+                            Branch Address
+                          </h4>
                           <div className="space-y-1 text-base leading-relaxed">
-                            <p className="font-medium text-gray-800">Complex Balikpapan Permai Block L No. 6</p>
-                            <p className="font-medium text-gray-800">Jl. Jenderal Sudirman</p>
-                            <p className="font-medium text-gray-800">Balikpapan 76114, East Kalimantan</p>
-                            <p className="font-medium text-gray-800">Indonesia</p>
+                            <p className="font-medium text-gray-800">
+                              Complex Balikpapan Permai Block L No. 6
+                            </p>
+                            <p className="font-medium text-gray-800">
+                              Jl. Jenderal Sudirman
+                            </p>
+                            <p className="font-medium text-gray-800">
+                              Balikpapan 76114, East Kalimantan
+                            </p>
+                            <p className="font-medium text-gray-800">
+                              Indonesia
+                            </p>
                           </div>
                         </div>
                       </div>
                     </div>
-                    
+
                     <div className="bg-gray-50 p-6 rounded-lg">
                       <div className="flex items-center gap-3 mb-3">
                         <Phone className="w-6 h-6 text-red-800" />
                         <h4 className="font-bold text-red-800">Phone</h4>
                       </div>
                       <div className="ml-9 space-y-1">
-                        <p className="text-lg text-gray-800 font-medium">(+62) 542 427 048</p>
-                        <p className="text-lg text-gray-800 font-medium">(+62) 542 427 077</p>
+                        <p className="text-lg text-gray-800 font-medium">
+                          (+62) 542 427 048
+                        </p>
+                        <p className="text-lg text-gray-800 font-medium">
+                          (+62) 542 427 077
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -274,10 +316,16 @@ export default function ContactPage() {
                       <div className="flex items-start gap-3 mb-4">
                         <Mail className="w-6 h-6 text-red-800 mt-1" />
                         <div>
-                          <h4 className="font-bold text-red-800 mb-3">Email Address</h4>
+                          <h4 className="font-bold text-red-800 mb-3">
+                            Email Address
+                          </h4>
                           <div className="bg-white p-4 rounded border-l-4 border-red-800">
-                            <p className="text-lg text-gray-800 font-medium">bppn@seahorse.co.id</p>
-                            <p className="text-sm text-gray-600">Balikpapan Operations</p>
+                            <p className="text-lg text-gray-800 font-medium">
+                              bppn@seahorse.co.id
+                            </p>
+                            <p className="text-sm text-gray-600">
+                              Balikpapan Operations
+                            </p>
                           </div>
                         </div>
                       </div>
@@ -287,10 +335,16 @@ export default function ContactPage() {
                       <div className="flex items-start gap-3 mb-4">
                         <User className="w-6 h-6 text-red-800 mt-1" />
                         <div>
-                          <h4 className="font-bold text-red-800 mb-3">Branch Management</h4>
+                          <h4 className="font-bold text-red-800 mb-3">
+                            Branch Management
+                          </h4>
                           <div className="bg-white p-4 rounded">
-                            <p className="font-semibold text-gray-800 text-lg">Mr. Hasri Umar</p>
-                            <p className="text-base text-gray-600">Branch Manager</p>
+                            <p className="font-semibold text-gray-800 text-lg">
+                              Mr. Hasri Umar
+                            </p>
+                            <p className="text-base text-gray-600">
+                              Branch Manager
+                            </p>
                           </div>
                         </div>
                       </div>
@@ -305,27 +359,37 @@ export default function ContactPage() {
                     <h3 className="text-2xl font-bold text-red-800 mb-6 border-b border-gray-200 pb-3">
                       PT SEA HORSE - Handil Tiga Base
                     </h3>
-                    
+
                     <div className="bg-gray-50 p-6 rounded-lg">
                       <div className="flex items-start gap-3 mb-4">
                         <MapPin className="w-6 h-6 text-red-800 mt-1 flex-shrink-0" />
                         <div>
-                          <h4 className="font-bold text-red-800 mb-3">Base Address</h4>
+                          <h4 className="font-bold text-red-800 mb-3">
+                            Base Address
+                          </h4>
                           <div className="space-y-1 text-base leading-relaxed">
-                            <p className="font-medium text-gray-800">Jl. Tahir RT.XI RW.02 NO.19</p>
-                            <p className="font-medium text-gray-800">Handil Dua - Muara Jawa 75261</p>
-                            <p className="font-medium text-gray-800">East Kalimantan, Indonesia</p>
+                            <p className="font-medium text-gray-800">
+                              Jl. Tahir RT.XI RW.02 NO.19
+                            </p>
+                            <p className="font-medium text-gray-800">
+                              Handil Dua - Muara Jawa 75261
+                            </p>
+                            <p className="font-medium text-gray-800">
+                              East Kalimantan, Indonesia
+                            </p>
                           </div>
                         </div>
                       </div>
                     </div>
-                    
+
                     <div className="bg-gray-50 p-6 rounded-lg">
                       <div className="flex items-center gap-3 mb-3">
                         <Phone className="w-6 h-6 text-red-800" />
                         <h4 className="font-bold text-red-800">Phone</h4>
                       </div>
-                      <p className="text-lg text-gray-800 font-medium ml-9">(+62) 541 691 830</p>
+                      <p className="text-lg text-gray-800 font-medium ml-9">
+                        (+62) 541 691 830
+                      </p>
                     </div>
                   </div>
 
@@ -334,10 +398,16 @@ export default function ContactPage() {
                       <div className="flex items-start gap-3 mb-4">
                         <Mail className="w-6 h-6 text-red-800 mt-1" />
                         <div>
-                          <h4 className="font-bold text-red-800 mb-3">Email Address</h4>
+                          <h4 className="font-bold text-red-800 mb-3">
+                            Email Address
+                          </h4>
                           <div className="bg-white p-4 rounded border-l-4 border-red-800">
-                            <p className="text-lg text-gray-800 font-medium">smo@seahorse.co.id</p>
-                            <p className="text-sm text-gray-600">Site Management Office</p>
+                            <p className="text-lg text-gray-800 font-medium">
+                              smo@seahorse.co.id
+                            </p>
+                            <p className="text-sm text-gray-600">
+                              Site Management Office
+                            </p>
                           </div>
                         </div>
                       </div>
@@ -347,10 +417,16 @@ export default function ContactPage() {
                       <div className="flex items-start gap-3 mb-4">
                         <User className="w-6 h-6 text-red-800 mt-1" />
                         <div>
-                          <h4 className="font-bold text-red-800 mb-3">Base Management</h4>
+                          <h4 className="font-bold text-red-800 mb-3">
+                            Base Management
+                          </h4>
                           <div className="bg-white p-4 rounded">
-                            <p className="font-semibold text-gray-800 text-lg">Mr. Supandi</p>
-                            <p className="text-base text-gray-600">Base Supervisor</p>
+                            <p className="font-semibold text-gray-800 text-lg">
+                              Mr. Supandi
+                            </p>
+                            <p className="text-base text-gray-600">
+                              Base Supervisor
+                            </p>
                           </div>
                         </div>
                       </div>
@@ -358,135 +434,161 @@ export default function ContactPage() {
                   </div>
                 </>
               )}
-            {activeLocation === "sangatta" && (
-              <>
-                <div className="space-y-6">
-                  <h3 className="text-2xl font-bold text-red-800 mb-6 border-b border-gray-200 pb-3">
-                    PT SEA HORSE - Sangatta Office
-                  </h3>
-                  
-                  <div className="bg-gray-50 p-6 rounded-lg">
-                    <div className="flex items-start gap-3 mb-4">
-                      <MapPin className="w-6 h-6 text-red-800 mt-1 flex-shrink-0" />
-                      <div>
-                        <h4 className="font-bold text-red-800 mb-3">Office Address</h4>
-                        <div className="space-y-1 text-base leading-relaxed">
-                          <p className="font-medium text-gray-800">Jln. APT Pranoto RT 09 No. 06</p>
-                          <p className="font-medium text-gray-800">Sangatta 75611</p>
-                          <p className="font-medium text-gray-800">East Kalimantan, Indonesia</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div className="bg-gray-50 p-6 rounded-lg">
-                    <div className="flex items-center gap-3 mb-3">
-                      <Phone className="w-6 h-6 text-red-800 flex-shrink-0" />
-                      <h4 className="font-bold text-red-800">Phone</h4>
-                    </div>
-                    <p className="text-lg font-medium text-gray-800 ml-9">(+62) 549 24254</p>
-                  </div>
-                </div>
+              {activeLocation === "sangatta" && (
+                <>
+                  <div className="space-y-6">
+                    <h3 className="text-2xl font-bold text-red-800 mb-6 border-b border-gray-200 pb-3">
+                      PT SEA HORSE - Sangatta Office
+                    </h3>
 
-                <div className="space-y-6">
-                  <div className="bg-gray-50 p-6 rounded-lg">
-                    <div className="flex items-start gap-3 mb-4">
-                      <Mail className="w-6 h-6 text-red-800 mt-1 flex-shrink-0" />
-                      <div className="w-full">
-                        <h4 className="font-bold text-red-800 mb-3">Email Address</h4>
-                        <div className="bg-white p-4 rounded border-l-4 border-red-800">
-                          <p className="text-lg text-gray-800 font-medium">agency@seahorse.co.id</p>
-                          <p className="text-sm text-gray-600">Agency Operations</p>
+                    <div className="bg-gray-50 p-6 rounded-lg">
+                      <div className="flex items-start gap-3 mb-4">
+                        <MapPin className="w-6 h-6 text-red-800 mt-1 flex-shrink-0" />
+                        <div>
+                          <h4 className="font-bold text-red-800 mb-3">
+                            Office Address
+                          </h4>
+                          <div className="space-y-1 text-base leading-relaxed">
+                            <p className="font-medium text-gray-800">
+                              Jln. APT Pranoto RT 09 No. 06
+                            </p>
+                            <p className="font-medium text-gray-800">
+                              Sangatta 75611
+                            </p>
+                            <p className="font-medium text-gray-800">
+                              East Kalimantan, Indonesia
+                            </p>
+                          </div>
                         </div>
                       </div>
+                    </div>
+
+                    <div className="bg-gray-50 p-6 rounded-lg">
+                      <div className="flex items-center gap-3 mb-3">
+                        <Phone className="w-6 h-6 text-red-800 flex-shrink-0" />
+                        <h4 className="font-bold text-red-800">Phone</h4>
+                      </div>
+                      <p className="text-lg font-medium text-gray-800 ml-9">
+                        (+62) 549 24254
+                      </p>
                     </div>
                   </div>
 
-                  <div className="bg-gray-50 p-6 rounded-lg">
-                    <div className="flex items-start gap-3 mb-4">
-                      <User className="w-6 h-6 text-red-800 mt-1 flex-shrink-0" />
-                      <div className="w-full">
-                        <h4 className="font-bold text-red-800 mb-3">Operations Management</h4>
-                        <div className="bg-white p-4 rounded">
-                          <p className="font-semibold text-gray-800 text-lg">Mr. Syarifudin</p>
-                          <p className="text-base text-gray-600">Operations Coordinator</p>
+                  <div className="space-y-6">
+                    <div className="bg-gray-50 p-6 rounded-lg">
+                      <div className="flex items-start gap-3 mb-4">
+                        <Mail className="w-6 h-6 text-red-800 mt-1 flex-shrink-0" />
+                        <div className="w-full">
+                          <h4 className="font-bold text-red-800 mb-3">
+                            Email Address
+                          </h4>
+                          <div className="bg-white p-4 rounded border-l-4 border-red-800">
+                            <p className="text-lg text-gray-800 font-medium">
+                              agency@seahorse.co.id
+                            </p>
+                            <p className="text-sm text-gray-600">
+                              Agency Operations
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="bg-gray-50 p-6 rounded-lg">
+                      <div className="flex items-start gap-3 mb-4">
+                        <User className="w-6 h-6 text-red-800 mt-1 flex-shrink-0" />
+                        <div className="w-full">
+                          <h4 className="font-bold text-red-800 mb-3">
+                            Operations Management
+                          </h4>
+                          <div className="bg-white p-4 rounded">
+                            <p className="font-semibold text-gray-800 text-lg">
+                              Mr. Syarifudin
+                            </p>
+                            <p className="text-base text-gray-600">
+                              Operations Coordinator
+                            </p>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </>
-            )}
+                </>
+              )}
             </div>
           </div>
         </div>
       </main>
 
-    {/* Footer */}
-    <footer className="bg-white text-gray-900 py-8">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
-          
-          {/* Contact */}
-          <div className="pl-0 md:pl-8">
-            <h4 className="text-md font-semibold mb-3">Contact</h4>
-            <div className="space-y-1 text-sm text-gray-600">
-              <p className="flex items-center space-x-2">
-                <MapPin className="w-4 h-4" />
-                <span>Multivision Tower 5th Floor Unit 5.</span>
-              </p>
-              <p className="flex items-center space-x-2">
-                <Phone className="w-4 h-4" />
-                <span>+62 21 2938 0018</span>
-              </p>
-              <p className="flex items-center space-x-2">
-                <Mail className="w-4 h-4" />
-                <span>general@seahorse.co.id</span>
-              </p>
+      {/* Footer */}
+      <footer className="bg-white text-gray-900 py-8">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+            {/* Contact */}
+            <div className="pl-0 md:pl-8">
+              <h4 className="text-md font-semibold mb-3">Contact</h4>
+              <div className="space-y-1 text-sm text-gray-600">
+                <p className="flex items-center space-x-2">
+                  <MapPin className="w-4 h-4" />
+                  <span>Multivision Tower 5th Floor Unit 5.</span>
+                </p>
+                <p className="flex items-center space-x-2">
+                  <Phone className="w-4 h-4" />
+                  <span>+62 21 2938 0018</span>
+                </p>
+                <p className="flex items-center space-x-2">
+                  <Mail className="w-4 h-4" />
+                  <span>general@seahorse.co.id</span>
+                </p>
+              </div>
+            </div>
+
+            {/* Quick Links */}
+            <div className="text-justify md:text-left pl-0 md:pl-15">
+              <h4 className="text-md font-semibold mb-3">Quick Links</h4>
+              <div className="space-y-1 flex flex-col items-justify md:items-start">
+                {["Home", "About", "Services", "Contact"].map((item) => (
+                  <div key={item}>
+                    <button
+                      onClick={() => {
+                        if (item === "Contact") {
+                          router.push("/contact");
+                        } else {
+                          scrollToSection(item.toLowerCase());
+                        }
+                      }}
+                      className="text-sm text-gray-600 hover:text-[#760000] transition-colors cursor-pointer"
+                    >
+                      {item}
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Legal Information */}
+            <div className="pl-0 md:pl-8">
+              <h4 className="text-md font-semibold mb-3">Legal Information</h4>
+              <div className="space-y-1 text-sm text-gray-600">
+                <p>Business License: BXXXIV-422/AT.54</p>
+                <p>NIB: 9120101202577</p>
+                <p>INSA Member: 343/INSA/VIII/1998</p>
+                <p>KADIN Certificate: 230331-030586</p>
+              </div>
             </div>
           </div>
-
-          {/* Quick Links */}
-          <div className="text-justify md:text-left pl-0 md:pl-15">
-            <h4 className="text-md font-semibold mb-3">Quick Links</h4>
-            <div className="space-y-1 flex flex-col items-justify md:items-start">
-              {['Home', 'About', 'Services', 'Contact'].map((item) => (
-                <div key={item}>
-                  <button
-                    onClick={() => {
-                      if (item === 'Contact') {
-                        router.push('/contact');
-                      } else {
-                        scrollToSection(item.toLowerCase());
-                      }
-                    }}
-                    className="text-sm text-gray-600 hover:text-[#760000] transition-colors cursor-pointer"
-                  >
-                    {item}
-                  </button>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Legal Information */}
-          <div className="pl-0 md:pl-8">
-            <h4 className="text-md font-semibold mb-3">Legal Information</h4>
-            <div className="space-y-1 text-sm text-gray-600">
-              <p>Business License: BXXXIV-422/AT.54</p>
-              <p>NIB: 9120101202577</p>
-              <p>INSA Member: 343/INSA/VIII/1998</p>
-              <p>KADIN Certificate: 230331-030586</p>
-            </div>
-          </div>
-
         </div>
-      </div>
-    </footer>
+      </footer>
 
       {/* Full-width red copyright section */}
-      <div className="w-full text-center text-sm" style={{ backgroundColor: '#760000' }}>
-        <p className="text-white py-3">&copy; 2025 P.T. SEA HORSE. All rights reserved. | ISO 9001, ISO 14001, ISO 45001 Certified</p>
+      <div
+        className="w-full text-center text-sm"
+        style={{ backgroundColor: "#760000" }}
+      >
+        <p className="text-white py-3">
+          &copy; 2025 P.T. SEA HORSE. All rights reserved. | ISO 9001, ISO
+          14001, ISO 45001 Certified
+        </p>
       </div>
 
       {/* Custom animation */}

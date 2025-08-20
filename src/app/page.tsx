@@ -23,9 +23,14 @@ const SeaHorseWebsite = () => {
 
   // Helper function for absolute image paths
   const getImagePath = (imagePath: string) => {
-    const basePath = "/seahorse-comprof-v1.2"; // Your GitHub repo name
+    const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
     return `${basePath}${imagePath}`;
   };
+
+  // const getImagePath = (imagePath: string) => {
+  //   const basePath = "/seahorse-comprof-v1.2"; // Your GitHub repo name
+  //   return `${basePath}${imagePath}`;
+  // };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -97,6 +102,29 @@ const SeaHorseWebsite = () => {
       transition: { duration: 0.6, ease: [0.4, 0, 0.2, 1] },
     },
   };
+
+  // Hero Carousel
+  const heroImages = [
+    getImagePath("/carousel-3.jpg"),
+    getImagePath("/carousel-4.jpg"),
+    getImagePath("/carousel-1.jpg"),
+  ];
+  const [heroIndex, setHeroIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  useEffect(() => {
+    if (isPaused) return;
+
+    const id = setInterval(() => {
+      setHeroIndex((i) => (i + 1) % heroImages.length);
+    }, 5000);
+
+    return () => clearInterval(id);
+  }, [isPaused, heroImages.length]);
+
+  const prevHero = () =>
+    setHeroIndex((i) => (i - 1 + heroImages.length) % heroImages.length);
+  const nextHero = () => setHeroIndex((i) => (i + 1) % heroImages.length);
 
   return (
     <div className="min-h-screen bg-white" style={{ overflow: "hidden auto" }}>
@@ -187,14 +215,77 @@ const SeaHorseWebsite = () => {
 
       {/* Hero Section */}
       <section id="home" className="pt-16 text-white relative">
-        {/* Background Image */}
+        {/* Background Image Carousel */}
         <div className="absolute top-12 left-0 right-0 bottom-0">
-          <Image
-            src={getImagePath("/carousel-1.jpg")}
-            alt="Marine Background"
-            fill
-            style={{ objectFit: "cover", filter: "brightness(60%)" }}
-          />
+          {heroImages.map((src, i) => (
+            <Image
+              key={src}
+              src={src}
+              alt={"hero ${i+ 1}"}
+              fill
+              priority={i === 0}
+              className={`object-cover transition-opacity duration-700 ease-out ${
+                i === heroIndex ? "opacity-100" : "opacity-0"
+              }`}
+              style={{ filter: "brightness(60%)", pointerEvents: "none" }}
+            />
+          ))}
+
+          {/* Prev / Next */}
+          <div className="absolute inset-y-0 left-0 right-0 flex items-center justify-between px-4">
+            <button
+              onClick={prevHero}
+              aria-label="Previous"
+              className="carousel-btn prev-btn"
+            >
+              {/* SVG Kiri */}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="icon"
+              >
+                <polyline points="15 18 9 12 15 6" />
+              </svg>
+            </button>
+            <button
+              onClick={nextHero}
+              aria-label="Next"
+              className="carousel-btn next-btn"
+            >
+              {/* SVG Kanan */}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="icon"
+              >
+                <polyline points="9 18 15 12 9 6" />
+              </svg>
+            </button>
+          </div>
+
+          {/* Dots */}
+          <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2">
+            {heroImages.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setHeroIndex(i)}
+                aria-label={`Go to slide ${i + 1}`}
+                className={`h-2 w-2 rounded-full transition-all ${
+                  i === heroIndex ? "w-6 bg-white" : "bg-white/60"
+                }`}
+              />
+            ))}
+          </div>
         </div>
 
         {/* Content Wrapper */}
@@ -257,8 +348,8 @@ const SeaHorseWebsite = () => {
                 className="text-gray-900 mb-4 leading-relaxed text-justify"
                 variants={fadeInUp}
               >
-                We john gigi a major marine services provider for the Indonesian
-                Oil & Gas exploration and production, Mining and Transportation
+                We are a major marine services provider for the Indonesian Oil &
+                Gas exploration and production, Mining and Transportation
                 Industries. Furthermore, we have represented some of the
                 world&apos;s largest shipowners.
               </motion.p>
