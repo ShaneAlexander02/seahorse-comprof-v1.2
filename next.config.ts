@@ -1,16 +1,18 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from "next"; const nextConfig: NextConfig = { output: 'export', trailingSlash: true, images: { unoptimized: true }, basePath: '/seahorse-comprof-v1.2', assetPrefix: '/seahorse-comprof-v1.2/' }; export default nextConfig;
 
-const isProd = process.env.NODE_ENV === "production";
-const repo = "seahorse-comprof-v1.2";
+// import type { NextConfig } from "next";
 
-const nextConfig: NextConfig = {
-  output: "export",
-  trailingSlash: true,
-  images: { unoptimized: true },
+// const isProd = process.env.NODE_ENV === "production";
+// const repo = "seahorse-comprof-v1.2";
 
-  basePath: isProd ? `/${repo}` : undefined,
-  assetPrefix: isProd ? `/${repo}/` : undefined,
-};
+// const nextConfig: NextConfig = {
+//   output: "export",
+//   trailingSlash: true,
+//   images: { unoptimized: true },
+
+//   basePath: isProd ? `/${repo}` : undefined,
+//   assetPrefix: isProd ? `/${repo}/` : undefined,
+// };
 
 // export default nextConfig;
 
