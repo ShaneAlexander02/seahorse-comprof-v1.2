@@ -119,7 +119,7 @@ const SeaHorseWebsite = () => {
 
   const prevAbout = () =>
     setAboutIdx((i) => (i - 1 + aboutImages.length) % aboutImages.length);
-  const nextAbout = () => setAboutIdx((i) => (i - 1) % aboutImages.length);
+  const nextAbout = () => setAboutIdx((i) => (i + 1) % aboutImages.length);
 
   return (
     <div className="min-h-screen bg-white" style={{ overflow: "hidden auto" }}>
