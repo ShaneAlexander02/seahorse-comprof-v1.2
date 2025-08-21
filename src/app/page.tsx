@@ -323,12 +323,12 @@ const SeaHorseWebsite = () => {
 
             {/* Right Image Carousel */}
             <motion.div
-              className="relative flex justify-center pt-6"
+              className="relative flex justify-center pt-12"
               variants={slideInRight}
             >
               <div
                 className="relative w-full max-w-[520px] rounded-xl overflow-hidden shadow-lg"
-                style={{ aspectRatio: "5/3" }}
+                style={{ aspectRatio: "1/1.06" }}
                 onMouseEnter={() => setAboutPaused(true)}
                 onMouseLeave={() => setAboutPaused(false)}
               >
@@ -338,8 +338,7 @@ const SeaHorseWebsite = () => {
                     key={src}
                     src={src}
                     alt={`About slide ${i + 1}`}
-                    width={520}
-                    height={346}
+                    fill
                     className={`object-cover transition-opacity duration-700 ease-out ${
                       i === aboutIdx ? "opacity-100" : "opacity-0"
                     }`}
