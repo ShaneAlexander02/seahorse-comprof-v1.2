@@ -338,7 +338,8 @@ const SeaHorseWebsite = () => {
                     key={src}
                     src={src}
                     alt={`About slide ${i + 1}`}
-                    fill
+                    width={520}
+                    height={346}
                     className={`object-cover transition-opacity duration-700 ease-out ${
                       i === aboutIdx ? "opacity-100" : "opacity-0"
                     }`}
