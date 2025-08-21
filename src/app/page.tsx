@@ -22,15 +22,15 @@ const SeaHorseWebsite = () => {
   const [activeSection, setActiveSection] = useState("home");
 
   // Helper function for absolute image paths
+  const getImagePath = (imagePath: string) => {
+    const basePath = "/seahorse-comprof-v1.2"; // GitHub repo name
+    return `${basePath}${imagePath}`;
+  };
+
   // const getImagePath = (imagePath: string) => {
   //   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
   //   return `${basePath}${imagePath}`;
   // };
-
-  const getImagePath = (imagePath: string) => {
-    const basePath = "/seahorse-comprof-v1.2"; // Your GitHub repo name
-    return `${basePath}${imagePath}`;
-  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -55,7 +55,7 @@ const SeaHorseWebsite = () => {
     setIsMenuOpen(false);
   };
 
-  // Animation variants - Fixed TypeScript errors
+  // Animation variants
   const fadeInUp: Variants = {
     hidden: { opacity: 0, y: 60 },
     visible: {
@@ -69,10 +69,7 @@ const SeaHorseWebsite = () => {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.1,
-      },
+      transition: { staggerChildren: 0.2, delayChildren: 0.1 },
     },
   };
 
@@ -103,28 +100,26 @@ const SeaHorseWebsite = () => {
     },
   };
 
-  // Hero Carousel
-  const heroImages = [
+  const aboutImages: string[] = [
     getImagePath("/carousel-3.jpg"),
     getImagePath("/carousel-4.jpg"),
-    getImagePath("/carousel-1.jpg"),
+    getImagePath("/carousel-2.jpg"),
   ];
-  const [heroIndex, setHeroIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
+
+  const [aboutIdx, setAboutIdx] = useState(0);
+  const [aboutPaused, setAboutPaused] = useState(false);
 
   useEffect(() => {
-    if (isPaused) return;
-
+    if (aboutPaused) return;
     const id = setInterval(() => {
-      setHeroIndex((i) => (i + 1) % heroImages.length);
+      setAboutIdx((i) => (i + 1) % aboutImages.length);
     }, 5000);
-
     return () => clearInterval(id);
-  }, [isPaused, heroImages.length]);
+  }, [aboutPaused, aboutImages.length]);
 
-  const prevHero = () =>
-    setHeroIndex((i) => (i - 1 + heroImages.length) % heroImages.length);
-  const nextHero = () => setHeroIndex((i) => (i + 1) % heroImages.length);
+  const prevAbout = () =>
+    setAboutIdx((i) => (i - 1 + aboutImages.length) % aboutImages.length);
+  const nextAbout = () => setAboutIdx((i) => (i - 1) % aboutImages.length);
 
   return (
     <div className="min-h-screen bg-white" style={{ overflow: "hidden auto" }}>
@@ -153,7 +148,7 @@ const SeaHorseWebsite = () => {
                   key={item}
                   onClick={() => {
                     if (item === "Contact") {
-                      router.push("/contact"); // ✅ Go to contact page
+                      router.push("/contact"); // go to contact page
                     } else {
                       scrollToSection(item.toLowerCase());
                     }
@@ -196,7 +191,7 @@ const SeaHorseWebsite = () => {
                   key={item}
                   onClick={() => {
                     if (item === "Contact") {
-                      router.push("/contact"); // ✅ Go to contact page
+                      router.push("/contact");
                     } else {
                       scrollToSection(item.toLowerCase());
                     }
@@ -215,77 +210,14 @@ const SeaHorseWebsite = () => {
 
       {/* Hero Section */}
       <section id="home" className="pt-16 text-white relative">
-        {/* Background Image Carousel */}
+        {/* Background Image */}
         <div className="absolute top-12 left-0 right-0 bottom-0">
-          {heroImages.map((src, i) => (
-            <Image
-              key={src}
-              src={src}
-              alt={"hero ${i+ 1}"}
-              fill
-              priority={i === 0}
-              className={`object-cover transition-opacity duration-700 ease-out ${
-                i === heroIndex ? "opacity-100" : "opacity-0"
-              }`}
-              style={{ filter: "brightness(60%)", pointerEvents: "none" }}
-            />
-          ))}
-
-          {/* Prev / Next */}
-          <div className="absolute inset-y-0 left-0 right-0 flex items-center justify-between px-4">
-            <button
-              onClick={prevHero}
-              aria-label="Previous"
-              className="carousel-btn prev-btn"
-            >
-              {/* SVG Kiri */}
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="icon"
-              >
-                <polyline points="15 18 9 12 15 6" />
-              </svg>
-            </button>
-            <button
-              onClick={nextHero}
-              aria-label="Next"
-              className="carousel-btn next-btn"
-            >
-              {/* SVG Kanan */}
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="icon"
-              >
-                <polyline points="9 18 15 12 9 6" />
-              </svg>
-            </button>
-          </div>
-
-          {/* Dots */}
-          <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2">
-            {heroImages.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setHeroIndex(i)}
-                aria-label={`Go to slide ${i + 1}`}
-                className={`h-2 w-2 rounded-full transition-all ${
-                  i === heroIndex ? "w-6 bg-white" : "bg-white/60"
-                }`}
-              />
-            ))}
-          </div>
+          <Image
+            src={getImagePath("/carousel-1.jpg")}
+            alt="Marine Background"
+            fill
+            style={{ objectFit: "cover", filter: "brightness(60%)" }}
+          />
         </div>
 
         {/* Content Wrapper */}
@@ -302,6 +234,7 @@ const SeaHorseWebsite = () => {
                 mining, and transportation industries.
               </p>
             </div>
+
             <div className="relative">
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
                 <div className="grid grid-cols-2 gap-6">
@@ -336,7 +269,7 @@ const SeaHorseWebsite = () => {
       >
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/*Left Content */}
+            {/* Left Content */}
             <motion.div variants={slideInLeft}>
               <motion.h2
                 className="text-3xl mb-4 sm:text-4xl font-bold text-[#760000]"
@@ -344,6 +277,7 @@ const SeaHorseWebsite = () => {
               >
                 About Us
               </motion.h2>
+
               <motion.p
                 className="text-gray-900 mb-4 leading-relaxed text-justify"
                 variants={fadeInUp}
@@ -353,6 +287,7 @@ const SeaHorseWebsite = () => {
                 Industries. Furthermore, we have represented some of the
                 world&apos;s largest shipowners.
               </motion.p>
+
               <motion.p
                 className="text-gray-900 mb-4 leading-relaxed text-justify"
                 variants={fadeInUp}
@@ -386,18 +321,85 @@ const SeaHorseWebsite = () => {
               </motion.ul>
             </motion.div>
 
-            {/* Right Image */}
+            {/* Right Image Carousel */}
             <motion.div
               className="relative flex justify-center pt-6"
               variants={slideInRight}
             >
-              <Image
-                src={getImagePath("/carousel-2.jpg")}
-                alt="About PT Sea Horse"
-                width={500}
-                height={350}
-                className="rounded-lg shadow-lg object-cover"
-              />
+              <div
+                className="relative w-full max-w-[520px] rounded-xl overflow-hidden shadow-lg"
+                style={{ aspectRatio: "5/3" }}
+                onMouseEnter={() => setAboutPaused(true)}
+                onMouseLeave={() => setAboutPaused(false)}
+              >
+                {/* Slides */}
+                {aboutImages.map((src, i) => (
+                  <Image
+                    key={src}
+                    src={src}
+                    alt={`About slide ${i + 1}`}
+                    fill
+                    className={`object-cover transition-opacity duration-700 ease-out ${
+                      i === aboutIdx ? "opacity-100" : "opacity-0"
+                    }`}
+                    priority={i === 0}
+                  />
+                ))}
+
+                {/* Arrows */}
+                <div className="absolute inset-y-0 left-0 right-0 flex items-center justify-between px-2 sm:px-3">
+                  <button
+                    onClick={prevAbout}
+                    aria-label="Previous"
+                    className="h-10 w-10 sm:h-11 sm:w-11 rounded-full bg-black/35 hover:bg-black/45 backdrop-blur flex items-center justify-center text-white transition"
+                  >
+                    {/* Left Chevron */}
+                    <svg
+                      viewBox="0 0 24 24"
+                      className="h-5 w-5"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <polyline points="15 18 9 12 15 6" />
+                    </svg>
+                  </button>
+                  <button
+                    onClick={nextAbout}
+                    aria-label="Next"
+                    className="h-10 w-10 sm:h-11 sm:w-11 rounded-full bg-black/35 hover:bg-black/45 backdrop-blur flex items-center justify-center text-white transition"
+                  >
+                    {/* right chevron */}
+                    <svg
+                      viewBox="0 0 24 24"
+                      className="h-5 w-5"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <polyline points="9 18 15 12 9 6" />
+                    </svg>
+                  </button>
+                </div>
+
+                {/* Dots */}
+                <div className="absolute bottom-2 left-0 right-0 flex justify-center gap-2">
+                  {aboutImages.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setAboutIdx(i)}
+                      aria-label={`Go to slide ${i + 1}`}
+                      className={`h-1.5 w-1.5 rounded-full transition-all ${
+                        i === aboutIdx ? "w-4 bg-white" : "bg-white/70"
+                      }`}
+                    />
+                  ))}
+                </div>
+              </div>
             </motion.div>
           </div>
         </div>
@@ -478,7 +480,7 @@ const SeaHorseWebsite = () => {
                   title: "Business Identification Number (NIB)",
                   desc: "No: 9210101202577",
                 },
-              ].map((item, index) => (
+              ].map((item) => (
                 <motion.div
                   key={item.title}
                   className="bg-white rounded-xl shadow-lg p-6 flex items-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 group cursor-pointer"
@@ -567,18 +569,14 @@ const SeaHorseWebsite = () => {
                   transition={{ type: "spring", stiffness: 300 }}
                 >
                   <div className="relative">
-                    {/* Main circle container */}
                     <motion.div
                       className="relative w-32 h-32 bg-[#760000]/10 rounded-full flex items-center justify-center hover:bg-[#760000]/15 transition-all duration-300"
                       whileHover={{ scale: 1.05 }}
                       transition={{ type: "spring", stiffness: 300 }}
                     >
-                      {/* Service number */}
                       <div className="absolute -top-3 -right-3 w-10 h-10 bg-[#760000] text-white rounded-full flex items-center justify-center font-bold text-sm">
                         {service.number}
                       </div>
-
-                      {/* Icon */}
                       <service.icon size={60} className="text-[#760000]" />
                     </motion.div>
                   </div>
@@ -591,7 +589,6 @@ const SeaHorseWebsite = () => {
                   } text-center`}
                   variants={fadeInUp}
                 >
-                  {/* Service title with decorative line */}
                   <motion.div
                     className={`flex items-center gap-4 justify-center ${
                       index % 2 === 1 ? "lg:justify-end" : "lg:justify-start"
@@ -599,25 +596,19 @@ const SeaHorseWebsite = () => {
                     initial={{ opacity: 0, x: index % 2 === 1 ? 30 : -30 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true, amount: 0.3 }}
-                    transition={{
-                      duration: 0.5,
-                      ease: "easeOut",
-                    }}
+                    transition={{ duration: 0.5, ease: "easeOut" }}
                   >
                     {index % 2 === 0 && (
                       <div className="hidden lg:block w-12 h-0.5 bg-[#760000]" />
                     )}
-
                     <h3 className="font-bold text-2xl lg:text-2xl text-[#760000]">
                       {service.title}
                     </h3>
-
                     {index % 2 === 1 && (
                       <div className="hidden lg:block w-12 h-0.5 bg-[#760000]" />
                     )}
                   </motion.div>
 
-                  {/* Service description */}
                   <motion.p
                     className={`text-gray-900 text-base lg:text-lg leading-relaxed max-w-xl ${
                       index % 2 === 1 ? "lg:ml-auto" : "mx-auto lg:mx-0"
@@ -625,11 +616,7 @@ const SeaHorseWebsite = () => {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.3 }}
-                    transition={{
-                      duration: 0.6,
-                      delay: 0.2,
-                      ease: "easeOut",
-                    }}
+                    transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
                   >
                     {service.text}
                   </motion.p>
@@ -668,10 +655,7 @@ const SeaHorseWebsite = () => {
             <motion.div
               className="bg-white rounded-lg p-6 text-center shadow-lg"
               variants={scaleUp}
-              whileHover={{
-                scale: 1.05,
-                transition: { duration: 0.3 },
-              }}
+              whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
             >
               <div className="w-24 h-24 mx-auto mb-4 rounded-lg p-2">
                 <Image
@@ -695,10 +679,7 @@ const SeaHorseWebsite = () => {
             <motion.div
               className="bg-white rounded-lg p-6 text-center shadow-lg"
               variants={scaleUp}
-              whileHover={{
-                scale: 1.05,
-                transition: { duration: 0.3 },
-              }}
+              whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
             >
               <div className="w-24 h-24 mx-auto mb-4 rounded-lg p-2">
                 <Image
@@ -718,10 +699,7 @@ const SeaHorseWebsite = () => {
             <motion.div
               className="bg-white rounded-lg p-6 text-center shadow-lg"
               variants={scaleUp}
-              whileHover={{
-                scale: 1.05,
-                transition: { duration: 0.3 },
-              }}
+              whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
             >
               <div className="w-24 h-24 mx-auto mb-4 rounded-lg p-2">
                 <Image
@@ -741,10 +719,7 @@ const SeaHorseWebsite = () => {
             <motion.div
               className="bg-white rounded-lg p-6 text-center shadow-lg"
               variants={scaleUp}
-              whileHover={{
-                scale: 1.05,
-                transition: { duration: 0.3 },
-              }}
+              whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
             >
               <div className="w-24 h-24 mx-auto mb-4 rounded-lg p-2">
                 <Image
@@ -766,10 +741,7 @@ const SeaHorseWebsite = () => {
             <motion.div
               className="bg-white rounded-lg p-6 text-center shadow-lg"
               variants={scaleUp}
-              whileHover={{
-                scale: 1.05,
-                transition: { duration: 0.3 },
-              }}
+              whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
             >
               <div className="w-24 h-24 mx-auto mb-4 rounded-lg p-2">
                 <Image
@@ -851,6 +823,7 @@ const SeaHorseWebsite = () => {
           </div>
         </div>
       </footer>
+
       {/* Full-width red copyright section */}
       <div
         className="w-full text-center text-sm"
@@ -864,4 +837,5 @@ const SeaHorseWebsite = () => {
     </div>
   );
 };
+
 export default SeaHorseWebsite;
