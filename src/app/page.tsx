@@ -729,7 +729,7 @@ const SeaHorseWebsite = () => {
               <h3 className="font-semibold text-gray-900 mb-2">
                 {t("certifications.iso14001")}
               </h3>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-gray-600 two-line-text">
                 {t("certifications.iso14001.desc")}
               </p>
               <p className="text-xs text-gray-500 mt-1">
@@ -781,7 +781,7 @@ const SeaHorseWebsite = () => {
               <h3 className="font-semibold text-gray-900 mb-2">
                 {t("certifications.kadin")}
               </h3>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-gray-600 two-line-text">
                 {t("certifications.kadin.desc")}
               </p>
               <p className="text-xs text-gray-500 mt-1">

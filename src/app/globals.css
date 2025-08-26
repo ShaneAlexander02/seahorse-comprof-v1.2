@@ -60,3 +60,7 @@ body {
   display: block;
   margin: auto;
 }
+
+.two-line-text {
+  white-space: pre-line;
+}
