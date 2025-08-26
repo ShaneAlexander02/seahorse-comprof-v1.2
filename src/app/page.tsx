@@ -25,15 +25,15 @@ const SeaHorseWebsite = () => {
   const [activeSection, setActiveSection] = useState("home");
 
   // Helper function for absolute image paths
-  // const getImagePath = (imagePath: string) => {
-  //   const basePath = "/seahorse-comprof-v1.2"; // GitHub repo name
-  //   return `${basePath}${imagePath}`;
-  // };
-
   const getImagePath = (imagePath: string) => {
-    const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+    const basePath = "/seahorse-comprof-v1.2"; // GitHub repo name
     return `${basePath}${imagePath}`;
   };
+
+  // const getImagePath = (imagePath: string) => {
+  //   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+  //   return `${basePath}${imagePath}`;
+  // };
 
   useEffect(() => {
     const handleScroll = () => {
