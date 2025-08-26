@@ -37,8 +37,8 @@ export default function ContactPage() {
               <Image
                 src={getImagePath("/logo.jpg")}
                 alt="P.T. Sea Horse Logo"
-                width={150}
-                height={150}
+                width={140}
+                height={140}
                 className="rounded-lg mb-2"
               />
             </div>
