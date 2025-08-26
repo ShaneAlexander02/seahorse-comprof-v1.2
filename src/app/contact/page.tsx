@@ -25,20 +25,20 @@ export default function ContactPage() {
 
   return (
     <>
-{/* Navigation */}
+      {/* Navigation - Updated to match main page */}
       <nav
         style={{ backgroundColor: "#ffffff" }}
         className="fixed top-0 w-full bg-white/95 backdrop-blur-md shadow-sm z-50 border-b"
       >
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-9">
-          <div className="flex justify-between items-center h-16">
+          <div className="flex justify-between items-center h-20">
             {/* Logo */}
             <div className="flex items-center">
               <Image
                 src={getImagePath("/logo.jpg")}
                 alt="P.T. Sea Horse Logo"
-                width={120}
-                height={120}
+                width={175}
+                height={175}
                 className="rounded-lg mb-2"
               />
             </div>
@@ -68,7 +68,7 @@ export default function ContactPage() {
                       borderBottom:
                         item.section === "contact" ? "2px solid #760000" : "none",
                     }}
-                    className="px-3 py-2 text-mb font-medium transition-colors"
+                    className="px-3 py-2 text-md font-medium transition-colors"
                   >
                     {t(item.key)}
                   </button>
@@ -77,7 +77,7 @@ export default function ContactPage() {
               <LanguageSwitcher />
             </div>
 
-            {/* Mobile Language Switcher and Menu Button */}
+            {/* Mobile - Language Switcher and Menu Button */}
             <div className="md:hidden flex items-center space-x-3">
               <LanguageSwitcher />
               <button
@@ -117,7 +117,7 @@ export default function ContactPage() {
                     }
                     setIsMenuOpen(false);
                   }}
-                  className="block w-full text-left px-3 py-2 hover:bg-gray-50 rounded-md text-lg"
+                  className="block w-full text-left px-3 py-2 hover:bg-gray-50 rounded-md text-md"
                   style={{
                     color: "#760000",
                     fontWeight: item.section === "contact" ? "bold" : "normal",
@@ -134,7 +134,7 @@ export default function ContactPage() {
       {/* Main Content */}
       <main className="min-h-screen bg-gray-50">
         {/* Title */}
-        <section className="pt-21 py-4 bg-[#760000] text-white text-center">
+        <section className="pt-24 py-4 bg-[#760000] text-white text-center">
           <h1 className="text-3xl font-bold mb-2">{t('contact.title')}</h1>
         </section>
 
@@ -575,10 +575,12 @@ export default function ContactPage() {
                   <div key={item.key}>
                     <button
                       onClick={() => {
-                        if (item.section === "contact") {
+                        if (item.section === "home") {
+                          router.push("/");
+                        } else if (item.section === "contact") {
                           router.push("/contact");
                         } else {
-                          scrollToSection(item.section);
+                          router.push(`/#${item.section}`);
                         }
                       }}
                       className="text-sm text-gray-600 hover:text-[#760000] transition-colors cursor-pointer"

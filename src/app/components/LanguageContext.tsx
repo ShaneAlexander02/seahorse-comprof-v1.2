@@ -161,13 +161,13 @@ const translations = {
     'certifications.iso9001.desc': 'Sistem Manajemen Kualitas',
     'certifications.iso9001.cert': 'No. Sert. 55Q13036',
     'certifications.iso14001': 'ISO 14001',
-    'certifications.iso14001.desc': 'Manajemen Lingkungan',
+    'certifications.iso14001.desc': 'Manajemen\nLingkungan',
     'certifications.iso14001.cert': 'No. Sert. 32E13036',
     'certifications.iso45001': 'ISO 45001',
     'certifications.iso45001.desc': 'Kesehatan & Keselamatan Kerja',
     'certifications.iso45001.cert': 'No. Sert. 20O13036',
     'certifications.kadin': 'Anggota KADIN',
-    'certifications.kadin.desc': 'Kamar Dagang Indonesia',
+    'certifications.kadin.desc': 'Kamar Dagang\nIndonesia',
     'certifications.kadin.reg': 'No. Reg. 230331-030586',
     
     // Contact Page
