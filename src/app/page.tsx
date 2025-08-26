@@ -247,7 +247,7 @@ const SeaHorseWebsite = () => {
                 {t("hero.title")}
                 <span className="block text-white">{t("hero.subtitle")}</span>
               </h1>
-              <p className="text-xl mb-8 leading-relaxed text-white">
+              <p className="text-xl mb-8 leading-relaxed text-white text-justify">
                 {t("hero.description")}
               </p>
             </div>
@@ -321,13 +321,13 @@ const SeaHorseWebsite = () => {
                 ].map((activityKey) => (
                   <motion.li
                     key={activityKey}
-                    className="flex items-center space-x-3"
+                    className="flex items-start space-x-3"
                     variants={fadeInUp}
                   >
-                    <span className="w-8 h-8 flex items-center justify-center bg-[#760000]/10 rounded-full text-[#760000] font-bold">
+                    <span className="w-8 h-8 flex-shrink-0 flex items-center justify-center bg-[#760000]/10 rounded-full text-[#760000] font-bold mt-0.5">
                       ✓
                     </span>
-                    <span className="text-gray-900 font-medium">
+                    <span className="text-gray-900 font-medium leading-relaxed">
                       {t(activityKey)}
                     </span>
                   </motion.li>

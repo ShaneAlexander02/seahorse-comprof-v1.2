@@ -123,7 +123,7 @@ const translations = {
     // About Section  
     'about.title': 'Tentang Kami',
     'about.p1': 'Kami adalah penyedia layanan kelautan dalam eksplorasi dan produksi minyak & gas di Indonesia, juga terlibat dalam industri pertambangan dan transportasinya. Selain itu, kami telah mewakili beberapa pemilik kapal terbesar di dunia.',
-    'about.p2': 'Oleh karena itu, kami memiliki kemampuan untuk menyediakan kapal tunda dan kapal pendukung untuk bekerja di lokasi perairan yang dalam, dan mempunyai  kapasitas untuk menyediakan kapal bahkan ketika pekerjaan harus diselesaikan dalam waktu yang sangat singkat. Hal ini memungkinkan kami untuk bekerja dengan percaya diri untuk memenuhi kebutuhan pelanggan kami. Beberapa kegiatan utama kami meliputi:',
+    'about.p2': 'Oleh karena itu, kami memiliki kemampuan untuk menyediakan kapal tunda dan kapal pendukung untuk bekerja di lokasi perairan yang dalam, dan mempunyai  kapasitas untuk menyediakan kapal bahkan ketika pekerjaan harus diselesaikan dalam waktu yang sangat singkat. Beberapa kegiatan utama kami meliputi:',
     'about.activity1': 'Kepemilikan dan Pengelolaan Kapal',
     'about.activity2': 'Penyewaan Kapal termasuk Penjualan & Pembelian Kapal',
     'about.activity3': 'Kegiatan Operasional untuk Kapal Tunda (Di Pelabuhan dan Lepas Pantai)',
