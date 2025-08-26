@@ -4,9 +4,12 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { Menu, X, MapPin, Phone, Mail, User } from "lucide-react";
+import { useLanguage } from '../components/LanguageContext';
+import { LanguageSwitcher } from '../components/LanguageSwitcher';
 
 export default function ContactPage() {
   const router = useRouter();
+  const { t } = useLanguage();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeLocation, setActiveLocation] = useState("jakarta");
 
@@ -41,29 +44,37 @@ export default function ContactPage() {
             </div>
 
             {/* Desktop Menu */}
-            <div className="hidden md:flex space-x-8">
-              {["Home", "About", "Services", "Contact"].map((item) => (
-                <button
-                  key={item}
-                  onClick={() => {
-                    if (item === "Home") {
-                      router.push("/");
-                    } else if (item === "Contact") {
-                      router.push("/contact");
-                    } else {
-                      router.push(`/#${item.toLowerCase()}`);
-                    }
-                  }}
-                  style={{
-                    color: "#760000",
-                    borderBottom:
-                      item === "Contact" ? "2px solid #760000" : "none",
-                  }}
-                  className="px-3 py-2 text-mb font-medium transition-colors"
-                >
-                  {item}
-                </button>
-              ))}
+            <div className="hidden md:flex items-center space-x-8">
+              <div className="flex space-x-8">
+                {[
+                  { key: "nav.home", section: "home" },
+                  { key: "nav.about", section: "about" },
+                  { key: "nav.services", section: "services" },
+                  { key: "nav.contact", section: "contact" },
+                ].map((item) => (
+                  <button
+                    key={item.key}
+                    onClick={() => {
+                      if (item.section === "home") {
+                        router.push("/");
+                      } else if (item.section === "contact") {
+                        router.push("/contact");
+                      } else {
+                        router.push(`/#${item.section}`);
+                      }
+                    }}
+                    style={{
+                      color: "#760000",
+                      borderBottom:
+                        item.section === "contact" ? "2px solid #760000" : "none",
+                    }}
+                    className="px-3 py-2 text-mb font-medium transition-colors"
+                  >
+                    {t(item.key)}
+                  </button>
+                ))}
+              </div>
+              <LanguageSwitcher />
             </div>
 
             {/* Mobile Menu Button */}
@@ -85,28 +96,36 @@ export default function ContactPage() {
         {isMenuOpen && (
           <div className="md:hidden bg-white border-t">
             <div className="px-4 py-2 space-y-1">
-              {["Home", "About", "Services", "Contact"].map((item) => (
+              {[
+                { key: "nav.home", section: "home" },
+                { key: "nav.about", section: "about" },
+                { key: "nav.services", section: "services" },
+                { key: "nav.contact", section: "contact" },
+              ].map((item) => (
                 <button
-                  key={item}
+                  key={item.key}
                   onClick={() => {
-                    if (item === "Home") {
+                    if (item.section === "home") {
                       router.push("/");
-                    } else if (item === "Contact") {
+                    } else if (item.section === "contact") {
                       router.push("/contact");
                     } else {
-                      router.push(`/#${item.toLowerCase()}`);
+                      router.push(`/#${item.section}`);
                     }
                     setIsMenuOpen(false);
                   }}
                   className="block w-full text-left px-3 py-2 hover:bg-gray-50 rounded-md text-lg"
                   style={{
                     color: "#760000",
-                    fontWeight: item === "Contact" ? "bold" : "normal",
+                    fontWeight: item.section === "contact" ? "bold" : "normal",
                   }}
                 >
-                  {item}
+                  {t(item.key)}
                 </button>
               ))}
+              <div className="px-3 py-2">
+                <LanguageSwitcher />
+              </div>
             </div>
           </div>
         )}
@@ -116,7 +135,7 @@ export default function ContactPage() {
       <main className="min-h-screen bg-gray-50">
         {/* Title */}
         <section className="pt-21 py-4 bg-[#760000] text-white text-center">
-          <h1 className="text-3xl font-bold mb-2">Contact Us</h1>
+          <h1 className="text-3xl font-bold mb-2">{t('contact.title')}</h1>
         </section>
 
         {/* Map */}
@@ -138,7 +157,7 @@ export default function ContactPage() {
           <div className="bg-white shadow-lg rounded-lg p-8 transform transition-all duration-700 ease-out opacity-0 animate-fadeInUp">
             <div className="border-b mb-8">
               <h2 className="text-2xl font-bold text-gray-900 mb-6">
-                Our Locations
+                {t('contact.locations.title')}
               </h2>
               <div className="flex flex-wrap gap-2 mb-6">
                 {[
@@ -168,7 +187,7 @@ export default function ContactPage() {
                 <>
                   <div className="space-y-6">
                     <h3 className="text-2xl font-bold text-red-800 mb-6 border-b border-gray-200 pb-3">
-                      PT SEA HORSE - Jakarta Office
+                      {t('contact.jakarta.title')}
                     </h3>
 
                     <div className="bg-gray-50 p-6 rounded-lg">
@@ -176,7 +195,7 @@ export default function ContactPage() {
                         <MapPin className="w-6 h-6 text-red-800 mt-1 flex-shrink-0" />
                         <div>
                           <h4 className="font-bold text-red-800 mb-3">
-                            Office Address
+                            {t('contact.address')}
                           </h4>
                           <div className="space-y-1 text-base text-gray-800 leading-relaxed">
                             <p className="font-medium">
@@ -195,7 +214,7 @@ export default function ContactPage() {
                     <div className="bg-gray-50 p-6 rounded-lg">
                       <div className="flex items-center gap-3 mb-3">
                         <Phone className="w-6 h-6 text-red-800" />
-                        <h4 className="font-bold text-red-800">Phone</h4>
+                        <h4 className="font-bold text-red-800">{t('contact.phone')}</h4>
                       </div>
                       <p className="text-lg text-gray-800 font-medium ml-9">
                         (+62) 21 2938 0018
@@ -209,7 +228,7 @@ export default function ContactPage() {
                         <Mail className="w-6 h-6 text-red-800 mt-1" />
                         <div>
                           <h4 className="font-bold text-red-800 mb-3">
-                            Email Addresses
+                            {t('contact.email')}
                           </h4>
                           <div className="space-y-2 ml-0">
                             <div className="bg-white p-3 rounded border-l-4 border-red-800">
@@ -238,7 +257,7 @@ export default function ContactPage() {
                         <User className="w-6 h-6 text-red-800 mt-1" />
                         <div>
                           <h4 className="font-bold text-red-800 mb-3">
-                            Key Personnel
+                            {t('contact.personnel')}
                           </h4>
                           <div className="space-y-3 ml-0">
                             <div className="bg-white p-3 rounded">
@@ -267,7 +286,7 @@ export default function ContactPage() {
                 <>
                   <div className="space-y-6">
                     <h3 className="text-2xl font-bold text-red-800 mb-6 border-b border-gray-200 pb-3">
-                      PT SEA HORSE - Balikpapan Branch
+                      {t('contact.balikpapan.title')}
                     </h3>
 
                     <div className="bg-gray-50 p-6 rounded-lg">
@@ -275,7 +294,7 @@ export default function ContactPage() {
                         <MapPin className="w-6 h-6 text-red-800 mt-1 flex-shrink-0" />
                         <div>
                           <h4 className="font-bold text-red-800 mb-3">
-                            Branch Address
+                            {t('contact.branch.address')}
                           </h4>
                           <div className="space-y-1 text-base leading-relaxed">
                             <p className="font-medium text-gray-800">
@@ -298,7 +317,7 @@ export default function ContactPage() {
                     <div className="bg-gray-50 p-6 rounded-lg">
                       <div className="flex items-center gap-3 mb-3">
                         <Phone className="w-6 h-6 text-red-800" />
-                        <h4 className="font-bold text-red-800">Phone</h4>
+                        <h4 className="font-bold text-red-800">{t('contact.phone')}</h4>
                       </div>
                       <div className="ml-9 space-y-1">
                         <p className="text-lg text-gray-800 font-medium">
@@ -317,7 +336,7 @@ export default function ContactPage() {
                         <Mail className="w-6 h-6 text-red-800 mt-1" />
                         <div>
                           <h4 className="font-bold text-red-800 mb-3">
-                            Email Address
+                            {t('contact.email.single')}
                           </h4>
                           <div className="bg-white p-4 rounded border-l-4 border-red-800">
                             <p className="text-lg text-gray-800 font-medium">
@@ -336,7 +355,7 @@ export default function ContactPage() {
                         <User className="w-6 h-6 text-red-800 mt-1" />
                         <div>
                           <h4 className="font-bold text-red-800 mb-3">
-                            Branch Management
+                            {t('contact.management')}
                           </h4>
                           <div className="bg-white p-4 rounded">
                             <p className="font-semibold text-gray-800 text-lg">
@@ -357,7 +376,7 @@ export default function ContactPage() {
                 <>
                   <div className="space-y-6">
                     <h3 className="text-2xl font-bold text-red-800 mb-6 border-b border-gray-200 pb-3">
-                      PT SEA HORSE - Handil Tiga Base
+                      {t('contact.handil.title')}
                     </h3>
 
                     <div className="bg-gray-50 p-6 rounded-lg">
@@ -365,7 +384,7 @@ export default function ContactPage() {
                         <MapPin className="w-6 h-6 text-red-800 mt-1 flex-shrink-0" />
                         <div>
                           <h4 className="font-bold text-red-800 mb-3">
-                            Base Address
+                            {t('contact.base.address')}
                           </h4>
                           <div className="space-y-1 text-base leading-relaxed">
                             <p className="font-medium text-gray-800">
@@ -385,7 +404,7 @@ export default function ContactPage() {
                     <div className="bg-gray-50 p-6 rounded-lg">
                       <div className="flex items-center gap-3 mb-3">
                         <Phone className="w-6 h-6 text-red-800" />
-                        <h4 className="font-bold text-red-800">Phone</h4>
+                        <h4 className="font-bold text-red-800">{t('contact.phone')}</h4>
                       </div>
                       <p className="text-lg text-gray-800 font-medium ml-9">
                         (+62) 541 691 830
@@ -399,7 +418,7 @@ export default function ContactPage() {
                         <Mail className="w-6 h-6 text-red-800 mt-1" />
                         <div>
                           <h4 className="font-bold text-red-800 mb-3">
-                            Email Address
+                            {t('contact.email.single')}
                           </h4>
                           <div className="bg-white p-4 rounded border-l-4 border-red-800">
                             <p className="text-lg text-gray-800 font-medium">
@@ -418,7 +437,7 @@ export default function ContactPage() {
                         <User className="w-6 h-6 text-red-800 mt-1" />
                         <div>
                           <h4 className="font-bold text-red-800 mb-3">
-                            Base Management
+                            {t('contact.base.management')}
                           </h4>
                           <div className="bg-white p-4 rounded">
                             <p className="font-semibold text-gray-800 text-lg">
@@ -438,7 +457,7 @@ export default function ContactPage() {
                 <>
                   <div className="space-y-6">
                     <h3 className="text-2xl font-bold text-red-800 mb-6 border-b border-gray-200 pb-3">
-                      PT SEA HORSE - Sangatta Office
+                      {t('contact.sangatta.title')}
                     </h3>
 
                     <div className="bg-gray-50 p-6 rounded-lg">
@@ -446,7 +465,7 @@ export default function ContactPage() {
                         <MapPin className="w-6 h-6 text-red-800 mt-1 flex-shrink-0" />
                         <div>
                           <h4 className="font-bold text-red-800 mb-3">
-                            Office Address
+                            {t('contact.address')}
                           </h4>
                           <div className="space-y-1 text-base leading-relaxed">
                             <p className="font-medium text-gray-800">
@@ -466,7 +485,7 @@ export default function ContactPage() {
                     <div className="bg-gray-50 p-6 rounded-lg">
                       <div className="flex items-center gap-3 mb-3">
                         <Phone className="w-6 h-6 text-red-800 flex-shrink-0" />
-                        <h4 className="font-bold text-red-800">Phone</h4>
+                        <h4 className="font-bold text-red-800">{t('contact.phone')}</h4>
                       </div>
                       <p className="text-lg font-medium text-gray-800 ml-9">
                         (+62) 549 24254
@@ -480,7 +499,7 @@ export default function ContactPage() {
                         <Mail className="w-6 h-6 text-red-800 mt-1 flex-shrink-0" />
                         <div className="w-full">
                           <h4 className="font-bold text-red-800 mb-3">
-                            Email Address
+                            {t('contact.email.single')}
                           </h4>
                           <div className="bg-white p-4 rounded border-l-4 border-red-800">
                             <p className="text-lg text-gray-800 font-medium">
@@ -499,7 +518,7 @@ export default function ContactPage() {
                         <User className="w-6 h-6 text-red-800 mt-1 flex-shrink-0" />
                         <div className="w-full">
                           <h4 className="font-bold text-red-800 mb-3">
-                            Operations Management
+                            {t('contact.operations.management')}
                           </h4>
                           <div className="bg-white p-4 rounded">
                             <p className="font-semibold text-gray-800 text-lg">
@@ -526,7 +545,7 @@ export default function ContactPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
             {/* Contact */}
             <div className="pl-0 md:pl-8">
-              <h4 className="text-md font-semibold mb-3">Contact</h4>
+              <h4 className="text-md font-semibold mb-3">{t('footer.contact')}</h4>
               <div className="space-y-1 text-sm text-gray-600">
                 <p className="flex items-center space-x-2">
                   <MapPin className="w-4 h-4" />
@@ -545,21 +564,26 @@ export default function ContactPage() {
 
             {/* Quick Links */}
             <div className="text-justify md:text-left pl-0 md:pl-15">
-              <h4 className="text-md font-semibold mb-3">Quick Links</h4>
+              <h4 className="text-md font-semibold mb-3">{t('footer.quicklinks')}</h4>
               <div className="space-y-1 flex flex-col items-justify md:items-start">
-                {["Home", "About", "Services", "Contact"].map((item) => (
-                  <div key={item}>
+                {[
+                  { key: "nav.home", section: "home" },
+                  { key: "nav.about", section: "about" },
+                  { key: "nav.services", section: "services" },
+                  { key: "nav.contact", section: "contact" },
+                ].map((item) => (
+                  <div key={item.key}>
                     <button
                       onClick={() => {
-                        if (item === "Contact") {
+                        if (item.section === "contact") {
                           router.push("/contact");
                         } else {
-                          scrollToSection(item.toLowerCase());
+                          scrollToSection(item.section);
                         }
                       }}
                       className="text-sm text-gray-600 hover:text-[#760000] transition-colors cursor-pointer"
                     >
-                      {item}
+                      {t(item.key)}
                     </button>
                   </div>
                 ))}
@@ -568,7 +592,7 @@ export default function ContactPage() {
 
             {/* Legal Information */}
             <div className="pl-0 md:pl-8">
-              <h4 className="text-md font-semibold mb-3">Legal Information</h4>
+              <h4 className="text-md font-semibold mb-3">{t('footer.legal')}</h4>
               <div className="space-y-1 text-sm text-gray-600">
                 <p>Business License: BXXXIV-422/AT.54</p>
                 <p>NIB: 9120101202577</p>
@@ -586,8 +610,7 @@ export default function ContactPage() {
         style={{ backgroundColor: "#760000" }}
       >
         <p className="text-white py-3">
-          &copy; 2025 P.T. SEA HORSE. All rights reserved. | ISO 9001, ISO
-          14001, ISO 45001 Certified
+          {t('footer.copyright')}
         </p>
       </div>
 

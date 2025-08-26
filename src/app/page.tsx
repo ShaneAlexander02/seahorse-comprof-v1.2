@@ -15,9 +15,12 @@ import {
   Package,
 } from "lucide-react";
 import { motion, Variants } from "framer-motion";
+import { useLanguage } from './components/LanguageContext';
+import { LanguageSwitcher } from './components/LanguageSwitcher';
 
 const SeaHorseWebsite = () => {
   const router = useRouter();
+  const { t } = useLanguage();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
 
@@ -142,29 +145,37 @@ const SeaHorseWebsite = () => {
             </div>
 
             {/* Desktop Menu */}
-            <div className="hidden md:flex space-x-8">
-              {["Home", "About", "Services", "Contact"].map((item) => (
-                <button
-                  key={item}
-                  onClick={() => {
-                    if (item === "Contact") {
-                      router.push("/contact"); // go to contact page
-                    } else {
-                      scrollToSection(item.toLowerCase());
-                    }
-                  }}
-                  style={{
-                    color: "#760000",
-                    borderBottom:
-                      activeSection === item.toLowerCase()
-                        ? "2px solid #760000"
-                        : "none",
-                  }}
-                  className="px-3 py-2 text-md font-medium transition-colors"
-                >
-                  {item}
-                </button>
-              ))}
+            <div className="hidden md:flex items-center space-x-8">
+              <div className="flex space-x-8">
+                {[
+                  { key: "nav.home", section: "home" },
+                  { key: "nav.about", section: "about" },
+                  { key: "nav.services", section: "services" },
+                  { key: "nav.contact", section: "contact" },
+                ].map((item) => (
+                  <button
+                    key={item.key}
+                    onClick={() => {
+                      if (item.section === "contact") {
+                        router.push("/contact");
+                      } else {
+                        scrollToSection(item.section);
+                      }
+                    }}
+                    style={{
+                      color: "#760000",
+                      borderBottom:
+                        activeSection === item.section
+                          ? "2px solid #760000"
+                          : "none",
+                    }}
+                    className="px-3 py-2 text-md font-medium transition-colors"
+                  >
+                    {t(item.key)}
+                  </button>
+                ))}
+              </div>
+              <LanguageSwitcher />
             </div>
 
             {/* Mobile Menu Button */}
@@ -186,23 +197,31 @@ const SeaHorseWebsite = () => {
         {isMenuOpen && (
           <div className="md:hidden bg-white border-t">
             <div className="px-4 py-2 space-y-1">
-              {["Home", "About", "Services", "Contact"].map((item) => (
+              {[
+                { key: "nav.home", section: "home" },
+                { key: "nav.about", section: "about" },
+                { key: "nav.services", section: "services" },
+                { key: "nav.contact", section: "contact" },
+              ].map((item) => (
                 <button
-                  key={item}
+                  key={item.key}
                   onClick={() => {
-                    if (item === "Contact") {
+                    if (item.section === "contact") {
                       router.push("/contact");
                     } else {
-                      scrollToSection(item.toLowerCase());
+                      scrollToSection(item.section);
                     }
                     setIsMenuOpen(false);
                   }}
                   className="block w-full text-left px-3 py-2 hover:bg-gray-50 rounded-md text-md"
                   style={{ color: "#760000" }}
                 >
-                  {item}
+                  {t(item.key)}
                 </button>
               ))}
+              <div className="px-3 py-2">
+                <LanguageSwitcher />
+              </div>
             </div>
           </div>
         )}
@@ -225,13 +244,11 @@ const SeaHorseWebsite = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <h1 className="text-4xl lg:text-5xl font-bold mb-6 leading-tight">
-                Leading Marine Services
-                <span className="block text-white">Provider in Indonesia</span>
+                {t('hero.title')}
+                <span className="block text-white">{t('hero.subtitle')}</span>
               </h1>
               <p className="text-xl mb-8 leading-relaxed text-white">
-                Established in 1972, PT Sea Horse is a major marine services
-                provider for the Indonesian Oil & Gas exploration, production,
-                mining, and transportation industries.
+                {t('hero.description')}
               </p>
             </div>
 
@@ -239,16 +256,16 @@ const SeaHorseWebsite = () => {
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
                 <div className="grid grid-cols-2 gap-6">
                   {[
-                    { label: "Years Experience", value: "50+" },
-                    { label: "Office Locations", value: "4" },
-                    { label: "Certified", value: "ISO" },
-                    { label: "Operations", value: "24/7" },
+                    { labelKey: "hero.stats.experience", value: "50+" },
+                    { labelKey: "hero.stats.locations", value: "4" },
+                    { labelKey: "hero.stats.certified", value: "ISO" },
+                    { labelKey: "hero.stats.operations", value: "24/7" },
                   ].map((stat) => (
-                    <div key={stat.label} className="text-center">
+                    <div key={stat.labelKey} className="text-center">
                       <div className="text-3xl font-bold text-white">
                         {stat.value}
                       </div>
-                      <div className="text-sm text-white">{stat.label}</div>
+                      <div className="text-sm text-white">{t(stat.labelKey)}</div>
                     </div>
                   ))}
                 </div>
@@ -275,47 +292,40 @@ const SeaHorseWebsite = () => {
                 className="text-3xl mb-4 sm:text-4xl font-bold text-[#760000]"
                 variants={fadeInUp}
               >
-                About Us
+                {t('about.title')}
               </motion.h2>
 
               <motion.p
                 className="text-gray-900 mb-4 leading-relaxed text-justify"
                 variants={fadeInUp}
               >
-                We are a major marine services provider for the Indonesian Oil &
-                Gas exploration and production, Mining and Transportation
-                Industries. Furthermore, we have represented some of the
-                world&apos;s largest shipowners.
+                {t('about.p1')}
               </motion.p>
 
               <motion.p
                 className="text-gray-900 mb-4 leading-relaxed text-justify"
                 variants={fadeInUp}
               >
-                Hence, We have the ability to supply tugs and support vessels to
-                work in deep water locations and the capacity to supply vessels
-                in tight situations. This has enable us to work with confidence
-                for our customer&apos;s needs. Some of our main activities
-                include:
+                {t('about.p2')}
               </motion.p>
 
               <motion.ul className="mt-6 space-y-4" variants={staggerContainer}>
                 {[
-                  "Ship Owning and Management",
-                  "Vessel Chartering and Sale & Purchase",
-                  "Operations for Tug Services (Harbour and Offshore)",
-                  "Shipping Agency (Port, Vessel & Crew Clearance, etc)",
-                  "General Agent for Coal Ship Operations and others",
-                ].map((item) => (
+                  'about.activity1',
+                  'about.activity2',
+                  'about.activity3',
+                  'about.activity4',
+                  'about.activity5',
+                ].map((activityKey) => (
                   <motion.li
-                    key={item}
+                    key={activityKey}
                     className="flex items-center space-x-3"
                     variants={fadeInUp}
                   >
                     <span className="w-8 h-8 flex items-center justify-center bg-[#760000]/10 rounded-full text-[#760000] font-bold">
                       ✓
                     </span>
-                    <span className="text-gray-900 font-medium">{item}</span>
+                    <span className="text-gray-900 font-medium">{t(activityKey)}</span>
                   </motion.li>
                 ))}
               </motion.ul>
@@ -417,11 +427,10 @@ const SeaHorseWebsite = () => {
           {/* Section Title */}
           <motion.div className="text-center mb-10" variants={fadeInUp}>
             <h2 className="text-3xl mb-4 sm:text-4xl font-bold text-white">
-              Official Authorization & Business Credentials
+              {t('expertise.title')}
             </h2>
             <p className="mt-3 text-gray-200 max-w-2xl mx-auto">
-              Recognized and trusted in the marine industry with verified
-              partnerships and licenses.
+              {t('expertise.subtitle')}
             </p>
           </motion.div>
 
@@ -440,9 +449,7 @@ const SeaHorseWebsite = () => {
                   className="mb-6"
                 />
                 <p className="text-gray-900 leading-relaxed text-justify transition-colors duration-100">
-                  We are the sole authorized service and spare parts agent for
-                  Doen Pacific Pty. Ltd. PT Sea Horse provides complete
-                  technical support for all Doen Waterjet models in Indonesia.
+                  {t('expertise.doen.description')}
                 </p>
                 <a
                   href="http://www.doen.com"
@@ -473,16 +480,16 @@ const SeaHorseWebsite = () => {
             <motion.div className="space-y-8" variants={staggerContainer}>
               {[
                 {
-                  title: "Shipping Business License",
-                  desc: "No: BXXXIV-422/AT.54",
+                  titleKey: "expertise.license1.title",
+                  descKey: "expertise.license1.desc",
                 },
                 {
-                  title: "Business Identification Number (NIB)",
-                  desc: "No: 9210101202577",
+                  titleKey: "expertise.license2.title",
+                  descKey: "expertise.license2.desc",
                 },
               ].map((item) => (
                 <motion.div
-                  key={item.title}
+                  key={item.titleKey}
                   className="bg-white rounded-xl shadow-lg p-6 flex items-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 group cursor-pointer"
                   variants={slideInRight}
                 >
@@ -492,10 +499,10 @@ const SeaHorseWebsite = () => {
 
                   <div className="ml-4">
                     <div className="font-semibold text-gray-900 text-lg transition-colors duration-300">
-                      {item.title}
+                      {t(item.titleKey)}
                     </div>
                     <div className="text-gray-600 transition-colors duration-300">
-                      {item.desc}
+                      {t(item.descKey)}
                     </div>
                   </div>
                 </motion.div>
@@ -517,11 +524,10 @@ const SeaHorseWebsite = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div className="text-center mb-12" variants={fadeInUp}>
             <h2 className="text-3xl mb-4 sm:text-4xl font-bold text-[#760000]">
-              Our Services
+              {t('services.title')}
             </h2>
             <p className="text-l text-gray-900 mt-4 max-w-3xl mx-auto">
-              Comprehensive marine services tailored to meet your specific
-              operational needs
+              {t('services.subtitle')}
             </p>
           </motion.div>
 
@@ -529,32 +535,32 @@ const SeaHorseWebsite = () => {
           <div className="space-y-16">
             {[
               {
-                title: "Offshore Services",
+                titleKey: "services.offshore.title",
                 icon: Anchor,
-                text: "Rig mobilisation / demobilisation and moves, anchor-handling, and towing",
+                textKey: "services.offshore.desc",
                 number: "01",
               },
               {
-                title: "Vessels",
+                titleKey: "services.vessels.title",
                 icon: Ship,
-                text: "Anchor handling tugs supply (AHTS), tugs, hook-up and commissioning vessels, supply boats, accommodation and flat-top barges, crew boats and other specialised vessels",
+                textKey: "services.vessels.desc",
                 number: "02",
               },
               {
-                title: "Brokerage",
+                titleKey: "services.brokerage.title",
                 icon: Handshake,
-                text: "PT Sea Horse is a trusted vessel broker for Sales & Purchase / Chartering inquiries. We can source for all types of vessels from all over the world for our clients",
+                textKey: "services.brokerage.desc",
                 number: "03",
               },
               {
-                title: "Shipping & Logistics",
+                titleKey: "services.shipping.title",
                 icon: Package,
-                text: "PT Sea Horse specializes in cargo movement, expediting, and international freight forwarding. We handle coal, drilling pipes, containers, and general cargo. As shipping agents for major global shipowners, we serve ports across Indonesia",
+                textKey: "services.shipping.desc",
                 number: "04",
               },
             ].map((service, index) => (
               <motion.div
-                key={service.title}
+                key={service.titleKey}
                 className={`flex flex-col lg:flex-row items-center gap-6 lg:gap-8 ${
                   index % 2 === 1 ? "lg:flex-row-reverse" : ""
                 }`}
@@ -602,7 +608,7 @@ const SeaHorseWebsite = () => {
                       <div className="hidden lg:block w-12 h-0.5 bg-[#760000]" />
                     )}
                     <h3 className="font-bold text-2xl lg:text-2xl text-[#760000]">
-                      {service.title}
+                      {t(service.titleKey)}
                     </h3>
                     {index % 2 === 1 && (
                       <div className="hidden lg:block w-12 h-0.5 bg-[#760000]" />
@@ -618,7 +624,7 @@ const SeaHorseWebsite = () => {
                     viewport={{ once: true, amount: 0.3 }}
                     transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
                   >
-                    {service.text}
+                    {t(service.textKey)}
                   </motion.p>
                 </motion.div>
               </motion.div>
@@ -639,10 +645,10 @@ const SeaHorseWebsite = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div className="text-center mb-12" variants={fadeInUp}>
             <h2 className="text-3xl font-bold text-white mb-4">
-              Certifications and Memberships
+              {t('certifications.title')}
             </h2>
             <p className="text-md text-white">
-              Maintaining the highest standards in quality and service
+              {t('certifications.subtitle')}
             </p>
           </motion.div>
 
@@ -666,12 +672,12 @@ const SeaHorseWebsite = () => {
                   className="w-full h-full object-contain"
                 />
               </div>
-              <h3 className="font-semibold text-gray-900 mb-2">INSA Member</h3>
+              <h3 className="font-semibold text-gray-900 mb-2">{t('certifications.insa')}</h3>
               <p className="text-sm text-gray-600">
-                Indonesian National Shipowners Association
+                {t('certifications.insa.desc')}
               </p>
               <p className="text-xs text-gray-500 mt-1">
-                Reg. No. 343/INSA/VIII/1998
+                {t('certifications.insa.reg')}
               </p>
             </motion.div>
 
@@ -690,9 +696,9 @@ const SeaHorseWebsite = () => {
                   className="w-full h-full object-contain"
                 />
               </div>
-              <h3 className="font-semibold text-gray-900 mb-2">ISO 9001</h3>
-              <p className="text-sm text-gray-600">Quality Management System</p>
-              <p className="text-xs text-gray-500 mt-1">Cert. No. 55Q13036</p>
+              <h3 className="font-semibold text-gray-900 mb-2">{t('certifications.iso9001')}</h3>
+              <p className="text-sm text-gray-600">{t('certifications.iso9001.desc')}</p>
+              <p className="text-xs text-gray-500 mt-1">{t('certifications.iso9001.cert')}</p>
             </motion.div>
 
             {/* ISO 14001 */}
@@ -710,9 +716,9 @@ const SeaHorseWebsite = () => {
                   className="w-full h-full object-contain"
                 />
               </div>
-              <h3 className="font-semibold text-gray-900 mb-2">ISO 14001</h3>
-              <p className="text-sm text-gray-600">Environmental Management</p>
-              <p className="text-xs text-gray-500 mt-1">Cert. No. 32E13036</p>
+              <h3 className="font-semibold text-gray-900 mb-2">{t('certifications.iso14001')}</h3>
+              <p className="text-sm text-gray-600">{t('certifications.iso14001.desc')}</p>
+              <p className="text-xs text-gray-500 mt-1">{t('certifications.iso14001.cert')}</p>
             </motion.div>
 
             {/* ISO 45001 */}
@@ -730,11 +736,11 @@ const SeaHorseWebsite = () => {
                   className="w-full h-full object-contain"
                 />
               </div>
-              <h3 className="font-semibold text-gray-900 mb-2">ISO 45001</h3>
+              <h3 className="font-semibold text-gray-900 mb-2">{t('certifications.iso45001')}</h3>
               <p className="text-sm text-gray-600">
-                Occupational Health & Safety
+                {t('certifications.iso45001.desc')}
               </p>
-              <p className="text-xs text-gray-500 mt-1">Cert. No. 20O13036</p>
+              <p className="text-xs text-gray-500 mt-1">{t('certifications.iso45001.cert')}</p>
             </motion.div>
 
             {/* KADIN */}
@@ -752,12 +758,12 @@ const SeaHorseWebsite = () => {
                   className="w-full h-full object-contain"
                 />
               </div>
-              <h3 className="font-semibold text-gray-900 mb-2">KADIN Member</h3>
+              <h3 className="font-semibold text-gray-900 mb-2">{t('certifications.kadin')}</h3>
               <p className="text-sm text-gray-600">
-                Indonesian Chamber of Commerce
+                {t('certifications.kadin.desc')}
               </p>
               <p className="text-xs text-gray-500 mt-1">
-                Reg. No. 230331-030586
+                {t('certifications.kadin.reg')}
               </p>
             </motion.div>
           </motion.div>
@@ -770,7 +776,7 @@ const SeaHorseWebsite = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
             {/* Contact */}
             <div className="pl-0 md:pl-8">
-              <h4 className="text-md font-semibold mb-3">Contact</h4>
+              <h4 className="text-md font-semibold mb-3">{t('footer.contact')}</h4>
               <div className="space-y-1 text-sm text-gray-600">
                 <p className="flex items-center space-x-2">
                   <MapPin className="w-4 h-4" />
@@ -789,21 +795,26 @@ const SeaHorseWebsite = () => {
 
             {/* Quick Links */}
             <div className="text-justify md:text-left pl-0 md:pl-15">
-              <h4 className="text-md font-semibold mb-3">Quick Links</h4>
+              <h4 className="text-md font-semibold mb-3">{t('footer.quicklinks')}</h4>
               <div className="space-y-1 flex flex-col items-justify md:items-start">
-                {["Home", "About", "Services", "Contact"].map((item) => (
-                  <div key={item}>
+                {[
+                  { key: "nav.home", section: "home" },
+                  { key: "nav.about", section: "about" },
+                  { key: "nav.services", section: "services" },
+                  { key: "nav.contact", section: "contact" },
+                ].map((item) => (
+                  <div key={item.key}>
                     <button
                       onClick={() => {
-                        if (item === "Contact") {
+                        if (item.section === "contact") {
                           router.push("/contact");
                         } else {
-                          scrollToSection(item.toLowerCase());
+                          scrollToSection(item.section);
                         }
                       }}
                       className="text-sm text-gray-600 hover:text-[#760000] transition-colors cursor-pointer"
                     >
-                      {item}
+                      {t(item.key)}
                     </button>
                   </div>
                 ))}
@@ -812,7 +823,7 @@ const SeaHorseWebsite = () => {
 
             {/* Legal Information */}
             <div className="pl-0 md:pl-8">
-              <h4 className="text-md font-semibold mb-3">Legal Information</h4>
+              <h4 className="text-md font-semibold mb-3">{t('footer.legal')}</h4>
               <div className="space-y-1 text-sm text-gray-600">
                 <p>Business License: BXXXIV-422/AT.54</p>
                 <p>NIB: 9120101202577</p>
@@ -830,8 +841,7 @@ const SeaHorseWebsite = () => {
         style={{ backgroundColor: "#760000" }}
       >
         <p className="text-white py-3">
-          &copy; 2025 P.T. SEA HORSE. All rights reserved. | ISO 9001, ISO
-          14001, ISO 45001 Certified
+          {t('footer.copyright')}
         </p>
       </div>
     </div>
