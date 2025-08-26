@@ -15,8 +15,8 @@ import {
   Package,
 } from "lucide-react";
 import { motion, Variants } from "framer-motion";
-import { useLanguage } from './components/LanguageContext';
-import { LanguageSwitcher } from './components/LanguageSwitcher';
+import { useLanguage } from "./components/LanguageContext";
+import { LanguageSwitcher } from "./components/LanguageSwitcher";
 
 const SeaHorseWebsite = () => {
   const router = useRouter();
@@ -25,15 +25,15 @@ const SeaHorseWebsite = () => {
   const [activeSection, setActiveSection] = useState("home");
 
   // Helper function for absolute image paths
-  const getImagePath = (imagePath: string) => {
-    const basePath = "/seahorse-comprof-v1.2"; // GitHub repo name
-    return `${basePath}${imagePath}`;
-  };
-
   // const getImagePath = (imagePath: string) => {
-  //   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+  //   const basePath = "/seahorse-comprof-v1.2"; // GitHub repo name
   //   return `${basePath}${imagePath}`;
   // };
+
+  const getImagePath = (imagePath: string) => {
+    const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+    return `${basePath}${imagePath}`;
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -104,9 +104,10 @@ const SeaHorseWebsite = () => {
   };
 
   const aboutImages: string[] = [
-    getImagePath("/carousel-3.jpg"),
+    getImagePath("/carousel-6.jpg"),
     getImagePath("/carousel-4.jpg"),
     getImagePath("/carousel-2.jpg"),
+    getImagePath("/carousel-5.jpg"),
   ];
 
   const [aboutIdx, setAboutIdx] = useState(0);
@@ -132,15 +133,15 @@ const SeaHorseWebsite = () => {
         className="fixed top-0 w-full bg-white/95 backdrop-blur-md shadow-sm z-50 border-b"
       >
         <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-9">
-          <div className="flex justify-between items-center h-16">
+          <div className="flex justify-between items-center h-20">
             {/* Logo */}
             <div className="flex items-center">
               <Image
                 src={getImagePath("/logo.jpg")}
                 alt="P.T. Sea Horse Logo"
-                width={140}
-                height={140}
-                className="rounded-lg mb-1"
+                width={175}
+                height={175}
+                className="rounded-lg mb-2"
               />
             </div>
 
@@ -228,7 +229,10 @@ const SeaHorseWebsite = () => {
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="pt-16 text-white relative">
+      <section
+        id="home"
+        className="pt-24 text-white relative scroll-mt-12 md:scroll-mt-16"
+      >
         {/* Background Image */}
         <div className="absolute top-12 left-0 right-0 bottom-0">
           <Image
@@ -244,11 +248,11 @@ const SeaHorseWebsite = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <h1 className="text-4xl lg:text-5xl font-bold mb-6 leading-tight">
-                {t('hero.title')}
-                <span className="block text-white">{t('hero.subtitle')}</span>
+                {t("hero.title")}
+                <span className="block text-white">{t("hero.subtitle")}</span>
               </h1>
               <p className="text-xl mb-8 leading-relaxed text-white">
-                {t('hero.description')}
+                {t("hero.description")}
               </p>
             </div>
 
@@ -265,7 +269,9 @@ const SeaHorseWebsite = () => {
                       <div className="text-3xl font-bold text-white">
                         {stat.value}
                       </div>
-                      <div className="text-sm text-white">{t(stat.labelKey)}</div>
+                      <div className="text-sm text-white">
+                        {t(stat.labelKey)}
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -278,7 +284,7 @@ const SeaHorseWebsite = () => {
       {/* About Us Section */}
       <motion.section
         id="about"
-        className="pt-14 pb-18 bg-white"
+        className="pt-14 pb-18 bg-white scroll-mt-12 md:scroll-mt-16"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
@@ -292,30 +298,30 @@ const SeaHorseWebsite = () => {
                 className="text-3xl mb-4 sm:text-4xl font-bold text-[#760000]"
                 variants={fadeInUp}
               >
-                {t('about.title')}
+                {t("about.title")}
               </motion.h2>
 
               <motion.p
                 className="text-gray-900 mb-4 leading-relaxed text-justify"
                 variants={fadeInUp}
               >
-                {t('about.p1')}
+                {t("about.p1")}
               </motion.p>
 
               <motion.p
                 className="text-gray-900 mb-4 leading-relaxed text-justify"
                 variants={fadeInUp}
               >
-                {t('about.p2')}
+                {t("about.p2")}
               </motion.p>
 
               <motion.ul className="mt-6 space-y-4" variants={staggerContainer}>
                 {[
-                  'about.activity1',
-                  'about.activity2',
-                  'about.activity3',
-                  'about.activity4',
-                  'about.activity5',
+                  "about.activity1",
+                  "about.activity2",
+                  "about.activity3",
+                  "about.activity4",
+                  "about.activity5",
                 ].map((activityKey) => (
                   <motion.li
                     key={activityKey}
@@ -325,7 +331,9 @@ const SeaHorseWebsite = () => {
                     <span className="w-8 h-8 flex items-center justify-center bg-[#760000]/10 rounded-full text-[#760000] font-bold">
                       ✓
                     </span>
-                    <span className="text-gray-900 font-medium">{t(activityKey)}</span>
+                    <span className="text-gray-900 font-medium">
+                      {t(activityKey)}
+                    </span>
                   </motion.li>
                 ))}
               </motion.ul>
@@ -427,10 +435,10 @@ const SeaHorseWebsite = () => {
           {/* Section Title */}
           <motion.div className="text-center mb-10" variants={fadeInUp}>
             <h2 className="text-3xl mb-4 sm:text-4xl font-bold text-white">
-              {t('expertise.title')}
+              {t("expertise.title")}
             </h2>
             <p className="mt-3 text-gray-200 max-w-2xl mx-auto">
-              {t('expertise.subtitle')}
+              {t("expertise.subtitle")}
             </p>
           </motion.div>
 
@@ -449,7 +457,7 @@ const SeaHorseWebsite = () => {
                   className="mb-6"
                 />
                 <p className="text-gray-900 leading-relaxed text-justify transition-colors duration-100">
-                  {t('expertise.doen.description')}
+                  {t("expertise.doen.description")}
                 </p>
                 <a
                   href="http://www.doen.com"
@@ -515,7 +523,7 @@ const SeaHorseWebsite = () => {
       {/* Services Section */}
       <motion.section
         id="services"
-        className="pt-14 pb-18 bg-white"
+        className="pt-14 pb-18 bg-white scroll-mt-12 md:scroll-mt-16"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
@@ -524,10 +532,10 @@ const SeaHorseWebsite = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div className="text-center mb-12" variants={fadeInUp}>
             <h2 className="text-3xl mb-4 sm:text-4xl font-bold text-[#760000]">
-              {t('services.title')}
+              {t("services.title")}
             </h2>
             <p className="text-l text-gray-900 mt-4 max-w-3xl mx-auto">
-              {t('services.subtitle')}
+              {t("services.subtitle")}
             </p>
           </motion.div>
 
@@ -645,11 +653,9 @@ const SeaHorseWebsite = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div className="text-center mb-12" variants={fadeInUp}>
             <h2 className="text-3xl font-bold text-white mb-4">
-              {t('certifications.title')}
+              {t("certifications.title")}
             </h2>
-            <p className="text-md text-white">
-              {t('certifications.subtitle')}
-            </p>
+            <p className="text-md text-white">{t("certifications.subtitle")}</p>
           </motion.div>
 
           {/* Certifications */}
@@ -672,12 +678,14 @@ const SeaHorseWebsite = () => {
                   className="w-full h-full object-contain"
                 />
               </div>
-              <h3 className="font-semibold text-gray-900 mb-2">{t('certifications.insa')}</h3>
+              <h3 className="font-semibold text-gray-900 mb-2">
+                {t("certifications.insa")}
+              </h3>
               <p className="text-sm text-gray-600">
-                {t('certifications.insa.desc')}
+                {t("certifications.insa.desc")}
               </p>
               <p className="text-xs text-gray-500 mt-1">
-                {t('certifications.insa.reg')}
+                {t("certifications.insa.reg")}
               </p>
             </motion.div>
 
@@ -696,9 +704,15 @@ const SeaHorseWebsite = () => {
                   className="w-full h-full object-contain"
                 />
               </div>
-              <h3 className="font-semibold text-gray-900 mb-2">{t('certifications.iso9001')}</h3>
-              <p className="text-sm text-gray-600">{t('certifications.iso9001.desc')}</p>
-              <p className="text-xs text-gray-500 mt-1">{t('certifications.iso9001.cert')}</p>
+              <h3 className="font-semibold text-gray-900 mb-2">
+                {t("certifications.iso9001")}
+              </h3>
+              <p className="text-sm text-gray-600">
+                {t("certifications.iso9001.desc")}
+              </p>
+              <p className="text-xs text-gray-500 mt-1">
+                {t("certifications.iso9001.cert")}
+              </p>
             </motion.div>
 
             {/* ISO 14001 */}
@@ -716,9 +730,15 @@ const SeaHorseWebsite = () => {
                   className="w-full h-full object-contain"
                 />
               </div>
-              <h3 className="font-semibold text-gray-900 mb-2">{t('certifications.iso14001')}</h3>
-              <p className="text-sm text-gray-600">{t('certifications.iso14001.desc')}</p>
-              <p className="text-xs text-gray-500 mt-1">{t('certifications.iso14001.cert')}</p>
+              <h3 className="font-semibold text-gray-900 mb-2">
+                {t("certifications.iso14001")}
+              </h3>
+              <p className="text-sm text-gray-600">
+                {t("certifications.iso14001.desc")}
+              </p>
+              <p className="text-xs text-gray-500 mt-1">
+                {t("certifications.iso14001.cert")}
+              </p>
             </motion.div>
 
             {/* ISO 45001 */}
@@ -736,11 +756,15 @@ const SeaHorseWebsite = () => {
                   className="w-full h-full object-contain"
                 />
               </div>
-              <h3 className="font-semibold text-gray-900 mb-2">{t('certifications.iso45001')}</h3>
+              <h3 className="font-semibold text-gray-900 mb-2">
+                {t("certifications.iso45001")}
+              </h3>
               <p className="text-sm text-gray-600">
-                {t('certifications.iso45001.desc')}
+                {t("certifications.iso45001.desc")}
               </p>
-              <p className="text-xs text-gray-500 mt-1">{t('certifications.iso45001.cert')}</p>
+              <p className="text-xs text-gray-500 mt-1">
+                {t("certifications.iso45001.cert")}
+              </p>
             </motion.div>
 
             {/* KADIN */}
@@ -758,12 +782,14 @@ const SeaHorseWebsite = () => {
                   className="w-full h-full object-contain"
                 />
               </div>
-              <h3 className="font-semibold text-gray-900 mb-2">{t('certifications.kadin')}</h3>
+              <h3 className="font-semibold text-gray-900 mb-2">
+                {t("certifications.kadin")}
+              </h3>
               <p className="text-sm text-gray-600">
-                {t('certifications.kadin.desc')}
+                {t("certifications.kadin.desc")}
               </p>
               <p className="text-xs text-gray-500 mt-1">
-                {t('certifications.kadin.reg')}
+                {t("certifications.kadin.reg")}
               </p>
             </motion.div>
           </motion.div>
@@ -776,7 +802,9 @@ const SeaHorseWebsite = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
             {/* Contact */}
             <div className="pl-0 md:pl-8">
-              <h4 className="text-md font-semibold mb-3">{t('footer.contact')}</h4>
+              <h4 className="text-md font-semibold mb-3">
+                {t("footer.contact")}
+              </h4>
               <div className="space-y-1 text-sm text-gray-600">
                 <p className="flex items-center space-x-2">
                   <MapPin className="w-4 h-4" />
@@ -795,7 +823,9 @@ const SeaHorseWebsite = () => {
 
             {/* Quick Links */}
             <div className="text-justify md:text-left pl-0 md:pl-15">
-              <h4 className="text-md font-semibold mb-3">{t('footer.quicklinks')}</h4>
+              <h4 className="text-md font-semibold mb-3">
+                {t("footer.quicklinks")}
+              </h4>
               <div className="space-y-1 flex flex-col items-justify md:items-start">
                 {[
                   { key: "nav.home", section: "home" },
@@ -823,7 +853,9 @@ const SeaHorseWebsite = () => {
 
             {/* Legal Information */}
             <div className="pl-0 md:pl-8">
-              <h4 className="text-md font-semibold mb-3">{t('footer.legal')}</h4>
+              <h4 className="text-md font-semibold mb-3">
+                {t("footer.legal")}
+              </h4>
               <div className="space-y-1 text-sm text-gray-600">
                 <p>Business License: BXXXIV-422/AT.54</p>
                 <p>NIB: 9120101202577</p>
@@ -840,9 +872,7 @@ const SeaHorseWebsite = () => {
         className="w-full text-center text-sm"
         style={{ backgroundColor: "#760000" }}
       >
-        <p className="text-white py-3">
-          {t('footer.copyright')}
-        </p>
+        <p className="text-white py-3">{t("footer.copyright")}</p>
       </div>
     </div>
   );
