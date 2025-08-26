@@ -126,139 +126,107 @@ const SeaHorseWebsite = () => {
 
   return (
     <div className="min-h-screen bg-white" style={{ overflow: "hidden auto" }}>
-      {/* Navigation */}
-      <nav
-        style={{ backgroundColor: "#ffffff" }}
-        className="fixed top-0 w-full bg-white/95 backdrop-blur-md shadow-sm z-50 border-b"
-      >
-        <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-9">
-          <div className="flex justify-between items-center h-16">
-            {/* Logo */}
-            <div className="flex items-center">
-              <Image
-                src={getImagePath("/logo.jpg")}
-                alt="P.T. Sea Horse Logo"
-                width={140}
-                height={140}
-                className="rounded-lg mb-1"
-              />
-            </div>
+    
+    {/* Navigation */}
+    <nav
+      style={{ backgroundColor: "#ffffff" }}
+      className="fixed top-0 w-full bg-white/95 backdrop-blur-md shadow-sm z-50 border-b"
+    >
+      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-9">
+        <div className="flex justify-between items-center h-16">
+          {/* Logo */}
+          <div className="flex items-center">
+            <Image
+              src={getImagePath("/logo.jpg")}
+              alt="P.T. Sea Horse Logo"
+              width={140}
+              height={140}
+              className="rounded-lg mb-1"
+            />
+          </div>
 
-{/* Desktop Menu */}
-            <div className="hidden md:flex items-center space-x-8">
-              <div className="flex space-x-8">
-                {[
-                  { key: "nav.home", section: "home" },
-                  { key: "nav.about", section: "about" },
-                  { key: "nav.services", section: "services" },
-                  { key: "nav.contact", section: "contact" },
-                ].map((item) => (
-                  <button
-                    key={item.key}
-                    onClick={() => {
-                      if (item.section === "contact") {
-                        router.push("/contact");
-                      } else {
-                        scrollToSection(item.section);
-                      }
-                    }}
-                    style={{
-                      color: "#760000",
-                      borderBottom:
-                        activeSection === item.section
-                          ? "2px solid #760000"
-                          : "none",
-                    }}
-                    className="px-3 py-2 text-md font-medium transition-colors"
-                  >
-                    {t(item.key)}
-                  </button>
-                ))}
-              </div>
-              <LanguageSwitcher />
+          {/* Desktop Menu */}
+          <div className="hidden md:flex items-center space-x-8">
+            <div className="flex space-x-8">
+              {[
+                { key: "nav.home", section: "home" },
+                { key: "nav.about", section: "about" },
+                { key: "nav.services", section: "services" },
+                { key: "nav.contact", section: "contact" },
+              ].map((item) => (
+                <button
+                  key={item.key}
+                  onClick={() => {
+                    if (item.section === "contact") {
+                      router.push("/contact");
+                    } else {
+                      scrollToSection(item.section);
+                    }
+                  }}
+                  style={{
+                    color: "#760000",
+                    borderBottom:
+                      activeSection === item.section
+                        ? "2px solid #760000"
+                        : "none",
+                  }}
+                  className="px-3 py-2 text-md font-medium transition-colors"
+                >
+                  {t(item.key)}
+                </button>
+              ))}
             </div>
+            <LanguageSwitcher />
+          </div>
 
-            {/* Mobile Language Switcher and Menu Button */}
-            <div className="md:hidden flex items-center space-x-3">
-              <LanguageSwitcher />
-              <button
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="p-2 rounded-md"
-                style={{ color: "#760000" }}
-              >
-                {isMenuOpen ? (
-                  <X className="w-6 h-6" />
-                ) : (
-                  <Menu className="w-6 h-6" />
-                )}
-              </button>
-            </div>
+          {/* Mobile Language Switcher and Menu Button */}
+          <div className="md:hidden flex items-center space-x-3">
+            <LanguageSwitcher />
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="p-2 rounded-md"
+              style={{ color: "#760000" }}
+            >
+              {isMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
+            </button>
           </div>
         </div>
+      </div>
 
-        {/* Mobile Menu */}
-        {isMenuOpen && (
-          <div className="md:hidden bg-white border-t">
-            <div className="px-4 py-2 space-y-1">
-              {[
-                { key: "nav.home", section: "home" },
-                { key: "nav.about", section: "about" },
-                { key: "nav.services", section: "services" },
-                { key: "nav.contact", section: "contact" },
-              ].map((item) => (
-                <button
-                  key={item.key}
-                  onClick={() => {
-                    if (item.section === "contact") {
-                      router.push("/contact");
-                    } else {
-                      scrollToSection(item.section);
-                    }
-                    setIsMenuOpen(false);
-                  }}
-                  className="block w-full text-left px-3 py-2 hover:bg-gray-50 rounded-md text-md"
-                  style={{ color: "#760000" }}
-                >
-                  {t(item.key)}
-                </button>
-              ))}
-            </div>
+      {/* Mobile Menu - SINGLE VERSION ONLY */}
+      {isMenuOpen && (
+        <div className="md:hidden bg-white border-t">
+          <div className="px-4 py-2 space-y-1">
+            {[
+              { key: "nav.home", section: "home" },
+              { key: "nav.about", section: "about" },
+              { key: "nav.services", section: "services" },
+              { key: "nav.contact", section: "contact" },
+            ].map((item) => (
+              <button
+                key={item.key}
+                onClick={() => {
+                  if (item.section === "contact") {
+                    router.push("/contact");
+                  } else {
+                    scrollToSection(item.section);
+                  }
+                  setIsMenuOpen(false);
+                }}
+                className="block w-full text-left px-3 py-2 hover:bg-gray-50 rounded-md text-md"
+                style={{ color: "#760000" }}
+              >
+                {t(item.key)}
+              </button>
+            ))}
           </div>
-        )}
-
-        {/* Mobile Menu */}
-        {isMenuOpen && (
-          <div className="md:hidden bg-white border-t">
-            <div className="px-4 py-2 space-y-1">
-              {[
-                { key: "nav.home", section: "home" },
-                { key: "nav.about", section: "about" },
-                { key: "nav.services", section: "services" },
-                { key: "nav.contact", section: "contact" },
-              ].map((item) => (
-                <button
-                  key={item.key}
-                  onClick={() => {
-                    if (item.section === "contact") {
-                      router.push("/contact");
-                    } else {
-                      scrollToSection(item.section);
-                    }
-                    setIsMenuOpen(false);
-                  }}
-                  className="block w-full text-left px-3 py-2 hover:bg-gray-50 rounded-md text-md"
-                  style={{ color: "#760000" }}
-                >
-                  {t(item.key)}
-                </button>
-              ))}
-              <div className="px-3 py-2">
-                <LanguageSwitcher />
-              </div>
-            </div>
-          </div>
-        )}
-      </nav>
+        </div>
+      )}
+    </nav>
 
       {/* Hero Section */}
       <section id="home" className="pt-16 text-white relative">
