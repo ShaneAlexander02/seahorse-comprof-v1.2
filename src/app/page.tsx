@@ -189,6 +189,22 @@ const SeaHorseWebsite = () => {
           </div>
         </div>
 
+        {/* Mobile - Language Switcher and Menu Button */}
+          <div className="md:hidden flex items-center space-x-3">
+            <LanguageSwitcher />
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="p-2 rounded-md"
+              style={{ color: "#760000" }}
+            >
+              {isMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
+            </button>
+          </div>
+
         {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="md:hidden bg-white border-t">
@@ -215,9 +231,6 @@ const SeaHorseWebsite = () => {
                   {t(item.key)}
                 </button>
               ))}
-              <div className="px-3 py-2">
-                <LanguageSwitcher />
-              </div>
             </div>
           </div>
         )}
