@@ -144,7 +144,7 @@ const SeaHorseWebsite = () => {
               />
             </div>
 
-            {/* Desktop Menu */}
+{/* Desktop Menu */}
             <div className="hidden md:flex items-center space-x-8">
               <div className="flex space-x-8">
                 {[
@@ -178,20 +178,53 @@ const SeaHorseWebsite = () => {
               <LanguageSwitcher />
             </div>
 
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden p-2 rounded-md"
-              style={{ color: "#760000" }}
-            >
-              {isMenuOpen ? (
-                <X className="w-6 h-6" />
-              ) : (
-                <Menu className="w-6 h-6" />
-              )}
-            </button>
+            {/* Mobile Language Switcher and Menu Button */}
+            <div className="md:hidden flex items-center space-x-3">
+              <LanguageSwitcher />
+              <button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="p-2 rounded-md"
+                style={{ color: "#760000" }}
+              >
+                {isMenuOpen ? (
+                  <X className="w-6 h-6" />
+                ) : (
+                  <Menu className="w-6 h-6" />
+                )}
+              </button>
+            </div>
           </div>
         </div>
+
+        {/* Mobile Menu */}
+        {isMenuOpen && (
+          <div className="md:hidden bg-white border-t">
+            <div className="px-4 py-2 space-y-1">
+              {[
+                { key: "nav.home", section: "home" },
+                { key: "nav.about", section: "about" },
+                { key: "nav.services", section: "services" },
+                { key: "nav.contact", section: "contact" },
+              ].map((item) => (
+                <button
+                  key={item.key}
+                  onClick={() => {
+                    if (item.section === "contact") {
+                      router.push("/contact");
+                    } else {
+                      scrollToSection(item.section);
+                    }
+                    setIsMenuOpen(false);
+                  }}
+                  className="block w-full text-left px-3 py-2 hover:bg-gray-50 rounded-md text-md"
+                  style={{ color: "#760000" }}
+                >
+                  {t(item.key)}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Mobile Menu */}
         {isMenuOpen && (
