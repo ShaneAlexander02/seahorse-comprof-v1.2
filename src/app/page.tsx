@@ -138,8 +138,8 @@ const SeaHorseWebsite = () => {
               <Image
                 src={getImagePath("/logo.jpg")}
                 alt="P.T. Sea Horse Logo"
-                width={120}
-                height={120}
+                width={150}
+                height={150}
                 className="rounded-lg mb-2"
               />
             </div>
