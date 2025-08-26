@@ -107,7 +107,7 @@ const translations = {
   id: {
     // Navigation
     'nav.home': 'Beranda',
-    'nav.about': 'Tentang',
+    'nav.about': 'Tentang Kami',
     'nav.services': 'Layanan',
     'nav.contact': 'Kontak',
     
@@ -122,18 +122,18 @@ const translations = {
     
     // About Section  
     'about.title': 'Tentang Kami',
-    'about.p1': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-    'about.p2': 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum:',
-    'about.activity1': 'Lorem ipsum dolor sit amet',
-    'about.activity2': 'Consectetur adipiscing elit',
-    'about.activity3': 'Sed do eiusmod tempor incididunt',
-    'about.activity4': 'Ut labore et dolore magna aliqua',
-    'about.activity5': 'Ut enim ad minim veniam',
+    'about.p1': 'Kami adalah penyedia layanan maritim utama untuk industri eksplorasi dan produksi Minyak & Gas Indonesia, Pertambangan, dan Transportasi. Selain itu, kami telah mewakili beberapa pemilik kapal terbesar di dunia.',
+    'about.p2': 'Oleh karena itu, kami memiliki kemampuan untuk menyediakan kapal tunda dan kapal pendukung untuk bekerja di lokasi perairan dalam serta kapasitas untuk menyediakan kapal dalam situasi yang sulit. Hal ini memungkinkan kami bekerja dengan percaya diri untuk memenuhi kebutuhan pelanggan. Beberapa kegiatan utama kami meliputi:',
+    'about.activity1': 'Kepemilikan dan Manajemen Kapal',
+    'about.activity2': 'Penyewaan Kapal dan Jual Beli',
+    'about.activity3': 'Operasi Layanan Kapal Tunda (Pelabuhan dan Lepas Pantai)',
+    'about.activity4': 'Agen Pelayaran (Pelabuhan, Kapal & Izin Kru, dll)',
+    'about.activity5': 'Agen Umum untuk Operasi Kapal Batubara dan lainnya',
     
     // Expertise Section
     'expertise.title': 'Otorisasi Resmi & Kredensial Bisnis',
     'expertise.subtitle': 'Diakui dan dipercaya dalam industri maritim dengan kemitraan dan lisensi yang terverifikasi.',
-    'expertise.doen.description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    'expertise.doen.description': 'Kami adalah agen layanan dan suku cadang resmi tunggal untuk Doen Pacific Pty. Ltd. PT Sea Horse menyediakan dukungan teknis lengkap untuk semua model Doen Waterjet di Indonesia.',
     'expertise.license1.title': 'Izin Usaha Pelayaran',
     'expertise.license1.desc': 'No: BXXXIV-422/AT.54',
     'expertise.license2.title': 'Nomor Induk Berusaha (NIB)',
@@ -143,13 +143,13 @@ const translations = {
     'services.title': 'Layanan Kami',
     'services.subtitle': 'Layanan maritim komprehensif yang disesuaikan untuk memenuhi kebutuhan operasional spesifik Anda',
     'services.offshore.title': 'Layanan Lepas Pantai',
-    'services.offshore.desc': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+    'services.offshore.desc': 'Mobilisasi/demobilisasi dan perpindahan rig, penanganan jangkar, dan penarikkan',
     'services.vessels.title': 'Kapal',
-    'services.vessels.desc': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore',
+    'services.vessels.desc': 'Kapal tunda penanganan jangkar (AHTS), kapal tunda, kapal hook-up dan commissioning, kapal supply, tongkang akomodasi dan flat-top, crew boat dan kapal khusus lainnya',
     'services.brokerage.title': 'Pialang',
-    'services.brokerage.desc': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt',
+    'services.brokerage.desc': 'PT Sea Horse adalah pialang kapal terpercaya untuk pertanyaan Jual Beli / Penyewaan. Kami dapat mencari semua jenis kapal dari seluruh dunia untuk klien kami',
     'services.shipping.title': 'Pengiriman & Logistik',
-    'services.shipping.desc': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
+    'services.shipping.desc': 'PT Sea Horse mengkhususkan diri dalam pergerakan kargo, percepatan, dan freight forwarding internasional. Kami menangani batubara, pipa bor, kontainer, dan kargo umum. Sebagai agen pelayaran untuk pemilik kapal global utama, kami melayani pelabuhan di seluruh Indonesia',
     
     // Certifications Section
     'certifications.title': 'Sertifikasi dan Keanggotaan',
@@ -201,7 +201,8 @@ interface LanguageProviderProps {
 }
 
 export function LanguageProvider({ children }: LanguageProviderProps) {
-  const [language, setLanguage] = useState<Language>('en');
+  // CHANGED: Set default language to Indonesian ('id') instead of English ('en')
+  const [language, setLanguage] = useState<Language>('id');
 
   const t = (key: string): string => {
     return translations[language][key as keyof typeof translations['en']] || key;
