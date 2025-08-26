@@ -39,7 +39,7 @@ export default function ContactPage() {
                 alt="P.T. Sea Horse Logo"
                 width={140}
                 height={140}
-                className="rounded-lg mb-2"
+                className="rounded-lg mb-1"
               />
             </div>
 
