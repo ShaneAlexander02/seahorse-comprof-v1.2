@@ -1,8 +1,9 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import {
   Phone,
   Mail,
@@ -21,39 +22,13 @@ import { LanguageSwitcher } from "./components/LanguageSwitcher";
 const SeaHorseWebsite = () => {
   const router = useRouter();
   const { t } = useLanguage();
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("home");
+  const [activeSection, setActiveSection] = useState<
+    "home" | "about" | "services" | "contact"
+  >("home");
 
-  // Helper function for absolute image paths
-  const getImagePath = (imagePath: string) => {
-    const basePath = "/seahorse-comprof-v1.2"; // GitHub repo name
-    return `${basePath}${imagePath}`;
-  };
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const sections = ["home", "about", "services", "contact"];
-      const currentSection = sections.find((section) => {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          return rect.top <= 100 && rect.bottom >= 100;
-        }
-        return false;
-      });
-      if (currentSection) setActiveSection(currentSection);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const scrollToSection = (sectionId: string) => {
-    document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
-    setIsMenuOpen(false);
-  };
-
-  // Animation variants
+  // --- Animations ---
   const fadeInUp: Variants = {
     hidden: { opacity: 0, y: 60 },
     visible: {
@@ -98,11 +73,12 @@ const SeaHorseWebsite = () => {
     },
   };
 
+  // --- Images (ambil dari /public) ---
   const aboutImages: string[] = [
-    getImagePath("/carousel-6.jpg"),
-    getImagePath("/carousel-4.jpg"),
-    getImagePath("/carousel-2.jpg"),
-    getImagePath("/carousel-5.jpg"),
+    "/carousel-6.jpg",
+    "/carousel-4.jpg",
+    "/carousel-2.jpg",
+    "/carousel-5.jpg",
   ];
 
   const [aboutIdx, setAboutIdx] = useState(0);
@@ -120,109 +96,184 @@ const SeaHorseWebsite = () => {
     setAboutIdx((i) => (i - 1 + aboutImages.length) % aboutImages.length);
   const nextAbout = () => setAboutIdx((i) => (i + 1) % aboutImages.length);
 
+  // --- Active section watcher (scroll) ---
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections: Array<"home" | "about" | "services" | "contact"> = [
+        "home",
+        "about",
+        "services",
+        "contact",
+      ];
+      const current = sections.find((section) => {
+        const el = document.getElementById(section);
+        if (!el) return false;
+        const rect = el.getBoundingClientRect();
+        return rect.top <= 100 && rect.bottom >= 100;
+      });
+      if (current && current !== activeSection) setActiveSection(current);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeSection]);
+
+  // --- Honor URL hash on first load (so underline matches when landing on /#about or /#services) ---
+  useEffect(() => {
+    const hash =
+      typeof window !== "undefined" ? window.location.hash.slice(1) : "";
+    if (hash === "about" || hash === "services" || hash === "home") {
+      setActiveSection(hash as typeof activeSection);
+      // scroll after mount so the section is positioned correctly below the fixed nav
+      setTimeout(() => {
+        document
+          .getElementById(hash)
+          ?.scrollIntoView({ behavior: "instant", block: "start" });
+      }, 0);
+    }
+  }, []);
+
+  // --- Utilities ---
+  const scrollToSection = (sectionId: "home" | "about" | "services") => {
+    document
+      .getElementById(sectionId)
+      ?.scrollIntoView({ behavior: "smooth", block: "start" });
+    setIsMenuOpen(false);
+  };
+
+  // Nav items helper
+  const NAV_ITEMS = [
+    { key: "nav.home", section: "home" as const },
+    { key: "nav.about", section: "about" as const },
+    { key: "nav.services", section: "services" as const },
+    { key: "nav.contact", section: "contact" as const },
+  ];
+
   return (
     <div className="min-h-screen bg-white" style={{ overflow: "hidden auto" }}>
-      
       {/* Navigation */}
-<nav
-  style={{ backgroundColor: "#ffffff" }}
-  className="fixed top-0 w-full bg-white/95 backdrop-blur-md shadow-sm z-50 border-b"
->
-  <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-9">
-    <div className="flex justify-between items-center h-20">
-      {/* Logo */}
-      <div className="flex items-center">
-        <Image
-          src={getImagePath("/logo.jpg")}
-          alt="P.T. Sea Horse Logo"
-          width={175}
-          height={175}
-          className="rounded-lg mb-2"
-        />
-      </div>
+      <nav
+        style={{ backgroundColor: "#ffffff" }}
+        className="fixed top-0 w-full bg-white/95 backdrop-blur-md shadow-sm z-50 border-b"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-20">
+            {/* Logo */}
+            <div className="flex items-center">
+              <Image
+                src="/logo.jpg"
+                alt="P.T. Sea Horse Logo"
+                width={175}
+                height={175}
+                className="rounded-lg mb-2"
+                priority
+              />
+            </div>
 
-      {/* Desktop Menu */}
-      <div className="hidden md:flex items-center space-x-8">
-        <div className="flex space-x-8">
-          {[
-            { key: "nav.home", section: "home" },
-            { key: "nav.about", section: "about" },
-            { key: "nav.services", section: "services" },
-            { key: "nav.contact", section: "contact" },
-          ].map((item) => (
-            <button
-              key={item.key}
-              onClick={() => {
-                if (item.section === "contact") {
-                  router.push("/contact");
-                } else {
-                  scrollToSection(item.section);
-                }
-              }}
-              style={{
-                color: "#760000",
-                borderBottom:
-                  activeSection === item.section
-                    ? "2px solid #760000"
-                    : "none",
-              }}
-              className="px-3 py-2 text-md font-medium transition-colors"
-            >
-              {t(item.key)}
-            </button>
-          ))}
+            {/* Desktop Menu */}
+            <div className="hidden md:flex items-center space-x-8">
+              <div className="flex space-x-8">
+                {NAV_ITEMS.map((item) => {
+                  const href =
+                    item.section === "contact"
+                      ? "/contact"
+                      : item.section === "home"
+                      ? "/"
+                      : `/#${item.section}`;
+
+                  return (
+                    <Link
+                      key={item.key}
+                      href={href}
+                      prefetch={false}
+                      onClick={(e) => {
+                        // if it's an in-page section, do smooth scroll instead of full nav
+                        if (
+                          item.section === "home" ||
+                          item.section === "about" ||
+                          item.section === "services"
+                        ) {
+                          e.preventDefault();
+                          scrollToSection(item.section);
+                        }
+                      }}
+                      className="px-3 py-2 text-md font-medium transition-colors"
+                      style={{
+                        color: "#760000",
+                        borderBottom:
+                          activeSection === item.section
+                            ? "2px solid #760000"
+                            : "none",
+                      }}
+                    >
+                      {t(item.key)}
+                    </Link>
+                  );
+                })}
+              </div>
+              <LanguageSwitcher />
+            </div>
+
+            {/* Mobile Menu Button + Language */}
+            <div className="md:hidden flex items-center space-x-3">
+              <LanguageSwitcher />
+              <button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="p-2 rounded-md"
+                style={{ color: "#760000" }}
+                aria-label="Toggle menu"
+              >
+                {isMenuOpen ? (
+                  <X className="w-6 h-6" />
+                ) : (
+                  <Menu className="w-6 h-6" />
+                )}
+              </button>
+            </div>
+          </div>
         </div>
-        <LanguageSwitcher />
-      </div>
 
-      {/* Mobile - Language Switcher and Menu Button */}
-      <div className="md:hidden flex items-center space-x-3">
-        <LanguageSwitcher />
-        <button
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="p-2 rounded-md"
-          style={{ color: "#760000" }}
-        >
-          {isMenuOpen ? (
-            <X className="w-6 h-6" />
-          ) : (
-            <Menu className="w-6 h-6" />
-          )}
-        </button>
-      </div>
-    </div>
-  </div>
+        {/* Mobile Menu */}
+        {isMenuOpen && (
+          <div className="md:hidden bg-white border-t">
+            <div className="px-4 py-2 space-y-1">
+              {NAV_ITEMS.map((item) => {
+                const href =
+                  item.section === "contact"
+                    ? "/contact"
+                    : item.section === "home"
+                    ? "/"
+                    : `/#${item.section}`;
 
-  {/* Mobile Menu */}
-  {isMenuOpen && (
-    <div className="md:hidden bg-white border-t">
-      <div className="px-4 py-2 space-y-1">
-        {[
-          { key: "nav.home", section: "home" },
-          { key: "nav.about", section: "about" },
-          { key: "nav.services", section: "services" },
-          { key: "nav.contact", section: "contact" },
-        ].map((item) => (
-          <button
-            key={item.key}
-            onClick={() => {
-              if (item.section === "contact") {
-                router.push("/contact");
-              } else {
-                scrollToSection(item.section);
-              }
-              setIsMenuOpen(false);
-            }}
-            className="block w-full text-left px-3 py-2 hover:bg-gray-50 rounded-md text-md"
-            style={{ color: "#760000" }}
-          >
-            {t(item.key)}
-          </button>
-        ))}
-      </div>
-    </div>
-  )}
-</nav>
+                return (
+                  <Link
+                    key={item.key}
+                    href={href}
+                    prefetch={false}
+                    className="block w-full text-left px-3 py-2 hover:bg-gray-50 rounded-md text-md"
+                    style={{ color: "#760000" }}
+                    onClick={(e) => {
+                      if (
+                        item.section === "home" ||
+                        item.section === "about" ||
+                        item.section === "services"
+                      ) {
+                        e.preventDefault();
+                        scrollToSection(item.section);
+                      } else {
+                        setIsMenuOpen(false);
+                      }
+                    }}
+                  >
+                    {t(item.key)}
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        )}
+      </nav>
 
       {/* Hero Section */}
       <section
@@ -232,14 +283,15 @@ const SeaHorseWebsite = () => {
         {/* Background Image */}
         <div className="absolute top-12 left-0 right-0 bottom-0">
           <Image
-            src={getImagePath("/carousel-1.jpg")}
+            src="/carousel-1.jpg"
             alt="Marine Background"
             fill
             style={{ objectFit: "cover", filter: "brightness(60%)" }}
+            priority
           />
         </div>
 
-        {/* Content Wrapper */}
+        {/* Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -247,7 +299,7 @@ const SeaHorseWebsite = () => {
                 {t("hero.title")}
                 <span className="block text-white">{t("hero.subtitle")}</span>
               </h1>
-              <p className="text-xl mb-8 leading-relaxed text-white text-justify">
+              <p className="text-xl mb-8 leading-relaxed text-white">
                 {t("hero.description")}
               </p>
             </div>
@@ -321,13 +373,13 @@ const SeaHorseWebsite = () => {
                 ].map((activityKey) => (
                   <motion.li
                     key={activityKey}
-                    className="flex items-start space-x-3"
+                    className="flex items-center space-x-3"
                     variants={fadeInUp}
                   >
-                    <span className="w-8 h-8 flex-shrink-0 flex items-center justify-center bg-[#760000]/10 rounded-full text-[#760000] font-bold mt-0.5">
+                    <span className="w-8 h-8 flex items-center justify-center bg-[#760000]/10 rounded-full text-[#760000] font-bold">
                       ✓
                     </span>
-                    <span className="text-gray-900 font-medium leading-relaxed">
+                    <span className="text-gray-900 font-medium">
                       {t(activityKey)}
                     </span>
                   </motion.li>
@@ -346,7 +398,6 @@ const SeaHorseWebsite = () => {
                 onMouseEnter={() => setAboutPaused(true)}
                 onMouseLeave={() => setAboutPaused(false)}
               >
-                {/* Slides */}
                 {aboutImages.map((src, i) => (
                   <Image
                     key={src}
@@ -367,7 +418,6 @@ const SeaHorseWebsite = () => {
                     aria-label="Previous"
                     className="h-10 w-10 sm:h-11 sm:w-11 rounded-full bg-black/35 hover:bg-black/45 backdrop-blur flex items-center justify-center text-white transition"
                   >
-                    {/* Left Chevron */}
                     <svg
                       viewBox="0 0 24 24"
                       className="h-5 w-5"
@@ -385,7 +435,6 @@ const SeaHorseWebsite = () => {
                     aria-label="Next"
                     className="h-10 w-10 sm:h-11 sm:w-11 rounded-full bg-black/35 hover:bg-black/45 backdrop-blur flex items-center justify-center text-white transition"
                   >
-                    {/* right chevron */}
                     <svg
                       viewBox="0 0 24 24"
                       className="h-5 w-5"
@@ -428,7 +477,6 @@ const SeaHorseWebsite = () => {
         variants={staggerContainer}
       >
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          {/* Section Title */}
           <motion.div className="text-center mb-10" variants={fadeInUp}>
             <h2 className="text-3xl mb-4 sm:text-4xl font-bold text-white">
               {t("expertise.title")}
@@ -439,14 +487,14 @@ const SeaHorseWebsite = () => {
           </motion.div>
 
           <div className="grid lg:grid-cols-2 gap-14 items-center">
-            {/* Left Column - Authorized Agent */}
+            {/* Authorized Agent */}
             <motion.div
               className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all duration-100 transform hover:-translate-y-1 group"
               variants={slideInLeft}
             >
               <div className="flex flex-col items-center lg:items-start">
                 <Image
-                  src={getImagePath("/Doenlogo.png")}
+                  src="/Doenlogo.png"
                   alt="Doen Waterjets Logo"
                   width={200}
                   height={70}
@@ -480,7 +528,7 @@ const SeaHorseWebsite = () => {
               </div>
             </motion.div>
 
-            {/* Right Column - Licences */}
+            {/* Licences */}
             <motion.div className="space-y-8" variants={staggerContainer}>
               {[
                 {
@@ -500,14 +548,11 @@ const SeaHorseWebsite = () => {
                   <div className="flex-shrink-0 w-12 h-12 bg-[#760000]/10 text-[#760000] flex items-center justify-center rounded-full font-bold text-lg">
                     <span>✓</span>
                   </div>
-
                   <div className="ml-4">
-                    <div className="font-semibold text-gray-900 text-lg transition-colors duration-300">
+                    <div className="font-semibold text-gray-900 text-lg">
                       {t(item.titleKey)}
                     </div>
-                    <div className="text-gray-600 transition-colors duration-300">
-                      {t(item.descKey)}
-                    </div>
+                    <div className="text-gray-600">{t(item.descKey)}</div>
                   </div>
                 </motion.div>
               ))}
@@ -535,7 +580,6 @@ const SeaHorseWebsite = () => {
             </p>
           </motion.div>
 
-          {/* Services Grid - Alternating Layout */}
           <div className="space-y-16">
             {[
               {
@@ -572,7 +616,7 @@ const SeaHorseWebsite = () => {
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.3 }}
               >
-                {/* Icon Side */}
+                {/* Icon */}
                 <motion.div
                   className="flex-shrink-0 lg:w-1/4 flex justify-center"
                   whileHover={{ scale: 1.02 }}
@@ -592,7 +636,7 @@ const SeaHorseWebsite = () => {
                   </div>
                 </motion.div>
 
-                {/* Content Side */}
+                {/* Content */}
                 <motion.div
                   className={`flex-1 lg:w-3/4 ${
                     index % 2 === 1 ? "lg:text-right" : "lg:text-left"
@@ -654,12 +698,11 @@ const SeaHorseWebsite = () => {
             <p className="text-md text-white">{t("certifications.subtitle")}</p>
           </motion.div>
 
-          {/* Certifications */}
           <motion.div
             className="grid md:grid-cols-2 lg:grid-cols-5 gap-8 items-center"
             variants={staggerContainer}
           >
-            {/* INSA Membership */}
+            {/* INSA */}
             <motion.div
               className="bg-white rounded-lg p-6 text-center shadow-lg"
               variants={scaleUp}
@@ -667,7 +710,7 @@ const SeaHorseWebsite = () => {
             >
               <div className="w-24 h-24 mx-auto mb-4 rounded-lg p-2">
                 <Image
-                  src={getImagePath("/Logoinsa.png")}
+                  src="/Logoinsa.png"
                   alt="INSA Logo"
                   width={80}
                   height={80}
@@ -693,7 +736,7 @@ const SeaHorseWebsite = () => {
             >
               <div className="w-24 h-24 mx-auto mb-4 rounded-lg p-2">
                 <Image
-                  src={getImagePath("/LogoISO9001.jpg")}
+                  src="/LogoISO9001.jpg"
                   alt="ISO 9001 Logo"
                   width={80}
                   height={80}
@@ -719,7 +762,7 @@ const SeaHorseWebsite = () => {
             >
               <div className="w-24 h-24 mx-auto mb-4 rounded-lg p-2">
                 <Image
-                  src={getImagePath("/LogoISO14001.jpg")}
+                  src="/LogoISO14001.jpg"
                   alt="ISO 14001 Logo"
                   width={80}
                   height={80}
@@ -729,7 +772,7 @@ const SeaHorseWebsite = () => {
               <h3 className="font-semibold text-gray-900 mb-2">
                 {t("certifications.iso14001")}
               </h3>
-              <p className="text-sm text-gray-600 two-line-text">
+              <p className="text-sm text-gray-600">
                 {t("certifications.iso14001.desc")}
               </p>
               <p className="text-xs text-gray-500 mt-1">
@@ -745,7 +788,7 @@ const SeaHorseWebsite = () => {
             >
               <div className="w-24 h-24 mx-auto mb-4 rounded-lg p-2">
                 <Image
-                  src={getImagePath("/LogoISO45001.jpg")}
+                  src="/LogoISO45001.jpg"
                   alt="ISO 45001 Logo"
                   width={30}
                   height={30}
@@ -771,7 +814,7 @@ const SeaHorseWebsite = () => {
             >
               <div className="w-24 h-24 mx-auto mb-4 rounded-lg p-2">
                 <Image
-                  src={getImagePath("/Logokadin.png")}
+                  src="/Logokadin.png"
                   alt="KADIN Logo"
                   width={80}
                   height={80}
@@ -781,7 +824,7 @@ const SeaHorseWebsite = () => {
               <h3 className="font-semibold text-gray-900 mb-2">
                 {t("certifications.kadin")}
               </h3>
-              <p className="text-sm text-gray-600 two-line-text">
+              <p className="text-sm text-gray-600">
                 {t("certifications.kadin.desc")}
               </p>
               <p className="text-xs text-gray-500 mt-1">
@@ -823,31 +866,38 @@ const SeaHorseWebsite = () => {
                 {t("footer.quicklinks")}
               </h4>
               <div className="space-y-1 flex flex-col items-justify md:items-start">
-                {[
-                  { key: "nav.home", section: "home" },
-                  { key: "nav.about", section: "about" },
-                  { key: "nav.services", section: "services" },
-                  { key: "nav.contact", section: "contact" },
-                ].map((item) => (
-                  <div key={item.key}>
-                    <button
-                      onClick={() => {
-                        if (item.section === "contact") {
-                          router.push("/contact");
-                        } else {
+                {NAV_ITEMS.map((item) => {
+                  const href =
+                    item.section === "contact"
+                      ? "/contact"
+                      : item.section === "home"
+                      ? "/"
+                      : `/#${item.section}`;
+                  return (
+                    <Link
+                      key={item.key}
+                      href={href}
+                      prefetch={false}
+                      className="text-sm text-gray-600 hover:text-[#760000] transition-colors cursor-pointer"
+                      onClick={(e) => {
+                        if (
+                          item.section === "home" ||
+                          item.section === "about" ||
+                          item.section === "services"
+                        ) {
+                          e.preventDefault();
                           scrollToSection(item.section);
                         }
                       }}
-                      className="text-sm text-gray-600 hover:text-[#760000] transition-colors cursor-pointer"
                     >
                       {t(item.key)}
-                    </button>
-                  </div>
-                ))}
+                    </Link>
+                  );
+                })}
               </div>
             </div>
 
-            {/* Legal Information */}
+            {/* Legal */}
             <div className="pl-0 md:pl-8">
               <h4 className="text-md font-semibold mb-3">
                 {t("footer.legal")}

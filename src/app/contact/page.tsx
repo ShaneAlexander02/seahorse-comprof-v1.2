@@ -1,78 +1,77 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 import Image from "next/image";
-import { Menu, X, MapPin, Phone, Mail, User } from "lucide-react";
-import { useLanguage } from '../components/LanguageContext';
-import { LanguageSwitcher } from '../components/LanguageSwitcher';
+import { MapPin, Phone, Mail, User, Menu, X } from "lucide-react";
+import { useLanguage } from "../components/LanguageContext";
+import { LanguageSwitcher } from "../components/LanguageSwitcher";
 
 export default function ContactPage() {
-  const router = useRouter();
   const { t } = useLanguage();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeLocation, setActiveLocation] = useState("jakarta");
+  const [activeLocation, setActiveLocation] = useState<
+    "jakarta" | "balikpapan" | "handil" | "sangatta"
+  >("jakarta");
 
-  // Helper function for absolute image paths - ADDED THIS
-  const getImagePath = (imagePath: string) => {
-    const basePath = "/seahorse-comprof-v1.2"; // Your GitHub repo name
-    return `${basePath}${imagePath}`;
-  };
-
-  const scrollToSection = (sectionId: string) => {
-    router.push(`/#${sectionId}`);
-  };
+  // Helper for nav items (shared with footer)
+  const NAV_ITEMS = [
+    { key: "nav.home", section: "home" as const },
+    { key: "nav.about", section: "about" as const },
+    { key: "nav.services", section: "services" as const },
+    { key: "nav.contact", section: "contact" as const },
+  ];
 
   return (
     <>
-      {/* Navigation - Updated to match main page */}
+      {/* Navigation */}
       <nav
         style={{ backgroundColor: "#ffffff" }}
         className="fixed top-0 w-full bg-white/95 backdrop-blur-md shadow-sm z-50 border-b"
       >
-        <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-9">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
             {/* Logo */}
             <div className="flex items-center">
               <Image
-                src={getImagePath("/logo.jpg")}
+                src="/logo.jpg"
                 alt="P.T. Sea Horse Logo"
                 width={175}
                 height={175}
                 className="rounded-lg mb-2"
+                priority
               />
             </div>
 
             {/* Desktop Menu */}
             <div className="hidden md:flex items-center space-x-8">
               <div className="flex space-x-8">
-                {[
-                  { key: "nav.home", section: "home" },
-                  { key: "nav.about", section: "about" },
-                  { key: "nav.services", section: "services" },
-                  { key: "nav.contact", section: "contact" },
-                ].map((item) => (
-                  <button
-                    key={item.key}
-                    onClick={() => {
-                      if (item.section === "home") {
-                        router.push("/");
-                      } else if (item.section === "contact") {
-                        router.push("/contact");
-                      } else {
-                        router.push(`/#${item.section}`);
-                      }
-                    }}
-                    style={{
-                      color: "#760000",
-                      borderBottom:
-                        item.section === "contact" ? "2px solid #760000" : "none",
-                    }}
-                    className="px-3 py-2 text-md font-medium transition-colors"
-                  >
-                    {t(item.key)}
-                  </button>
-                ))}
+                {NAV_ITEMS.map((item) => {
+                  const href =
+                    item.section === "contact"
+                      ? "/contact"
+                      : item.section === "home"
+                      ? "/"
+                      : `/#${item.section}`;
+
+                  return (
+                    <Link
+                      key={item.key}
+                      href={href}
+                      prefetch={false}
+                      className="px-3 py-2 text-md font-medium transition-colors"
+                      style={{
+                        color: "#760000",
+                        borderBottom:
+                          item.section === "contact"
+                            ? "2px solid #760000"
+                            : "none",
+                      }}
+                    >
+                      {t(item.key)}
+                    </Link>
+                  );
+                })}
               </div>
               <LanguageSwitcher />
             </div>
@@ -84,6 +83,7 @@ export default function ContactPage() {
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className="p-2 rounded-md"
                 style={{ color: "#760000" }}
+                aria-label="Toggle menu"
               >
                 {isMenuOpen ? (
                   <X className="w-6 h-6" />
@@ -99,33 +99,31 @@ export default function ContactPage() {
         {isMenuOpen && (
           <div className="md:hidden bg-white border-t">
             <div className="px-4 py-2 space-y-1">
-              {[
-                { key: "nav.home", section: "home" },
-                { key: "nav.about", section: "about" },
-                { key: "nav.services", section: "services" },
-                { key: "nav.contact", section: "contact" },
-              ].map((item) => (
-                <button
-                  key={item.key}
-                  onClick={() => {
-                    if (item.section === "home") {
-                      router.push("/");
-                    } else if (item.section === "contact") {
-                      router.push("/contact");
-                    } else {
-                      router.push(`/#${item.section}`);
-                    }
-                    setIsMenuOpen(false);
-                  }}
-                  className="block w-full text-left px-3 py-2 hover:bg-gray-50 rounded-md text-md"
-                  style={{
-                    color: "#760000",
-                    fontWeight: item.section === "contact" ? "bold" : "normal",
-                  }}
-                >
-                  {t(item.key)}
-                </button>
-              ))}
+              {NAV_ITEMS.map((item) => {
+                const href =
+                  item.section === "contact"
+                    ? "/contact"
+                    : item.section === "home"
+                    ? "/"
+                    : `/#${item.section}`;
+
+                return (
+                  <Link
+                    key={item.key}
+                    href={href}
+                    prefetch={false}
+                    className="block w-full text-left px-3 py-2 hover:bg-gray-50 rounded-md text-md"
+                    style={{
+                      color: "#760000",
+                      fontWeight:
+                        item.section === "contact" ? "bold" : "normal",
+                    }}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {t(item.key)}
+                  </Link>
+                );
+              })}
             </div>
           </div>
         )}
@@ -135,7 +133,7 @@ export default function ContactPage() {
       <main className="min-h-screen bg-gray-50">
         {/* Title */}
         <section className="pt-24 py-4 bg-[#760000] text-white text-center">
-          <h1 className="text-3xl font-bold mb-2">{t('contact.title')}</h1>
+          <h1 className="text-3xl font-bold mb-2">{t("contact.title")}</h1>
         </section>
 
         {/* Map */}
@@ -151,13 +149,13 @@ export default function ContactPage() {
           />
         </div>
 
-        {/* Contact Info - Full Width */}
+        {/* Contact Info */}
         <div className="max-w-7xl mx-auto px-4 py-12">
           {/* Location Tabs */}
           <div className="bg-white shadow-lg rounded-lg p-8 transform transition-all duration-700 ease-out opacity-0 animate-fadeInUp">
             <div className="border-b mb-8">
               <h2 className="text-2xl font-bold text-gray-900 mb-6">
-                {t('contact.locations.title')}
+                {t("contact.locations.title")}
               </h2>
               <div className="flex flex-wrap gap-2 mb-6">
                 {[
@@ -165,17 +163,19 @@ export default function ContactPage() {
                   { id: "balikpapan", label: "BALIKPAPAN" },
                   { id: "handil", label: "HANDIL TIGA" },
                   { id: "sangatta", label: "SANGATTA" },
-                ].map((location) => (
+                ].map((loc) => (
                   <button
-                    key={location.id}
-                    onClick={() => setActiveLocation(location.id)}
+                    key={loc.id}
+                    onClick={() =>
+                      setActiveLocation(loc.id as typeof activeLocation)
+                    }
                     className={`px-4 py-3 font-semibold text-base transition-colors rounded-lg ${
-                      activeLocation === location.id
+                      activeLocation === (loc.id as typeof activeLocation)
                         ? "bg-red-800 text-white"
                         : "bg-gray-100 text-gray-600 hover:bg-red-100 hover:text-red-800"
                     }`}
                   >
-                    {location.label}
+                    {loc.label}
                   </button>
                 ))}
               </div>
@@ -187,7 +187,7 @@ export default function ContactPage() {
                 <>
                   <div className="space-y-6">
                     <h3 className="text-2xl font-bold text-red-800 mb-6 border-b border-gray-200 pb-3">
-                      {t('contact.jakarta.title')}
+                      {t("contact.jakarta.title")}
                     </h3>
 
                     <div className="bg-gray-50 p-6 rounded-lg">
@@ -195,7 +195,7 @@ export default function ContactPage() {
                         <MapPin className="w-6 h-6 text-red-800 mt-1 flex-shrink-0" />
                         <div>
                           <h4 className="font-bold text-red-800 mb-3">
-                            {t('contact.address')}
+                            {t("contact.address")}
                           </h4>
                           <div className="space-y-1 text-base text-gray-800 leading-relaxed">
                             <p className="font-medium">
@@ -214,7 +214,9 @@ export default function ContactPage() {
                     <div className="bg-gray-50 p-6 rounded-lg">
                       <div className="flex items-center gap-3 mb-3">
                         <Phone className="w-6 h-6 text-red-800" />
-                        <h4 className="font-bold text-red-800">{t('contact.phone')}</h4>
+                        <h4 className="font-bold text-red-800">
+                          {t("contact.phone")}
+                        </h4>
                       </div>
                       <p className="text-lg text-gray-800 font-medium ml-9">
                         (+62) 21 2938 0018
@@ -228,7 +230,7 @@ export default function ContactPage() {
                         <Mail className="w-6 h-6 text-red-800 mt-1" />
                         <div>
                           <h4 className="font-bold text-red-800 mb-3">
-                            {t('contact.email')}
+                            {t("contact.email")}
                           </h4>
                           <div className="space-y-2 ml-0">
                             <div className="bg-white p-3 rounded border-l-4 border-red-800">
@@ -257,7 +259,7 @@ export default function ContactPage() {
                         <User className="w-6 h-6 text-red-800 mt-1" />
                         <div>
                           <h4 className="font-bold text-red-800 mb-3">
-                            {t('contact.personnel')}
+                            {t("contact.personnel")}
                           </h4>
                           <div className="space-y-3 ml-0">
                             <div className="bg-white p-3 rounded">
@@ -286,7 +288,7 @@ export default function ContactPage() {
                 <>
                   <div className="space-y-6">
                     <h3 className="text-2xl font-bold text-red-800 mb-6 border-b border-gray-200 pb-3">
-                      {t('contact.balikpapan.title')}
+                      {t("contact.balikpapan.title")}
                     </h3>
 
                     <div className="bg-gray-50 p-6 rounded-lg">
@@ -294,7 +296,7 @@ export default function ContactPage() {
                         <MapPin className="w-6 h-6 text-red-800 mt-1 flex-shrink-0" />
                         <div>
                           <h4 className="font-bold text-red-800 mb-3">
-                            {t('contact.branch.address')}
+                            {t("contact.branch.address")}
                           </h4>
                           <div className="space-y-1 text-base leading-relaxed">
                             <p className="font-medium text-gray-800">
@@ -317,7 +319,9 @@ export default function ContactPage() {
                     <div className="bg-gray-50 p-6 rounded-lg">
                       <div className="flex items-center gap-3 mb-3">
                         <Phone className="w-6 h-6 text-red-800" />
-                        <h4 className="font-bold text-red-800">{t('contact.phone')}</h4>
+                        <h4 className="font-bold text-red-800">
+                          {t("contact.phone")}
+                        </h4>
                       </div>
                       <div className="ml-9 space-y-1">
                         <p className="text-lg text-gray-800 font-medium">
@@ -336,7 +340,7 @@ export default function ContactPage() {
                         <Mail className="w-6 h-6 text-red-800 mt-1" />
                         <div>
                           <h4 className="font-bold text-red-800 mb-3">
-                            {t('contact.email.single')}
+                            {t("contact.email.single")}
                           </h4>
                           <div className="bg-white p-4 rounded border-l-4 border-red-800">
                             <p className="text-lg text-gray-800 font-medium">
@@ -355,7 +359,7 @@ export default function ContactPage() {
                         <User className="w-6 h-6 text-red-800 mt-1" />
                         <div>
                           <h4 className="font-bold text-red-800 mb-3">
-                            {t('contact.management')}
+                            {t("contact.management")}
                           </h4>
                           <div className="bg-white p-4 rounded">
                             <p className="font-semibold text-gray-800 text-lg">
@@ -376,7 +380,7 @@ export default function ContactPage() {
                 <>
                   <div className="space-y-6">
                     <h3 className="text-2xl font-bold text-red-800 mb-6 border-b border-gray-200 pb-3">
-                      {t('contact.handil.title')}
+                      {t("contact.handil.title")}
                     </h3>
 
                     <div className="bg-gray-50 p-6 rounded-lg">
@@ -384,7 +388,7 @@ export default function ContactPage() {
                         <MapPin className="w-6 h-6 text-red-800 mt-1 flex-shrink-0" />
                         <div>
                           <h4 className="font-bold text-red-800 mb-3">
-                            {t('contact.base.address')}
+                            {t("contact.base.address")}
                           </h4>
                           <div className="space-y-1 text-base leading-relaxed">
                             <p className="font-medium text-gray-800">
@@ -404,7 +408,9 @@ export default function ContactPage() {
                     <div className="bg-gray-50 p-6 rounded-lg">
                       <div className="flex items-center gap-3 mb-3">
                         <Phone className="w-6 h-6 text-red-800" />
-                        <h4 className="font-bold text-red-800">{t('contact.phone')}</h4>
+                        <h4 className="font-bold text-red-800">
+                          {t("contact.phone")}
+                        </h4>
                       </div>
                       <p className="text-lg text-gray-800 font-medium ml-9">
                         (+62) 541 691 830
@@ -418,7 +424,7 @@ export default function ContactPage() {
                         <Mail className="w-6 h-6 text-red-800 mt-1" />
                         <div>
                           <h4 className="font-bold text-red-800 mb-3">
-                            {t('contact.email.single')}
+                            {t("contact.email.single")}
                           </h4>
                           <div className="bg-white p-4 rounded border-l-4 border-red-800">
                             <p className="text-lg text-gray-800 font-medium">
@@ -437,7 +443,7 @@ export default function ContactPage() {
                         <User className="w-6 h-6 text-red-800 mt-1" />
                         <div>
                           <h4 className="font-bold text-red-800 mb-3">
-                            {t('contact.base.management')}
+                            {t("contact.base.management")}
                           </h4>
                           <div className="bg-white p-4 rounded">
                             <p className="font-semibold text-gray-800 text-lg">
@@ -453,11 +459,12 @@ export default function ContactPage() {
                   </div>
                 </>
               )}
+
               {activeLocation === "sangatta" && (
                 <>
                   <div className="space-y-6">
                     <h3 className="text-2xl font-bold text-red-800 mb-6 border-b border-gray-200 pb-3">
-                      {t('contact.sangatta.title')}
+                      {t("contact.sangatta.title")}
                     </h3>
 
                     <div className="bg-gray-50 p-6 rounded-lg">
@@ -465,7 +472,7 @@ export default function ContactPage() {
                         <MapPin className="w-6 h-6 text-red-800 mt-1 flex-shrink-0" />
                         <div>
                           <h4 className="font-bold text-red-800 mb-3">
-                            {t('contact.address')}
+                            {t("contact.address")}
                           </h4>
                           <div className="space-y-1 text-base leading-relaxed">
                             <p className="font-medium text-gray-800">
@@ -485,7 +492,9 @@ export default function ContactPage() {
                     <div className="bg-gray-50 p-6 rounded-lg">
                       <div className="flex items-center gap-3 mb-3">
                         <Phone className="w-6 h-6 text-red-800 flex-shrink-0" />
-                        <h4 className="font-bold text-red-800">{t('contact.phone')}</h4>
+                        <h4 className="font-bold text-red-800">
+                          {t("contact.phone")}
+                        </h4>
                       </div>
                       <p className="text-lg font-medium text-gray-800 ml-9">
                         (+62) 549 24254
@@ -499,7 +508,7 @@ export default function ContactPage() {
                         <Mail className="w-6 h-6 text-red-800 mt-1 flex-shrink-0" />
                         <div className="w-full">
                           <h4 className="font-bold text-red-800 mb-3">
-                            {t('contact.email.single')}
+                            {t("contact.email.single")}
                           </h4>
                           <div className="bg-white p-4 rounded border-l-4 border-red-800">
                             <p className="text-lg text-gray-800 font-medium">
@@ -518,7 +527,7 @@ export default function ContactPage() {
                         <User className="w-6 h-6 text-red-800 mt-1 flex-shrink-0" />
                         <div className="w-full">
                           <h4 className="font-bold text-red-800 mb-3">
-                            {t('contact.operations.management')}
+                            {t("contact.operations.management")}
                           </h4>
                           <div className="bg-white p-4 rounded">
                             <p className="font-semibold text-gray-800 text-lg">
@@ -545,7 +554,9 @@ export default function ContactPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
             {/* Contact */}
             <div className="pl-0 md:pl-8">
-              <h4 className="text-md font-semibold mb-3">{t('footer.contact')}</h4>
+              <h4 className="text-md font-semibold mb-3">
+                {t("footer.contact")}
+              </h4>
               <div className="space-y-1 text-sm text-gray-600">
                 <p className="flex items-center space-x-2">
                   <MapPin className="w-4 h-4" />
@@ -564,37 +575,36 @@ export default function ContactPage() {
 
             {/* Quick Links */}
             <div className="text-justify md:text-left pl-0 md:pl-15">
-              <h4 className="text-md font-semibold mb-3">{t('footer.quicklinks')}</h4>
+              <h4 className="text-md font-semibold mb-3">
+                {t("footer.quicklinks")}
+              </h4>
               <div className="space-y-1 flex flex-col items-justify md:items-start">
-                {[
-                  { key: "nav.home", section: "home" },
-                  { key: "nav.about", section: "about" },
-                  { key: "nav.services", section: "services" },
-                  { key: "nav.contact", section: "contact" },
-                ].map((item) => (
-                  <div key={item.key}>
-                    <button
-                      onClick={() => {
-                        if (item.section === "home") {
-                          router.push("/");
-                        } else if (item.section === "contact") {
-                          router.push("/contact");
-                        } else {
-                          router.push(`/#${item.section}`);
-                        }
-                      }}
+                {NAV_ITEMS.map((item) => {
+                  const href =
+                    item.section === "contact"
+                      ? "/contact"
+                      : item.section === "home"
+                      ? "/"
+                      : `/#${item.section}`;
+                  return (
+                    <Link
+                      key={item.key}
+                      href={href}
+                      prefetch={false}
                       className="text-sm text-gray-600 hover:text-[#760000] transition-colors cursor-pointer"
                     >
                       {t(item.key)}
-                    </button>
-                  </div>
-                ))}
+                    </Link>
+                  );
+                })}
               </div>
             </div>
 
             {/* Legal Information */}
             <div className="pl-0 md:pl-8">
-              <h4 className="text-md font-semibold mb-3">{t('footer.legal')}</h4>
+              <h4 className="text-md font-semibold mb-3">
+                {t("footer.legal")}
+              </h4>
               <div className="space-y-1 text-sm text-gray-600">
                 <p>Business License: BXXXIV-422/AT.54</p>
                 <p>NIB: 9120101202577</p>
@@ -611,12 +621,10 @@ export default function ContactPage() {
         className="w-full text-center text-sm"
         style={{ backgroundColor: "#760000" }}
       >
-        <p className="text-white py-3">
-          {t('footer.copyright')}
-        </p>
+        <p className="text-white py-3">{t("footer.copyright")}</p>
       </div>
 
-      {/* Custom animation */}
+      {/* Simple fade-in animation (kept from your version) */}
       <style jsx>{`
         @keyframes fadeInUp {
           0% {
