@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
 type Language = 'en' | 'id';
 
@@ -32,8 +32,8 @@ const translations = {
     
     // About Section
     'about.title': 'About Us',
-    'about.p1': 'We are a major marine service provider in Indonesian Oil & Gas exploration and production, also involved in mining and transportation industries. Furthermore, we have represented some of the world\’s largest shipowners.',
-    'about.p2': 'Hence, we have the ability to supply tugs and support vessels to work in deep water locations and the capacity to supply vessels even when the job needs to be done on very short notice. This has enabled us to work with confidence for our customers\’ needs. Some of our main activities include: ',
+    'about.p1': 'We are a major marine service provider in Indonesian Oil & Gas exploration and production, also involved in mining and transportation industries. Furthermore, we have represented some of the world\'s largest shipowners.',
+    'about.p2': 'Hence, we have the ability to supply tugs and support vessels to work in deep water locations and the capacity to supply vessels even when the job needs to be done on very short notice. This has enabled us to work with confidence for our customers\' needs. Some of our main activities include: ',
     'about.activity1': 'Ship Owning and Management',
     'about.activity2': 'Vessel Chartering and Sale & Purchase',
     'about.activity3': 'Operations for Tug Services (Harbour and Offshore)',
@@ -201,15 +201,35 @@ interface LanguageProviderProps {
 }
 
 export function LanguageProvider({ children }: LanguageProviderProps) {
-  // CHANGED: Set default language to Indonesian ('id') instead of English ('en')
   const [language, setLanguage] = useState<Language>('id');
+  const [isInitialized, setIsInitialized] = useState(false);
+
+  // Load language from localStorage on mount
+  useEffect(() => {
+    const savedLanguage = localStorage.getItem('language') as Language;
+    if (savedLanguage && (savedLanguage === 'en' || savedLanguage === 'id')) {
+      setLanguage(savedLanguage);
+    }
+    setIsInitialized(true);
+  }, []);
+
+  // Save language to localStorage when it changes
+  const handleSetLanguage = (lang: Language) => {
+    setLanguage(lang);
+    localStorage.setItem('language', lang);
+  };
 
   const t = (key: string): string => {
     return translations[language][key as keyof typeof translations['en']] || key;
   };
 
+  // Don't render until we've loaded the saved language
+  if (!isInitialized) {
+    return null;
+  }
+
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, t }}>
+    <LanguageContext.Provider value={{ language, setLanguage: handleSetLanguage, t }}>
       {children}
     </LanguageContext.Provider>
   );

@@ -31,6 +31,19 @@ const SeaHorseWebsite = () => {
   };
 
   useEffect(() => {
+    // Check if there's a hash in the URL and scroll to that section
+    const hash = window.location.hash.substring(1);
+    if (hash && ["home", "about", "services", "contact"].includes(hash)) {
+      setActiveSection(hash);
+      // Small delay to ensure the page has loaded
+      setTimeout(() => {
+        const element = document.getElementById(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
+    }
+
     const handleScroll = () => {
       const sections = ["home", "about", "services", "contact"];
       const currentSection = sections.find((section) => {
@@ -41,7 +54,13 @@ const SeaHorseWebsite = () => {
         }
         return false;
       });
-      if (currentSection) setActiveSection(currentSection);
+      if (currentSection) {
+        setActiveSection(currentSection);
+        // Update URL hash without triggering a reload
+        if (window.location.hash !== `#${currentSection}`) {
+          history.replaceState(null, "", `#${currentSection}`);
+        }
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -51,6 +70,9 @@ const SeaHorseWebsite = () => {
   const scrollToSection = (sectionId: string) => {
     document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
     setIsMenuOpen(false);
+    setActiveSection(sectionId);
+    // Update URL hash
+    history.pushState(null, "", `#${sectionId}`);
   };
 
   // Animation variants

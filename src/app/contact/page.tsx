@@ -13,19 +13,29 @@ export default function ContactPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeLocation, setActiveLocation] = useState("jakarta");
 
-  // Helper function for absolute image paths - ADDED THIS
+  // Helper function for absolute image paths
   const getImagePath = (imagePath: string) => {
-    const basePath = "/seahorse-comprof-v1.2"; // Your GitHub repo name
+    const basePath = "/seahorse-comprof-v1.2";
     return `${basePath}${imagePath}`;
   };
 
-  const scrollToSection = (sectionId: string) => {
-    router.push(`/#${sectionId}`);
+  // Fixed navigation functions
+  const handleNavigation = (section: string) => {
+    if (section === "home") {
+      router.push("/");
+    } else if (section === "contact") {
+      // Already on contact page
+      return;
+    } else {
+      // Navigate to main page with hash
+      router.push(`/#${section}`);
+    }
+    setIsMenuOpen(false);
   };
 
   return (
     <>
-      {/* Navigation - Updated to match main page */}
+      {/* Navigation */}
       <nav
         style={{ backgroundColor: "#ffffff" }}
         className="fixed top-0 w-full bg-white/95 backdrop-blur-md shadow-sm z-50 border-b"
@@ -54,15 +64,7 @@ export default function ContactPage() {
                 ].map((item) => (
                   <button
                     key={item.key}
-                    onClick={() => {
-                      if (item.section === "home") {
-                        router.push("/");
-                      } else if (item.section === "contact") {
-                        router.push("/contact");
-                      } else {
-                        router.push(`/#${item.section}`);
-                      }
-                    }}
+                    onClick={() => handleNavigation(item.section)}
                     style={{
                       color: "#760000",
                       borderBottom:
@@ -107,16 +109,7 @@ export default function ContactPage() {
               ].map((item) => (
                 <button
                   key={item.key}
-                  onClick={() => {
-                    if (item.section === "home") {
-                      router.push("/");
-                    } else if (item.section === "contact") {
-                      router.push("/contact");
-                    } else {
-                      router.push(`/#${item.section}`);
-                    }
-                    setIsMenuOpen(false);
-                  }}
+                  onClick={() => handleNavigation(item.section)}
                   className="block w-full text-left px-3 py-2 hover:bg-gray-50 rounded-md text-md"
                   style={{
                     color: "#760000",
@@ -574,15 +567,7 @@ export default function ContactPage() {
                 ].map((item) => (
                   <div key={item.key}>
                     <button
-                      onClick={() => {
-                        if (item.section === "home") {
-                          router.push("/");
-                        } else if (item.section === "contact") {
-                          router.push("/contact");
-                        } else {
-                          router.push(`/#${item.section}`);
-                        }
-                      }}
+                      onClick={() => handleNavigation(item.section)}
                       className="text-sm text-gray-600 hover:text-[#760000] transition-colors cursor-pointer"
                     >
                       {t(item.key)}

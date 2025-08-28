@@ -19,6 +19,7 @@ export function LanguageSwitcher() {
         EN
       </button>
       <button
+      
         onClick={() => setLanguage('id')}
         className={`px-3 py-1.5 text-sm font-medium rounded-md transition-all duration-200 ${
           language === 'id'
