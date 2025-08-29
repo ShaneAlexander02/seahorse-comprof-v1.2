@@ -228,16 +228,10 @@ export default function ContactPage() {
                               <p className="text-base text-gray-800 font-medium">
                                 general@seahorse.co.id
                               </p>
-                              <p className="text-sm text-gray-600">
-                                General Inquiries
-                              </p>
                             </div>
                             <div className="bg-white p-3 rounded border-l-4 border-red-800">
                               <p className="text-base text-gray-800 font-medium">
                                 marketing@seahorse.co.id
-                              </p>
-                              <p className="text-sm text-gray-600">
-                                Marketing & Business
                               </p>
                             </div>
                           </div>
@@ -257,14 +251,14 @@ export default function ContactPage() {
                               <p className="font-semibold text-gray-800">
                                 Ms. Maria Dharmaputri
                               </p>
-                              <p className="text-sm text-gray-600">Director</p>
+                              <p className="text-sm text-gray-600">Direktur</p>
                             </div>
                             <div className="bg-white p-3 rounded">
                               <p className="font-semibold text-gray-800">
                                 Mr. Winston Foo
                               </p>
                               <p className="text-sm text-gray-600">
-                                General Manager
+                                Manajer
                               </p>
                             </div>
                           </div>
@@ -291,7 +285,7 @@ export default function ContactPage() {
                           </h4>
                           <div className="space-y-1 text-base leading-relaxed">
                             <p className="font-medium text-gray-800">
-                              Complex Balikpapan Permai Block L No. 6
+                              Komplek Balikpapan Permai Block L No. 6
                             </p>
                             <p className="font-medium text-gray-800">
                               Jl. Jenderal Sudirman
@@ -335,9 +329,6 @@ export default function ContactPage() {
                             <p className="text-lg text-gray-800 font-medium">
                               bppn@seahorse.co.id
                             </p>
-                            <p className="text-sm text-gray-600">
-                              Balikpapan Operations
-                            </p>
                           </div>
                         </div>
                       </div>
@@ -353,9 +344,6 @@ export default function ContactPage() {
                           <div className="bg-white p-4 rounded">
                             <p className="font-semibold text-gray-800 text-lg">
                               Mr. Hasri Umar
-                            </p>
-                            <p className="text-base text-gray-600">
-                              Branch Manager
                             </p>
                           </div>
                         </div>
@@ -417,9 +405,6 @@ export default function ContactPage() {
                             <p className="text-lg text-gray-800 font-medium">
                               smo@seahorse.co.id
                             </p>
-                            <p className="text-sm text-gray-600">
-                              Site Management Office
-                            </p>
                           </div>
                         </div>
                       </div>
@@ -435,9 +420,6 @@ export default function ContactPage() {
                           <div className="bg-white p-4 rounded">
                             <p className="font-semibold text-gray-800 text-lg">
                               Mr. Supandi
-                            </p>
-                            <p className="text-base text-gray-600">
-                              Base Supervisor
                             </p>
                           </div>
                         </div>
@@ -498,9 +480,6 @@ export default function ContactPage() {
                             <p className="text-lg text-gray-800 font-medium">
                               agency@seahorse.co.id
                             </p>
-                            <p className="text-sm text-gray-600">
-                              Agency Operations
-                            </p>
                           </div>
                         </div>
                       </div>
@@ -516,9 +495,6 @@ export default function ContactPage() {
                           <div className="bg-white p-4 rounded">
                             <p className="font-semibold text-gray-800 text-lg">
                               Mr. Syarifudin
-                            </p>
-                            <p className="text-base text-gray-600">
-                              Operations Coordinator
                             </p>
                           </div>
                         </div>
