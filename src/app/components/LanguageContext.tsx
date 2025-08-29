@@ -134,7 +134,7 @@ const translations = {
     'about.activity5': 'Agen Umum untuk Kegiatan Pengiriman Batu Bara',
     
     // Expertise Section
-    'expertise.title': 'Agen Resmi, Terpecaya dan Terdaftar',
+    'expertise.title': 'Agen Resmi, Terpecaya, dan Terdaftar',
     'expertise.subtitle': 'Diakui dan dipercaya dalam dengan kemitraan dan lisensi yang terverifikasi.',
     'expertise.doen.description': 'Kami adalah agen resmi dari Doen Pacific Pty. Ltd. PT Sea Horse menyediakan dukungan teknis lengkap untuk semua model jet kapal Doen di Indonesia, termasuk servis dan suku cadang.',
     'expertise.license1.title': 'Ijin Usaha Pelayaran',
