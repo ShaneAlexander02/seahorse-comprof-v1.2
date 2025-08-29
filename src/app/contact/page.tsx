@@ -251,14 +251,14 @@ export default function ContactPage() {
                               <p className="font-semibold text-gray-800">
                                 Ms. Maria Dharmaputri
                               </p>
-                              <p className="text-sm text-gray-600">Direktur</p>
+                              <p className="text-sm text-gray-600">{t('contact.director')}</p>
                             </div>
                             <div className="bg-white p-3 rounded">
                               <p className="font-semibold text-gray-800">
                                 Mr. Winston Foo
                               </p>
                               <p className="text-sm text-gray-600">
-                                Manajer
+                                {t('contact.manager')}
                               </p>
                             </div>
                           </div>
@@ -285,7 +285,7 @@ export default function ContactPage() {
                           </h4>
                           <div className="space-y-1 text-base leading-relaxed">
                             <p className="font-medium text-gray-800">
-                              Komplek Balikpapan Permai Block L No. 6
+                              {t('contact.housing')} Balikpapan Permai Block L No. 6
                             </p>
                             <p className="font-medium text-gray-800">
                               Jl. Jenderal Sudirman

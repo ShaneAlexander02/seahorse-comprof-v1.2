@@ -97,6 +97,9 @@ const translations = {
     'contact.management': 'Branch Management',
     'contact.base.management': 'Base Management',
     'contact.operations.management': 'Operations Management',
+    'contact.director': 'Director',
+    'contact.manager': 'Manager',
+    'contact.housing': 'Housing Area',
     
     // Footer
     'footer.contact': 'Contact',
@@ -187,6 +190,9 @@ const translations = {
     'contact.management': 'Kepala Cabang',
     'contact.base.management': 'Pengawas Pangkalan',
     'contact.operations.management': 'Koordinator Operasional',
+    'contact.director': 'Direktur',
+    'contact.manager': 'Manajer',
+    'contact.housing': 'Komplek',
     
     // Footer
     'footer.contact': 'Kontak',
