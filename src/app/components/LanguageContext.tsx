@@ -117,7 +117,7 @@ const translations = {
     // Hero Section
     'hero.title': 'Perusahaan Pelayaran',
     'hero.subtitle': 'Terkemuka di Indonesia',
-    'hero.description': 'Didirikan pada tahun 1972, PT Sea Horse merupakan perusahaan penyedia jasa kelautan untuk industri eksplorasi, produksi, pertambangan, dan transportasi Minyak & Gas di Indonesia.',
+    'hero.description': 'Didirikan pada tahun 1972, PT Sea Horse merupakan perusahaan penyedia jasa kelautan untuk industri eksplorasi, produksi, pertambangan, dan transportasi minyak & gas di Indonesia.',
     'hero.stats.experience': 'Tahun Pengalaman',
     'hero.stats.locations': 'Lokasi Kantor',
     'hero.stats.certified': 'Bersertifikat',
