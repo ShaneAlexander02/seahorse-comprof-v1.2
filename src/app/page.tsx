@@ -125,7 +125,7 @@ const SeaHorseWebsite = () => {
     getImagePath("/carousel-4.jpg"),
     getImagePath("/carousel-2.jpg"),
     getImagePath("/carousel-5.jpg"),
-    getImagePath("/carousel-7.jpg"),
+    getImagePath("/carousel-7.jpeg"),
   ];
 
   const [aboutIdx, setAboutIdx] = useState(0);
